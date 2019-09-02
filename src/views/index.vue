@@ -3,8 +3,7 @@
     <el-card class="box-card" body-style="padding:40px">
       <el-row :gutter="20">
         <div class="container" style="padding:40px">
-          <h1>Fellow Student</h1>
-          <h2>强劲、强大、资源丰富的顶尖高校社区</h2>
+          <h1>强劲、强大、资源丰富的顶尖高校社区</h1>
           <h3>Fellow Student 是一个学习交流、跨校沟通的社区。Expertise Community 为你提供各大高校学习资料。强大的Search功能帮你轻松找到不同学校、不同专业的同学。</h3>
         </div>
       </el-row>
