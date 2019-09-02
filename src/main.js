@@ -5,14 +5,30 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import axios from "axios";
+import qs from 'qs';
+import {
+  get,
+  post,
+  patch,
+  put
+} from '@/utils/http'
 
 Vue.use(ElementUI);
 Vue.config.productionTip = false
+Vue.prototype.$ajax = axios
+Vue.prototype.qs = qs
+Vue.prototype.$post = post;
+Vue.prototype.$get = get;
+Vue.prototype.$patch = patch;
+Vue.prototype.$put = put;
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 })
