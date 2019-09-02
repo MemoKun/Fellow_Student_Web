@@ -1,5 +1,6 @@
 <template>
   <el-menu :default-active="activeIndex" class="navmenu" mode="horizontal" @select="handleSelect">
+    <el-menu-item><h1>Fellow Student</h1></el-menu-item>
     <el-submenu index="5" style="float:right">
       <template slot="title">Settings</template>
       <el-menu-item index="5-1"><router-link to="/expertiseCommunity">Fellow Prime</router-link></el-menu-item>
