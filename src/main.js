@@ -8,7 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import axios from "axios";
 import qs from 'qs';
 import {
-  get,
+  fetch,
   post,
   patch,
   put
@@ -19,7 +19,7 @@ Vue.config.productionTip = false
 Vue.prototype.$ajax = axios
 Vue.prototype.qs = qs
 Vue.prototype.$post = post;
-Vue.prototype.$get = get;
+Vue.prototype.$fetch = fetch;
 Vue.prototype.$patch = patch;
 Vue.prototype.$put = put;
 
