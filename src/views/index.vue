@@ -56,7 +56,7 @@
         <el-col :span="12">
           <h2>最近登录的用户</h2>
           <div class="container" v-for="item in lastLoginUsers" :key="item.user_id">
-            <el-col :span="6" style="padding: 10px;">
+            <el-col :span="6" style="padding: 3px;">
               <el-card :body-style="{ padding: '0px' }">
                 <img :src="item.photo" class="image" />
                 <div style="padding: 14px;">
