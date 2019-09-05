@@ -9,37 +9,39 @@
             </el-col>
           </el-row>
           <el-row>
-            <div
-              class="container"
-              v-for="item in messages"
-              :key="item.message_id"
-              style="padding:10px"
-            >
-              <el-card class="box-card" style="padding:10px">
-                <el-col :span="4">
-                  <el-image style="float:left;padding:20px" :src="item.photo" :fit="fill"></el-image>
-                </el-col>
-                <el-col :span="20">
-                  <el-row>
-                    <h4
-                      style="float:left"
-                    >{{item.nickname}}-{{item.university}}-{{item.speciality}}-{{item.grade}}</h4>
-                    <h5 style="float:right">2019年3月23日</h5>
-                  </el-row>
-                  <el-row>
-                    <p>Hello JunhaoXue! Nice to meet you. So nice that you are engineering...</p>
-                  </el-row>
-                  <el-row>
-                    <el-button
-                      type="text"
-                      class="button"
-                      @click="readMessage()"
-                      style="float:right;"
-                    >阅读全部</el-button>
-                  </el-row>
-                </el-col>
-              </el-card>
-            </div>
+            <el-col :span="18">
+              <div
+                class="container"
+                v-for="item in messages"
+                :key="item.message_id"
+                style="padding:10px"
+              >
+                <el-card class="box-card" style="padding:10px">
+                  <el-col :span="6">
+                    <el-image style="float:left;padding:20px" :src="item.photo" :fit="fill"></el-image>
+                  </el-col>
+                  <el-col :span="18">
+                    <el-row>
+                      <h4
+                        style="float:left"
+                      >{{item.nickname}}-{{item.university}}-{{item.speciality}}-{{item.grade}}</h4>
+                      <h5 style="float:right">2019年3月23日</h5>
+                    </el-row>
+                    <el-row>
+                      <p>Hello JunhaoXue! Nice to meet you. So nice that you are engineering...</p>
+                    </el-row>
+                    <el-row>
+                      <el-button
+                        type="text"
+                        class="button"
+                        @click="readMessage()"
+                        style="float:right;"
+                      >阅读全部</el-button>
+                    </el-row>
+                  </el-col>
+                </el-card>
+              </div>
+            </el-col>
           </el-row>
         </el-tab-pane>
         <el-tab-pane label="发出的消息" name="second">
@@ -49,37 +51,39 @@
             </el-col>
           </el-row>
           <el-row>
-            <div
-              class="container"
-              v-for="item in messages"
-              :key="item.message_id"
-              style="padding:10px"
-            >
-              <el-card class="box-card" style="padding:10px">
-                <el-col :span="4">
-                  <el-image style="float:left;padding:20px" :src="item.photo" :fit="fill"></el-image>
-                </el-col>
-                <el-col :span="20">
-                  <el-row>
-                    <h4
-                      style="float:left"
-                    >{{item.nickname}}-{{item.university}}-{{item.speciality}}-{{item.grade}}</h4>
-                    <h5 style="float:right">2019年3月23日</h5>
-                  </el-row>
-                  <el-row>
-                    <p>Hello JunhaoXue! Nice to meet you. So nice that you are engineering...</p>
-                  </el-row>
-                  <el-row>
-                    <el-button
-                      type="text"
-                      class="button"
-                      @click="readMessage()"
-                      style="float:right;"
-                    >阅读全部</el-button>
-                  </el-row>
-                </el-col>
-              </el-card>
-            </div>
+            <el-col :span="18">
+              <div
+                class="container"
+                v-for="item in messages"
+                :key="item.message_id"
+                style="padding:10px"
+              >
+                <el-card class="box-card" style="padding:10px">
+                  <el-col :span="6">
+                    <el-image style="float:left;padding:20px" :src="item.photo" :fit="fill"></el-image>
+                  </el-col>
+                  <el-col :span="18">
+                    <el-row>
+                      <h4
+                        style="float:left"
+                      >{{item.nickname}}-{{item.university}}-{{item.speciality}}-{{item.grade}}</h4>
+                      <h5 style="float:right">2019年3月23日</h5>
+                    </el-row>
+                    <el-row>
+                      <p>Hello JunhaoXue! Nice to meet you. So nice that you are engineering...</p>
+                    </el-row>
+                    <el-row>
+                      <el-button
+                        type="text"
+                        class="button"
+                        @click="readMessage()"
+                        style="float:right;"
+                      >阅读全部</el-button>
+                    </el-row>
+                  </el-col>
+                </el-card>
+              </div>
+            </el-col>
           </el-row>
         </el-tab-pane>
       </el-tabs>
