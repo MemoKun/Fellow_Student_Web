@@ -1,10 +1,10 @@
 <template>
 <div>
-  <!-- 修改密码 -->
+  <!-- 修改邮箱 -->
   <div >
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/security' }">账号安全</el-breadcrumb-item>
-      <el-breadcrumb-item >设置密码</el-breadcrumb-item>
+      <el-breadcrumb-item >更改邮箱</el-breadcrumb-item>
     </el-breadcrumb>
   </div>
     

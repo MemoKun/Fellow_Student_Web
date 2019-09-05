@@ -9,7 +9,7 @@
         <router-link to="/editPersonalInfo" class="router-link-active">个人信息</router-link>
       </el-menu-item>
       <el-menu-item index="6-3">
-        <router-link to="/editPassword" class="router-link-active">账号安全</router-link>
+        <router-link to="/security" class="router-link-active">账号安全</router-link>
       </el-menu-item>
       <el-menu-item index="6-4">
         <router-link to="/editSystemSetting" class="router-link-active">系统设置</router-link>
@@ -72,7 +72,7 @@ export default {
           this.$router.replace('/editPersonalInfo');
           break;
         case '6-3':
-          this.$router.replace('/editPassword');
+          this.$router.replace('/security');
           break;
         case '6-4':
           this.$router.replace('/editSystemSetting');

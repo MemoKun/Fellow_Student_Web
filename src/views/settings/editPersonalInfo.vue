@@ -77,6 +77,10 @@
               style="width:300px;margin-left:-420px"></el-input>
           </el-form-item>
         </div>
+        <el-form-item label="个人介绍">
+            <el-input type="textarea" v-model="userInfoForm.self_introduction" placeholder="介绍下自己吧" 
+            style="width:500px;margin-left:-220px" :autosize="{ minRows: 2, maxRows: 4}"></el-input>
+          </el-form-item>
       </el-form>
       <div>
           <el-button type="primary" @click="saveInfo">保存</el-button>
