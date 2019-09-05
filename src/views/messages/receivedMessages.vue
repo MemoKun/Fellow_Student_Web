@@ -3,7 +3,7 @@
     <el-card class="box-card" body-style="padding:40px">
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="收到的消息" name="first">
-          <el-row gutter="20">
+          <el-row :gutter="20">
             <el-col :span="18" style="padding:20px">
               <h1 style="float:left">你收到的消息</h1>
             </el-col>
@@ -18,7 +18,7 @@
               >
                 <el-card class="box-card" style="padding:10px">
                   <el-col :span="6">
-                    <el-image style="float:left;padding:20px" :src="item.photo" :fit="fill"></el-image>
+                    <img style="float:left;padding:20px" :src="item.photo"  />
                   </el-col>
                   <el-col :span="18">
                     <el-row>
@@ -45,7 +45,7 @@
           </el-row>
         </el-tab-pane>
         <el-tab-pane label="发出的消息" name="second">
-          <el-row gutter="20">
+          <el-row :gutter="20">
             <el-col :span="18" style="padding:20px">
               <h1 style="float:left">你发出的消息</h1>
             </el-col>
@@ -60,7 +60,7 @@
               >
                 <el-card class="box-card" style="padding:10px">
                   <el-col :span="6">
-                    <el-image style="float:left;padding:20px" :src="item.photo" :fit="fill"></el-image>
+                    <img style="float:left;padding:20px" :src="item.photo" />
                   </el-col>
                   <el-col :span="18">
                     <el-row>

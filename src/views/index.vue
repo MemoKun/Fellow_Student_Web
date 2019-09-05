@@ -12,7 +12,7 @@
         <el-col :span="12">
           <el-card class="box-card" body-style="padding:40px">
             <h2>Quick Search</h2>
-            <el-form v-model="searchConditions" :label-position="right" label-width="100px">
+            <el-form v-model="searchConditions" label-position="right" label-width="100px">
               <el-form-item label="性别">
                 <el-radio-group v-model="searchConditions.gender">
                   <el-radio label="男"></el-radio>
@@ -30,7 +30,7 @@
               </el-form-item>
               <el-form-item label="学校与专业">
                 <el-col :span="20">
-                  <el-select></el-select>
+                  <!-- <el-select></el-select> -->
                 </el-col>
               </el-form-item>
               <el-form-item label="用户条件">

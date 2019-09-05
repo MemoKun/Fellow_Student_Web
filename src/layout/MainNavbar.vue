@@ -31,6 +31,7 @@
       <router-link to="/" class="router-link-active">Home</router-link>
     </el-menu-item>
   </el-menu>
+  
 </template>
 <style >
 .router-link-active {

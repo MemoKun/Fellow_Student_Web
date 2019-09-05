@@ -1,7 +1,7 @@
 <template>
   <div class="container" style="padding:100px">
-    <el-card class="box-card" body-style="padding:40px">
-      <el-row gutter="20">
+    <el-card class="box-card" style="padding:40px">
+      <el-row :gutter="20">
         <h1>Expertise Community</h1>
         <h2>强劲、强大、资源丰富的学习社区</h2>
       </el-row>
@@ -71,6 +71,7 @@ export default {
   data() {
     return {
       secretCode: "密钥",
+      input:"",
       expertiseGroup: [
         {
           id: 1,

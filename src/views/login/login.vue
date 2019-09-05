@@ -24,14 +24,15 @@
 
   </div>
 </template>
-<style>
+<style scoped>
 .box-card {
   width: 480px;
 }
 .loginCard {
   display: flex;
   justify-content: center;
-  margin: 150px;
+  /* margin: 150px; */
+  padding: 100px;
 }
 </style>
 <script>

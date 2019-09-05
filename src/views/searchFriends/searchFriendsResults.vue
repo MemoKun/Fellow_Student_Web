@@ -1,7 +1,7 @@
 <template>
   <div class="container" style="padding:100px">
     <el-card class="box-card" body-style="padding:40px">
-      <el-row gutter="20">
+      <el-row :gutter="20">
         <el-col :span="18" style="padding:20px">
           <h1 style="float:left">搜索结果</h1>
         </el-col>
@@ -11,7 +11,7 @@
           <el-col :span="18" style="padding:10px">
             <el-card class="box-card" style="padding:10px">
               <el-col :span="6">
-                <el-image style="float:left;padding:20px" :src="item.photo" :fit="fill"></el-image>
+                <img style="float:left;padding:20px" :src="item.photo" />
               </el-col>
               <el-col :span="18">
                 <el-row>
