@@ -42,7 +42,7 @@ export default new Router({
       components: { default: Index, header: MainNavbar}
     },
     {
-      path: "/login",
+      path: "/account/login",
       name: "login",
       components: { default: Login, header: MainNavbar},
       props: {
@@ -50,7 +50,7 @@ export default new Router({
       }
     },
     {
-      path: "/register",
+      path: "/account/register",
       name: "register",
       components: { default: Register, header: MainNavbar, footer: MainFooter },
       props: {

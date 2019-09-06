@@ -2,36 +2,36 @@
   <el-menu :default-active="activeIndex" class="navmenu" mode="horizontal" @select="handleSelect">
     <el-submenu index="6" style="float:right">
       <template slot="title">Settings</template>
-      <el-menu-item index="6-1">
-        <router-link to="/expertiseCommunity" class="router-link-active">Fellow Prime</router-link>
+      <el-menu-item index="/vipBilling">
+        <router-link to="/vipBilling" class="router-link-active">Fellow Prime</router-link>
       </el-menu-item>
-      <el-menu-item index="6-2">
+      <el-menu-item index="/editPersonalInfo">
         <router-link to="/editPersonalInfo" class="router-link-active">个人信息</router-link>
       </el-menu-item>
-      <el-menu-item index="6-3">
+      <el-menu-item index="/security">
         <router-link to="/security" class="router-link-active">账号安全</router-link>
       </el-menu-item>
-      <el-menu-item index="6-4">
+      <el-menu-item index="/editSystemSetting">
         <router-link to="/editSystemSetting" class="router-link-active">系统设置</router-link>
       </el-menu-item>
     </el-submenu>
-    <el-menu-item index="5" style="float:right">
+    <el-menu-item index="/receivedMessages" style="float:right">
       <router-link to="/receivedMessages" class="router-link-active">Messages</router-link>
     </el-menu-item>
-    <el-menu-item index="4" style="float:right">
+    <el-menu-item index="/friendsApproved" style="float:right">
       <router-link to="/friendsApproved" class="router-link-active">Friends</router-link>
     </el-menu-item>
-    <el-menu-item index="3" style="float:right">
+    <el-menu-item index="/expertiseCommunity" style="float:right">
       <router-link to="/expertiseCommunity" class="router-link-active">Expertise Community</router-link>
     </el-menu-item>
-    <el-menu-item index="2" style="float:right">
-      <router-link to="/login" class="router-link-active">Login</router-link>
+    <el-menu-item index="/account" style="float:right">
+      <router-link to="/account/login" class="router-link-active">Login</router-link>
     </el-menu-item>
-    <el-menu-item index="1" style="float:right">
+    <el-menu-item index="/" style="float:right">
       <router-link to="/" class="router-link-active">Home</router-link>
     </el-menu-item>
   </el-menu>
-  
+
 </template>
 <style >
 .router-link-active {
@@ -43,43 +43,53 @@
 export default {
   data() {
     return {
-      activeIndex: '1',
-      activeIndex2: '1'
+      activeIndex: '/',
+      activeIndex2: '/'
     };
   },
   methods: {
-    handleSelect(key, keyPath) {//防止点到按钮但没点到链接导致不跳转
+    handleSelect(key, keyPath) {
+      //防止点到按钮但没点到链接导致不跳转
       console.log(key, keyPath);
       switch (key) {
-        case '1':
+        case '/':
           this.$router.replace('/');
           break;
-        case '2':
-          this.$router.replace('/login');
+        case '/account':
+          this.$router.replace('/account/login');
           break;
-        case '3':
+        case '/expertiseCommunity':
           this.$router.replace('/expertiseCommunity');
           break;
-        case '4':
+        case '/friendsApproved':
           this.$router.replace('/friendsApproved');
           break;
-        case '5':
+        case '/receivedMessages':
           this.$router.replace('/receivedMessages');
           break;
-        case '6-1':
+        case '/expertiseCommunity':
           this.$router.replace('/expertiseCommunity');
           break;
-        case '6-2':
+        case '/editPersonalInfo':
           this.$router.replace('/editPersonalInfo');
           break;
-        case '6-3':
+        case '/security':
           this.$router.replace('/security');
           break;
-        case '6-4':
+        case '/editSystemSetting':
           this.$router.replace('/editSystemSetting');
           break;
       }
+    },
+    //刷新后获取导航栏index
+    getIndex() {
+      let currentPath = window.location.href;//获取整个网址
+      let currentUrl = currentPath.split('#')[1];//切割获得路由
+      this.activeIndex='/'+currentUrl.split('/')[1];//获得类似于“/xxx"的index
     }
+  },
+  created() {
+    this.getIndex();
   }
 };
 </script>
