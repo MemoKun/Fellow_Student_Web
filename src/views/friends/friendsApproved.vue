@@ -3,13 +3,13 @@
     <el-card class="box-card" body-style="padding:40px">
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="Friends Approved" name="first">
-          <el-row gutter="20">
+          <el-row :gutter="20">
             <el-col :span="18">
               <h2>我的朋友</h2>
               <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
                 <el-col :span="6" style="padding: 10px;">
                   <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" class="image" :fit="fill" />
+                    <img :src="item.photo" class="image"  />
                     <div style="padding: 14px;" class="bottom clearfix">
                       <span>{{item.nickname}}</span>
                       <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
@@ -24,7 +24,7 @@
           </el-row>
         </el-tab-pane>
         <el-tab-pane label="Friends Waiting Approved" name="second">
-          <el-row gutter="20">
+          <el-row :gutter="20">
             <el-col :span="18">
               <h2>等待申请通过的朋友</h2>
               <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
@@ -45,7 +45,7 @@
           </el-row>
         </el-tab-pane>
         <el-tab-pane label="Follow" name="third">
-          <el-row gutter="20">
+          <el-row :gutter="20">
             <el-col :span="18">
               <h2>Follow</h2>
               <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
@@ -66,7 +66,7 @@
           </el-row>
         </el-tab-pane>
         <el-tab-pane label="Follower" name="fourth">
-          <el-row gutter="20">
+          <el-row :gutter="20">
             <el-col :span="18">
               <h2>Follower</h2>
               <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">

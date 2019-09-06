@@ -23,6 +23,9 @@ Vue.prototype.$fetch = fetch;
 Vue.prototype.$patch = patch;
 Vue.prototype.$put = put;
 
+
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
