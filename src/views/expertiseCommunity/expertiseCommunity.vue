@@ -6,8 +6,9 @@
         <h2>强劲、强大、资源丰富的学习社区</h2>
       </el-row>
 
+      <div>
       <el-row>
-        <el-col :span="12" style="padding: 10px;">
+        <el-col :span="12" style="padding: 10px;" offset="6">
           <el-card class="box-card" style="width:100%;">
             <h3>点击按钮 获取密钥</h3>
             <el-input v-model="input" :placeholder="secretCode" label="密钥"></el-input>
@@ -15,6 +16,7 @@
           </el-card>
         </el-col>
       </el-row>
+      </div>
 
       <el-row style="margin-bottom:20px">
         <el-col :span="12">
@@ -57,6 +59,9 @@
 
 .clearfix:after {
   clear: both;
+}
+.box-card{
+  margin:0 auto;
 }
 </style>
 
