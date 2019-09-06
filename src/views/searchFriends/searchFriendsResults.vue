@@ -9,21 +9,23 @@
       <el-row>
         <div class="container" v-for="item in messages" :key="item.message_id" style="padding:10px">
           <el-col :span="18" style="padding:10px">
-            <el-card class="box-card" style="padding:10px">
+            <el-card class="box-card" style="padding:10px;">
               <el-col :span="6">
-                <img style="float:left;padding:20px" :src="item.photo" />
+                <img style="width:100%;height:300px;" :src="item.photo" />
               </el-col>
-              <el-col :span="18">
+              <el-col :span="17" :push="1">
                 <el-row>
                   <h3 style="float:left">{{item.nickname}}</h3>
                   <h4 style="float:left">{{item.university}}</h4>
                   <h5 style="float:right">2019年3月23日</h5>
                 </el-row>
                 <el-row>
-                  <p>“{{item.self_introduction}}”</p>
+                  <div class="introduction" style="width: auto;text-align: left;text-indent: 2em;display: -webkit-box;-webkit-line-clamp: 2;overflow: hidden;text-overflow: ellipsis;-webkit-box-orient: vertical;">
+                  <p style="margin:0">“{{item.self_introduction}}”</p>
+                  </div>
                 </el-row>
-                <el-row>
-                  <el-card style="box-card">
+                <el-row style="margin-top:16px;">
+                  <el-card style="height:60px;" :body-style="{height:'60px'}">
                     <el-row>
                       <el-col :span="8">
                         <p style="float:left;margin:0px">上次登录： {{item.last_login_at}}</p>
@@ -35,7 +37,7 @@
                         <el-button
                           type="text"
                           @click="readMessage()"
-                          style="float:right;margin:0px"
+                          style="float:right;margin:0px;padding-top: 5px;"
                           round
                         >查看简历</el-button>
                       </el-col>
@@ -181,3 +183,10 @@ export default {
   }
 };
 </script>
+<style scoped>
+.introducton {
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+}
+</style>
