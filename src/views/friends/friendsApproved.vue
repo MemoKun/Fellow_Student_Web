@@ -21,6 +21,9 @@
                 </el-col>
               </div>
             </el-col>
+            <el-col :span="6">
+             <h2> 好友分类 </h2>
+            </el-col>
           </el-row>
         </el-tab-pane>
         <el-tab-pane label="Friends Waiting Approved" name="second">

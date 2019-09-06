@@ -55,8 +55,10 @@
         </el-col>
         <el-col :span="12">
           <h2>最近登录的用户</h2>
-          <div class="container" v-for="item in lastLoginUsers" :key="item.user_id">
-            <el-col :span="6" style="padding: 3px;">
+         
+          <div class="container" >
+            <el-row v-for="(i,index) in (Math.ceil((lastLoginUsers.length / 4)))" :key="index">
+            <el-col :span="6" style="padding: 3px;"  v-for="(item,index) in lastLoginUsers" v-show="(i - 1) * 4 <= index && index < i * 4" :key="index">
               <el-card :body-style="{ padding: '0px' }">
                 <img :src="item.photo" class="image" />
                 <div style="padding: 14px;">
@@ -65,6 +67,7 @@
                 </div>
               </el-card>
             </el-col>
+            </el-row>
           </div>
         </el-col>
       </el-row>
@@ -72,7 +75,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .el-row {
   margin-bottom: 20px;
   /* &:last-child {
