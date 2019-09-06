@@ -50,7 +50,7 @@ export default {
   methods: {
     login() {},
     register() {
-      this.$router.replace('/register');
+      this.$router.replace('/account/register');
     }
   },
   created() {},
