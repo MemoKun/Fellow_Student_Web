@@ -1,76 +1,88 @@
 <template>
   <div class="container" style="padding:100px">
     <el-card class="box-card" body-style="padding:40px">
-      <el-row :gutter="20">
-        <div class="container" style="padding:40px">
-          <h1>强劲、强大、资源丰富的顶尖高校社区</h1>
-          <h3>Fellow Student 是一个学习交流、跨校沟通的社区。Expertise Community 为你提供各大高校学习资料。强大的Search功能帮你轻松找到不同学校、不同专业的同学。</h3>
-        </div>
-      </el-row>
-      <h1>寻找你的伙伴</h1>
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <el-card class="box-card" body-style="padding:40px">
-            <h2>Quick Search</h2>
-            <el-form v-model="searchConditions" label-position="right" label-width="100px">
-              <el-form-item label="性别">
-                <el-radio-group v-model="searchConditions.gender">
-                  <el-radio label="男"></el-radio>
-                  <el-radio label="女"></el-radio>
-                </el-radio-group>
-              </el-form-item>
-              <el-form-item label="年龄">
-                <el-col :span="10">
-                  <el-input v-model="searchConditions.age_from"></el-input>
-                </el-col>
-                <el-col class="line" :span="4">至</el-col>
-                <el-col :span="10">
-                  <el-input v-model="searchConditions.age_to"></el-input>
-                </el-col>
-              </el-form-item>
-              <el-form-item label="学校与专业">
-                <el-col :span="20">
-                  <!-- <el-select></el-select> -->
-                </el-col>
-              </el-form-item>
-              <el-form-item label="用户条件">
-                <el-checkbox-group v-model="searchConditions.otherConditions">
-                  <el-checkbox label="照片" name="otherConditions"></el-checkbox>
-                  <el-checkbox label="个人介绍" name="otherConditions"></el-checkbox>
-                  <el-checkbox label="通过学生认证" name="otherConditions"></el-checkbox>
-                  <el-checkbox label="Fellow Prime会员" name="otherConditions"></el-checkbox>
-                </el-checkbox-group>
-              </el-form-item>
-              <el-form-item label="搜索结果排序">
-                <el-radio-group v-model="searchConditions.orderBy">
-                  <el-radio label="上次登录时间"></el-radio>
-                  <el-radio label="注册日期"></el-radio>
-                </el-radio-group>
-              </el-form-item>
-              <el-form-item>
-                <el-button type="primary" @click="startSearch">Find Fellow</el-button>
-              </el-form-item>
-            </el-form>
-          </el-card>
-        </el-col>
-        <el-col :span="12">
-          <h2>最近登录的用户</h2>
-         
-          <div class="container" >
-            <el-row v-for="(i,index) in (Math.ceil((lastLoginUsers.length / 4)))" :key="index">
-            <el-col :span="6" style="padding: 3px;"  v-for="(item,index) in lastLoginUsers" v-show="(i - 1) * 4 <= index && index < i * 4" :key="index">
-              <el-card :body-style="{ padding: '0px' }">
-                <img :src="item.photo" class="image" />
-                <div style="padding: 14px;">
-                  <span>{{item.nickname}}</span>
-                  <p>{{item.university}}</p>
-                </div>
-              </el-card>
-            </el-col>
-            </el-row>
+      <div class="container" style="margin:40px">
+        <el-row :gutter="20">
+          <div class="container" style="padding:40px">
+            <h1>强劲、强大、资源丰富的顶尖高校社区</h1>
+            <h3>Fellow Student 是一个学习交流、跨校沟通的社区。Expertise Community 为你提供各大高校学习资料。强大的Search功能帮你轻松找到不同学校、不同专业的同学。</h3>
           </div>
-        </el-col>
-      </el-row>
+        </el-row>
+        <h1>寻找你的伙伴</h1>
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <div class="container" style="margin:20px">
+              <el-card class="box-card" body-style="padding:40px">
+                <h2>Quick Search</h2>
+                <el-form v-model="searchConditions" label-position="right" label-width="100px">
+                  <el-form-item label="性别">
+                    <el-radio-group v-model="searchConditions.gender">
+                      <el-radio label="男"></el-radio>
+                      <el-radio label="女"></el-radio>
+                    </el-radio-group>
+                  </el-form-item>
+                  <el-form-item label="年龄">
+                    <el-col :span="10">
+                      <el-input v-model="searchConditions.age_from"></el-input>
+                    </el-col>
+                    <el-col class="line" :span="4">至</el-col>
+                    <el-col :span="10">
+                      <el-input v-model="searchConditions.age_to"></el-input>
+                    </el-col>
+                  </el-form-item>
+                  <el-form-item label="学校与专业">
+                    <el-col :span="20">
+                      <!-- <el-select></el-select> -->
+                    </el-col>
+                  </el-form-item>
+                  <el-form-item label="用户条件">
+                    <el-checkbox-group v-model="searchConditions.otherConditions">
+                      <el-checkbox label="照片" name="otherConditions"></el-checkbox>
+                      <el-checkbox label="个人介绍" name="otherConditions"></el-checkbox>
+                      <el-checkbox label="通过学生认证" name="otherConditions"></el-checkbox>
+                      <el-checkbox label="Fellow Prime会员" name="otherConditions"></el-checkbox>
+                    </el-checkbox-group>
+                  </el-form-item>
+                  <el-form-item label="搜索结果排序">
+                    <el-radio-group v-model="searchConditions.orderBy">
+                      <el-radio label="上次登录时间"></el-radio>
+                      <el-radio label="注册日期"></el-radio>
+                    </el-radio-group>
+                  </el-form-item>
+                  <el-form-item>
+                    <el-button type="primary" @click="startSearch">Find Fellow</el-button>
+                  </el-form-item>
+                </el-form>
+              </el-card>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="container" style="margin:20px">
+              <h2>最近登录的用户</h2>
+
+              <div class="container">
+                <el-row v-for="(i,index) in (Math.ceil((lastLoginUsers.length / 4)))" :key="index">
+                  <el-col
+                    :span="6"
+                    style="padding: 3px;"
+                    v-for="(item,index) in lastLoginUsers"
+                    v-show="(i - 1) * 4 <= index && index < i * 4"
+                    :key="index"
+                  >
+                    <el-card :body-style="{ padding: '0px' }">
+                      <img :src="item.photo" class="image" />
+                      <div style="padding: 14px;">
+                        <span>{{item.nickname}}</span>
+                        <p>{{item.university}}</p>
+                      </div>
+                    </el-card>
+                  </el-col>
+                </el-row>
+              </div>
+            </div>
+          </el-col>
+        </el-row>
+      </div>
     </el-card>
   </div>
 </template>
@@ -130,6 +142,11 @@
 
 .clearfix:after {
   clear: both;
+}
+h1 {
+  font-size: 48px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 </style>
 
@@ -484,7 +501,7 @@ export default {
     handleChange(value) {
       console.log(value);
     },
-    startSearch(){
+    startSearch() {
       console.log("startSearch");
     }
   }
