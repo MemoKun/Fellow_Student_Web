@@ -9,7 +9,7 @@
               <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
                 <el-col :span="6" style="padding: 10px;">
                   <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" class="image" />
+                    <img :src="item.photo" style="width:100%" />
                     <div style="padding: 14px;" class="bottom clearfix">
                       <span>{{item.nickname}}</span>
                       <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
@@ -56,7 +56,7 @@
               <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
                 <el-col :span="6" style="padding: 10px;">
                   <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" class="image" />
+                    <img :src="item.photo" style="width:100%"/>
                     <div style="padding: 14px;" class="bottom clearfix">
                       <span>{{item.nickname}}</span>
                       <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
@@ -103,7 +103,7 @@
               <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
                 <el-col :span="6" style="padding: 10px;">
                   <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" class="image" />
+                    <img :src="item.photo" style="width:100%"/>
                     <div style="padding: 14px;" class="bottom clearfix">
                       <span>{{item.nickname}}</span>
                       <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
@@ -150,7 +150,7 @@
               <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
                 <el-col :span="6" style="padding: 10px;">
                   <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" class="image" />
+                    <img :src="item.photo" style="width:100%"/>
                     <div style="padding: 14px;" class="bottom clearfix">
                       <span>{{item.nickname}}</span>
                       <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>

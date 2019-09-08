@@ -60,9 +60,9 @@
               >
                 <el-card class="box-card" style="padding:10px">
                   <el-col :span="6">
-                    <img style="float:left;padding:20px" :src="item.photo" />
+                    <img style="float:left;width:100%" :src="item.photo" />
                   </el-col>
-                  <el-col :span="18">
+                  <el-col :span="16" :push="2">
                     <el-row>
                       <h4
                         style="float:left"
