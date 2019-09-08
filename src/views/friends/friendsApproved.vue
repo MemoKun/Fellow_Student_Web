@@ -9,20 +9,43 @@
               <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
                 <el-col :span="6" style="padding: 10px;">
                   <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" class="image"  />
+                    <img :src="item.photo" class="image" />
                     <div style="padding: 14px;" class="bottom clearfix">
                       <span>{{item.nickname}}</span>
                       <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
                       <p>在{{item.created_at}}成为好友</p>
-                      <el-button type="text" class="button" @click="unfriend()" style="float:left">详细信息</el-button>
-                      <el-button type="text" class="button" @click="unfriend()" style="float:right">删除好友</el-button>
+                      <el-button
+                        type="text"
+                        class="button"
+                        @click="unfriend()"
+                        style="float:left"
+                      >详细信息</el-button>
+                      <el-button
+                        type="text"
+                        class="button"
+                        @click="unfriend()"
+                        style="float:right"
+                      >删除好友</el-button>
                     </div>
                   </el-card>
                 </el-col>
               </div>
             </el-col>
             <el-col :span="6">
-             <h2> 好友分类 </h2>
+              <h1>好友分类</h1>
+              <el-card class="box-card">
+                <el-tabs v-model="friendsClassifierActiveName" @tab-click="handleClick">
+                  <el-tab-pane label="按学校" name="first">
+                    <p>清华大学（1）</p>
+                    <p>中南大学（1）</p>
+                    <p>北京大学（1）</p>
+                    <p>延世大学（1）</p>
+                    <p>首尔大学（1）</p>
+                  </el-tab-pane>
+                  <el-tab-pane label="按专业" name="second">按专业</el-tab-pane>
+                  <el-tab-pane label="按互动次数" name="third">按互动次数</el-tab-pane>
+                </el-tabs>
+              </el-card>
             </el-col>
           </el-row>
         </el-tab-pane>
@@ -38,12 +61,38 @@
                       <span>{{item.nickname}}</span>
                       <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
                       <p>在{{item.created_at}}成为好友</p>
-                      <el-button type="text" class="button" @click="unfriend()" style="float:left">详细信息</el-button>
-                      <el-button type="text" class="button" @click="unfriend()" style="float:right">取消申请</el-button>
+                      <el-button
+                        type="text"
+                        class="button"
+                        @click="unfriend()"
+                        style="float:left"
+                      >详细信息</el-button>
+                      <el-button
+                        type="text"
+                        class="button"
+                        @click="unfriend()"
+                        style="float:right"
+                      >取消申请</el-button>
                     </div>
                   </el-card>
                 </el-col>
               </div>
+            </el-col>
+            <el-col :span="6">
+              <h1>好友分类</h1>
+              <el-card class="box-card">
+                <el-tabs v-model="friendsClassifierActiveName" @tab-click="handleClick">
+                  <el-tab-pane label="按学校" name="first">
+                    <p>清华大学（1）</p>
+                    <p>中南大学（1）</p>
+                    <p>北京大学（1）</p>
+                    <p>延世大学（1）</p>
+                    <p>首尔大学（1）</p>
+                  </el-tab-pane>
+                  <el-tab-pane label="按专业" name="second">按专业</el-tab-pane>
+                  <el-tab-pane label="按互动次数" name="third">按互动次数</el-tab-pane>
+                </el-tabs>
+              </el-card>
             </el-col>
           </el-row>
         </el-tab-pane>
@@ -58,13 +107,39 @@
                     <div style="padding: 14px;" class="bottom clearfix">
                       <span>{{item.nickname}}</span>
                       <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
-                      <p>在{{item.created_at}}成为好友</p>
-                      <el-button type="text" class="button" @click="unfriend()" style="float:left">详细信息</el-button>
-                      <el-button type="text" class="button" @click="unfriend()" style="float:right">取消关注</el-button>
+                      <p style="font-size:5px">在{{item.created_at}}成为好友</p>
+                      <el-button
+                        type="text"
+                        class="button"
+                        @click="unfriend()"
+                        style="float:left"
+                      >详细信息</el-button>
+                      <el-button
+                        type="text"
+                        class="button"
+                        @click="unfriend()"
+                        style="float:right"
+                      >取消关注</el-button>
                     </div>
                   </el-card>
                 </el-col>
               </div>
+            </el-col>
+            <el-col :span="6">
+              <h1>好友分类</h1>
+              <el-card class="box-card">
+                <el-tabs v-model="friendsClassifierActiveName" @tab-click="handleClick">
+                  <el-tab-pane label="按学校" name="first">
+                    <p>清华大学（1）</p>
+                    <p>中南大学（1）</p>
+                    <p>北京大学（1）</p>
+                    <p>延世大学（1）</p>
+                    <p>首尔大学（1）</p>
+                  </el-tab-pane>
+                  <el-tab-pane label="按专业" name="second">按专业</el-tab-pane>
+                  <el-tab-pane label="按互动次数" name="third">按互动次数</el-tab-pane>
+                </el-tabs>
+              </el-card>
             </el-col>
           </el-row>
         </el-tab-pane>
@@ -79,13 +154,39 @@
                     <div style="padding: 14px;" class="bottom clearfix">
                       <span>{{item.nickname}}</span>
                       <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
-                      <p>在{{item.created_at}}成为好友</p>
-                      <el-button type="text" class="button" @click="unfriend()" style="float:left">详细信息</el-button>
-                      <el-button type="text" class="button" @click="unfriend()" style="float:right">屏蔽此人</el-button>
+                      <p font-size="5px">在{{item.created_at}}成为好友</p>
+                      <el-button
+                        type="text"
+                        class="button"
+                        @click="unfriend()"
+                        style="float:left"
+                      >详细信息</el-button>
+                      <el-button
+                        type="text"
+                        class="button"
+                        @click="unfriend()"
+                        style="float:right"
+                      >屏蔽此人</el-button>
                     </div>
                   </el-card>
                 </el-col>
               </div>
+            </el-col>
+            <el-col :span="6">
+              <h1>好友分类</h1>
+              <el-card class="box-card">
+                <el-tabs v-model="friendsClassifierActiveName" @tab-click="handleClick">
+                  <el-tab-pane label="按学校" name="first">
+                    <p>清华大学（1）</p>
+                    <p>中南大学（1）</p>
+                    <p>北京大学（1）</p>
+                    <p>延世大学（1）</p>
+                    <p>首尔大学（1）</p>
+                  </el-tab-pane>
+                  <el-tab-pane label="按专业" name="second">按专业</el-tab-pane>
+                  <el-tab-pane label="按互动次数" name="third">按互动次数</el-tab-pane>
+                </el-tabs>
+              </el-card>
             </el-col>
           </el-row>
         </el-tab-pane>
@@ -93,19 +194,21 @@
     </el-card>
   </div>
 </template>
-
+<style>
+</style>
 <script>
 export default {
   data() {
     return {
       activeName: "first",
+      friendsClassifierActiveName: "first",
       myFriendsApproved: [
         {
           user_id: 1,
           nickname: "金智媛",
           university: "清华大学",
           speciality: "计算机科学",
-          grade:"大三",
+          grade: "大三",
           //lastLoginAt: "20min ago",
           created_at: "2018-09-12 6:12",
           photo:
@@ -116,7 +219,7 @@ export default {
           nickname: "Yonna",
           university: "北京大学",
           speciality: "计算机科学",
-          grade:"大三",
+          grade: "大三",
           //lastLoginAt: "20min ago",
           created_at: "2018-09-12 6:12",
           photo:
@@ -127,7 +230,7 @@ export default {
           nickname: "Yonna",
           university: "中南大学",
           speciality: "计算机科学",
-          grade:"大三",
+          grade: "大三",
           //lastLoginAt: "20min ago",
           created_at: "2018-09-12 6:12",
           photo:
@@ -138,7 +241,7 @@ export default {
           nickname: "Yonna",
           university: "中国人民大学",
           speciality: "计算机科学",
-          grade:"大三",
+          grade: "大三",
           //lastLoginAt: "20min ago",
           created_at: "2018-09-12 6:12",
           photo:
@@ -149,7 +252,7 @@ export default {
           nickname: "Yonna",
           university: "中央民族大学",
           speciality: "计算机科学",
-          grade:"大三",
+          grade: "大三",
           //lastLoginAt: "20min ago",
           created_at: "2018-09-12 6:12",
           photo:
@@ -160,7 +263,7 @@ export default {
           nickname: "Yonna",
           university: "武汉大学",
           speciality: "计算机科学",
-          grade:"大三",
+          grade: "大三",
           //lastLoginAt: "20min ago",
           created_at: "2018-09-12 6:12",
           photo:
@@ -171,7 +274,7 @@ export default {
           nickname: "Yonna",
           university: "延世大学",
           speciality: "计算机科学",
-          grade:"大三",
+          grade: "大三",
           //lastLoginAt: "20min ago",
           created_at: "2018-09-12 6:12",
           photo:
@@ -182,7 +285,7 @@ export default {
           nickname: "Yonna",
           university: "首尔大学",
           speciality: "计算机科学",
-          grade:"大三",
+          grade: "大三",
           //lastLoginAt: "20min ago",
           created_at: "2018-09-12 6:12",
           photo:

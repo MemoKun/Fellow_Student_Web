@@ -23,10 +23,11 @@ import ExpertiseCommunity from "@/views/expertiseCommunity/expertiseCommunity.vu
 import SearchFriends from "@/views/searchFriends/searchFriends.vue";
 import SearchFriendsResults from "@/views/searchFriends/searchFriendsResults.vue";
 
-import Security from "@/views/settings/security.vue";
-import EditPassword from "@/views/settings/editPassword.vue";
-import EditPhone from "@/views/settings/editPhone.vue";
-import EditEmail from "@/views/settings/editEmail.vue";
+import Security from "@/views/settings/security/security.vue";
+import EditPassword from "@/views/settings/security/editPassword.vue";
+import EditPasswordByPhone from "@/views/settings/security/editPasswordByPhone.vue"
+import EditPhone from "@/views/settings/security/editPhone.vue";
+import EditEmail from "@/views/settings/security/editEmail.vue";
 import EditPersonalInfo from "@/views/settings/editPersonalInfo.vue";
 import EditSystemSetting from "@/views/settings/editSystemSetting.vue";
 import VipBilling from "@/views/settings/vipBilling.vue";
@@ -153,6 +154,15 @@ export default new Router({
       path: "/security/editPassword",
       name: "editPassword",
       components: { default: EditPassword, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/security/editPassword/phone",
+      name: "editPasswordByPhone",
+      components: { default: EditPasswordByPhone, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
