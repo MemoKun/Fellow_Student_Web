@@ -9,6 +9,8 @@ import MainFooter from "@/layout/MainFooter.vue";
 import Login from "@/views/login/login.vue";
 import Register from "@/views/register/register.vue";
 
+import Profile from "@/views/user/profile.vue";
+
 import ReceivedMessages from "@/views/messages/receivedMessages.vue";
 import SentMessages from "@/views/messages/sentMessages.vue";
 
@@ -124,6 +126,15 @@ export default new Router({
       path: "/searchFriendsResults",
       name: "searchFriendsResults",
       components: { default: SearchFriendsResults, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      components: { default: Profile, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
