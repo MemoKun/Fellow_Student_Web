@@ -9,12 +9,12 @@
     <el-card class="checkcard">
       <h1>手机验证</h1>
       <p>若绑定的手机可用，可向已绑定的手机发送验证码以修改密码</p>
-      <el-button>立即验证</el-button>
+      <el-button @click="phoneCheckForEmail">立即验证</el-button>
     </el-card>
     <el-card class="checkcard">
       <h1>邮箱验证</h1>
       <p>若绑定的邮箱可用，可向已绑定的邮箱发送验证码以修改密码</p>
-      <el-button>立即验证</el-button>
+      <el-button @click="emailCheckForEmail">立即验证</el-button>
     </el-card>
     <el-card class="checkcard">
       <h1>以上方式均无法使用</h1>
@@ -35,7 +35,15 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+    phoneCheckForEmail(){
+      this.$router.replace('/security/editEmail/phone');
+    },
+    emailCheckForEmail(){
+      this.$router.replace('/security/editEmail/email');
+    },
+    help(){}
+  },
   created() {},
   mounted() {}
 };

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <el-steps :active="step" finish-status="success" simple style="margin-top: 20px">
+      <el-steps :active="step" finish-status="success" simple style="margin-top: 20px" >
         <el-step title="手机号验证"></el-step>
         <el-step title="个人信息填写"></el-step>
         <el-step title="学生信息填写"></el-step>
