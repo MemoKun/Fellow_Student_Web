@@ -1,76 +1,112 @@
 <template>
   <div class="container" style="padding:100px">
     <el-card class="box-card" body-style="padding:40px">
-      <el-row :gutter="20">
-        <div class="container" style="padding:40px">
-          <h1>强劲、强大、资源丰富的顶尖高校社区</h1>
-          <h3>Fellow Student 是一个学习交流、跨校沟通的社区。Expertise Community 为你提供各大高校学习资料。强大的Search功能帮你轻松找到不同学校、不同专业的同学。</h3>
-        </div>
-      </el-row>
-      <h1>寻找你的伙伴</h1>
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <el-card class="box-card" body-style="padding:40px">
-            <h2>Quick Search</h2>
-            <el-form v-model="searchConditions" label-position="right" label-width="100px">
-              <el-form-item label="性别">
-                <el-radio-group v-model="searchConditions.gender">
-                  <el-radio label="男"></el-radio>
-                  <el-radio label="女"></el-radio>
-                </el-radio-group>
-              </el-form-item>
-              <el-form-item label="年龄">
-                <el-col :span="10">
-                  <el-input v-model="searchConditions.age_from"></el-input>
-                </el-col>
-                <el-col class="line" :span="4">至</el-col>
-                <el-col :span="10">
-                  <el-input v-model="searchConditions.age_to"></el-input>
-                </el-col>
-              </el-form-item>
-              <el-form-item label="学校与专业">
-                <el-col :span="20">
-                  <!-- <el-select></el-select> -->
-                </el-col>
-              </el-form-item>
-              <el-form-item label="用户条件">
-                <el-checkbox-group v-model="searchConditions.otherConditions">
-                  <el-checkbox label="照片" name="otherConditions"></el-checkbox>
-                  <el-checkbox label="个人介绍" name="otherConditions"></el-checkbox>
-                  <el-checkbox label="通过学生认证" name="otherConditions"></el-checkbox>
-                  <el-checkbox label="Fellow Prime会员" name="otherConditions"></el-checkbox>
-                </el-checkbox-group>
-              </el-form-item>
-              <el-form-item label="搜索结果排序">
-                <el-radio-group v-model="searchConditions.orderBy">
-                  <el-radio label="上次登录时间"></el-radio>
-                  <el-radio label="注册日期"></el-radio>
-                </el-radio-group>
-              </el-form-item>
-              <el-form-item>
-                <el-button type="primary" @click="startSearch">Find Fellow</el-button>
-              </el-form-item>
-            </el-form>
-          </el-card>
-        </el-col>
-        <el-col :span="12">
-          <h2>最近登录的用户</h2>
-         
-          <div class="container" >
-            <el-row v-for="(i,index) in (Math.ceil((lastLoginUsers.length / 4)))" :key="index">
-            <el-col :span="6" style="padding: 3px;"  v-for="(item,index) in lastLoginUsers" v-show="(i - 1) * 4 <= index && index < i * 4" :key="index">
-              <el-card :body-style="{ padding: '0px' }">
-                <img :src="item.photo" class="image" />
-                <div style="padding: 14px;">
-                  <span>{{item.nickname}}</span>
-                  <p>{{item.university}}</p>
-                </div>
-              </el-card>
-            </el-col>
-            </el-row>
+      <div class="container" style="margin:40px">
+        <el-row :gutter="20">
+          <div class="container" style="padding:40px">
+            <h1>强劲、强大、资源丰富</h1>
+            <h2 style="color:black">面向双一流高校（985、211工程）开放的顶尖高校社区。</h2>
+            <h2 style="color:black">Expertise Community 为你提供各大高校课程、考试资源。</h2>
+            <h2 style="color:black">强大的Search功能帮你轻松找到不同学校、不同专业的同学。</h2>
           </div>
-        </el-col>
-      </el-row>
+        </el-row>
+        <!-- <h1>寻找你的伙伴</h1> -->
+        <el-divider content-position="center">开启你的Fellow之旅</el-divider>
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <div class="container" style="margin:20px">
+              <el-card class="box-card" body-style="padding:40px">
+                <h2>Quick Search</h2>
+                <el-form v-model="searchConditions" label-position="right" label-width="100px">
+                  <el-form-item label="性别">
+                    <el-radio-group v-model="searchConditions.gender">
+                      <el-radio label="男"></el-radio>
+                      <el-radio label="女"></el-radio>
+                    </el-radio-group>
+                  </el-form-item>
+                  <el-form-item label="年龄">
+                    <el-col :span="10">
+                      <el-input v-model="searchConditions.age_from"></el-input>
+                    </el-col>
+                    <el-col class="line" :span="4">至</el-col>
+                    <el-col :span="10">
+                      <el-input v-model="searchConditions.age_to"></el-input>
+                    </el-col>
+                  </el-form-item>
+                  <el-form-item label="学校与专业">
+                    <el-col :span="20">
+                      <!-- <el-select></el-select> -->
+                    </el-col>
+                  </el-form-item>
+                  <el-form-item label="用户条件">
+                    <el-checkbox-group v-model="searchConditions.otherConditions">
+                      <el-checkbox label="照片" name="otherConditions"></el-checkbox>
+                      <el-checkbox label="个人介绍" name="otherConditions"></el-checkbox>
+                      <el-checkbox label="通过学生认证" name="otherConditions"></el-checkbox>
+                      <el-checkbox label="Fellow Prime会员" name="otherConditions"></el-checkbox>
+                    </el-checkbox-group>
+                  </el-form-item>
+                  <el-form-item label="搜索结果排序">
+                    <el-radio-group v-model="searchConditions.orderBy">
+                      <el-radio label="上次登录时间"></el-radio>
+                      <el-radio label="注册日期"></el-radio>
+                    </el-radio-group>
+                  </el-form-item>
+                  <el-form-item>
+                    <el-button type="primary" @click="startSearch">Find Fellow</el-button>
+                  </el-form-item>
+                </el-form>
+              </el-card>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="container" style="margin:20px">
+              <h2>最近登录的用户</h2>
+
+              <div class="container">
+                <el-row v-for="(i,index) in (Math.ceil((lastLoginUsers.length / 4)))" :key="index">
+                  <el-col
+                    :span="6"
+                    style="padding: 3px;"
+                    v-for="(item,index) in lastLoginUsers"
+                    v-show="(i - 1) * 4 <= index && index < i * 4"
+                    :key="index"
+                  >
+                    <el-card :body-style="{ padding: '0px' }">
+                      <img :src="item.photo" class="image" />
+                      <div style="padding: 14px;">
+                        <span>{{item.nickname}}</span>
+                        <p>{{item.university}}</p>
+                      </div>
+                    </el-card>
+                  </el-col>
+                </el-row>
+              </div>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-collapse v-model="activeNames" @change="handleChange">
+            <el-collapse-item title="一致性 Consistency" name="1">
+              <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+              <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
+            </el-collapse-item>
+            <el-collapse-item title="反馈 Feedback" name="2">
+              <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+              <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+            </el-collapse-item>
+            <el-collapse-item title="效率 Efficiency" name="3">
+              <div>简化流程：设计简洁直观的操作流程；</div>
+              <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
+              <div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+            </el-collapse-item>
+            <el-collapse-item title="可控 Controllability" name="4">
+              <div>用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
+              <div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
+            </el-collapse-item>
+          </el-collapse>
+        </el-row>
+      </div>
     </el-card>
   </div>
 </template>
@@ -130,6 +166,27 @@
 
 .clearfix:after {
   clear: both;
+}
+h1 {
+  font-size: 48px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+}
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 18px;
+  opacity: 0.75;
+  line-height: 300px;
+  margin: 0;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
 }
 </style>
 
@@ -484,7 +541,7 @@ export default {
     handleChange(value) {
       console.log(value);
     },
-    startSearch(){
+    startSearch() {
       console.log("startSearch");
     }
   }
