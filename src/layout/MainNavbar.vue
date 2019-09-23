@@ -4,14 +4,12 @@
     class="navmenu"
     mode="horizontal"
     @select="handleSelect"
-    background-color="#F6C04E"
+   
   >
     <el-menu-item index="/">
       <router-link to="/" class="router-link-active">Home</router-link>
     </el-menu-item>
-    <el-menu-item index="/account">
-      <router-link to="/account/login" class="router-link-active">Login</router-link>
-    </el-menu-item>
+    
     <el-menu-item index="/expertiseCommunity">
       <router-link to="/expertiseCommunity" class="router-link-active">Expertise Community</router-link>
     </el-menu-item>
@@ -36,6 +34,9 @@
         <router-link to="/editSystemSetting" class="router-link-active">系统设置</router-link>
       </el-menu-item>
     </el-submenu>
+    <el-menu-item index="/account" style="float:right">
+      <router-link to="/account/login" class="router-link-active">Login</router-link>
+    </el-menu-item>
   </el-menu>
 </template>
 <style >

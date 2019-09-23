@@ -57,6 +57,15 @@
                   </el-form-item>
                 </el-form>
               </el-card>
+              <div>
+                <h2>Testimonials 推荐信</h2>
+                <h4>思维深度交流的绝佳方式</h4>
+                <p>很长一段时间里，我都在寻找能够深度交流的方式。QQ和微信的社交网络确实是社会的前沿，但这仍然很难代表邮件和书信。只有在这长长的mail里，我才能将我的思想娓娓道来。我也很高兴遇到了志同道合的朋友，他们是我一生的财富。——金智媛 来自清华大学</p>
+                <h4>高校零距离</h4>
+                <p>我一直苦于找不到优质课程的学习资料，我希望通过与其他学校同学的交流，知道自身的真实水平。我也希望认识其他专业的顶尖人才，来给自己未来的职业生涯打下良好的基础。</p>
+                <h4>精英主义</h4>
+                <p>这是我去过的最好的笔友网站。无论是交友网站、笔友网站还是其他网站，这种模式都是培养不同体验的理想选择。可能是短的个人资料文本和一张个人资料照片。它设置了一个简单的介绍，并鼓励人们朝着建立自己的沟通方式迈出一大步。它也必须是这里带来的用户类型。我不知道是什么，但谢谢你，请不要过渡到像Interpals或其他网站，因为这个地方是独一无二的。</p>
+              </div>
             </div>
           </el-col>
           <el-col :span="12">
@@ -77,7 +86,7 @@
                       <div style="padding: 5px;">
                         <span style="font-size:5px;">{{item.nickname}}</span>
                         <span style="font-size:5px">{{item.university}}</span>
-                        <br>
+                        <br />
                         <span style="font-size:5px">{{item.lastLoginAt}}</span>
                       </div>
                     </el-card>
@@ -86,6 +95,19 @@
               </div>
             </div>
           </el-col>
+        </el-row>
+
+        <el-divider content-position="center"></el-divider>
+        <el-row :gutter="20">
+          <div class="container" style="margin:20px">
+            <h2>FQA 常见问题解答</h2>
+            <p>很长一段时间以来，我都想用非聊天的方式与人们交流。只有当我在一个访问受限的假期里，求助于和一个同样倾向的朋友交换长邮件时，我才意识到我想要的是笔友。45年前我有了它们，但我忘记了所有的事情。社交网络应用确实是约会应用的前沿，但却很难替代ppw。</p>
+            <h4>Max from Italy</h4>
+            <p>This is hands down the best pen pal site I've been to. There's something about the format that is ideal for fostering a different experience here than on other sites, whether they be dating sites or pen pal sites or whatever. Maybe it's the short profile text and single profile photo. It sets up for just a quick intro and encourages people to take a leap toward setting up their own communication. It must also be the type of users brought here. I don't know what it is, but thank you and please don't ever transition to become like interpals or some other site, because this place is unique</p>
+            <h4>from the USA</h4>
+            <p>Just a quick note to say thank you so much for having created this site. If it wasn't for you, then I would never have met what I am hoping will turn out to be my best friend forever. I will certainly promote your site to everyone, whether they want to know or not!! If the need ever arises, I will return with lightening speed. Thank you once again.</p>
+            <h4>Kim from the UK</h4>
+          </div>
         </el-row>
         <el-row>
           <el-collapse v-model="activeNames" @change="handleChange">
