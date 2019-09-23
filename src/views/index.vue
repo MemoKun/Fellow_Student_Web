@@ -74,9 +74,11 @@
                   >
                     <el-card :body-style="{ padding: '0px' }">
                       <img :src="item.photo" class="image" />
-                      <div style="padding: 14px;">
-                        <span>{{item.nickname}}</span>
-                        <p>{{item.university}}</p>
+                      <div style="padding: 5px;">
+                        <span style="font-size:5px;">{{item.nickname}}</span>
+                        <span style="font-size:5px">{{item.university}}</span>
+                        <br>
+                        <span style="font-size:5px">{{item.lastLoginAt}}</span>
                       </div>
                     </el-card>
                   </el-col>
@@ -202,7 +204,7 @@ export default {
           user_id: 1,
           nickname: "金智媛",
           university: "清华大学",
-          lastLoginAt: "",
+          lastLoginAt: "14 sec ago",
           photo:
             "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569063950234&di=f9e666fa5b2219e12cd1e0119b6a692d&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201406%2F03%2F20140603205522_ZirQE.thumb.600_0.jpeg"
         },
@@ -210,7 +212,7 @@ export default {
           user_id: 2,
           nickname: "Yonna",
           university: "北京大学",
-          lastLoginAt: "",
+          lastLoginAt: "18 sec ago",
           photo:
             "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569658749&di=d621e95842f713f897d1c9f9d14160bc&imgtype=jpg&er=1&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201507%2F27%2F20150727151430_E5CS4.thumb.700_0.jpeg"
         },
@@ -218,15 +220,15 @@ export default {
           user_id: 3,
           nickname: "Yonna",
           university: "中南大学",
-          lastLoginAt: "",
+          lastLoginAt: "24 sec ago",
           photo:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569658765&di=e9c70eae29d3b629e3ea964bc3a2cfe5&imgtype=jpg&er=1&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201511%2F18%2F20151118134450_S4dne.thumb.700_0.jpeg"
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218053597&di=00d61280e892d0f0fdf32eeda5ab1fcf&imgtype=0&src=http%3A%2F%2Fimg4q.duitang.com%2Fuploads%2Fitem%2F201411%2F20%2F20141120170055_cKStw.jpeg"
         },
         {
           user_id: 4,
           nickname: "Yonna",
           university: "中国人民大学",
-          lastLoginAt: "",
+          lastLoginAt: "31 sec ago",
           photo:
             "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569064081142&di=50668130821b13405f195658dc4506d4&imgtype=0&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201407%2F24%2F20140724190906_MCkXs.thumb.700_0.jpeg"
         },
@@ -234,7 +236,7 @@ export default {
           user_id: 5,
           nickname: "Yonna",
           university: "中央民族大学",
-          lastLoginAt: "",
+          lastLoginAt: "1 min 14 sec ago",
           photo:
             "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3284581089,709717092&fm=26&gp=0.jpg"
         },
@@ -242,7 +244,7 @@ export default {
           user_id: 6,
           nickname: "Yonna",
           university: "武汉大学",
-          lastLoginAt: "",
+          lastLoginAt: "1 min 26 sec ago",
           photo:
             "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1743168392,2407869980&fm=26&gp=0.jpg"
         },
@@ -250,7 +252,7 @@ export default {
           user_id: 7,
           nickname: "Yonna",
           university: "延世大学",
-          lastLoginAt: "",
+          lastLoginAt: "1 min 29 sec ago",
           photo:
             "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1392078492,1897050294&fm=26&gp=0.jpg"
         },
@@ -258,7 +260,103 @@ export default {
           user_id: 8,
           nickname: "Yonna",
           university: "首尔大学",
-          lastLoginAt: "",
+          lastLoginAt: "1 min 34 sec ago",
+          photo:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569658860&di=f4d738760b420cc3883d8253252d8e48&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201411%2F08%2F20141108083126_QARVZ.jpeg"
+        },
+        {
+          user_id: 9,
+          nickname: "Yonna",
+          university: "中央民族大学",
+          lastLoginAt: "1 min 14 sec ago",
+          photo:
+            "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=4176040192,3002869256&fm=26&gp=0.jpg"
+        },
+        {
+          user_id: 10,
+          nickname: "Yonna",
+          university: "武汉大学",
+          lastLoginAt: "1 min 26 sec ago",
+          photo:
+            "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1476095006,2188158271&fm=26&gp=0.jpg"
+        },
+        {
+          user_id: 11,
+          nickname: "Yonna",
+          university: "延世大学",
+          lastLoginAt: "1 min 29 sec ago",
+          photo:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218725789&di=9c00b6dc70418ca1bf5bfcd6254e961c&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201806%2F21%2F20180621210646_mmltp.thumb.700_0.jpg"
+        },
+        {
+          user_id: 12,
+          nickname: "Yonna",
+          university: "首尔大学",
+          lastLoginAt: "1 min 34 sec ago",
+          photo:
+            "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1004963647,1607232271&fm=26&gp=0.jpg"
+        },
+        {
+          user_id: 13,
+          nickname: "Yonna",
+          university: "中央民族大学",
+          lastLoginAt: "1 min 14 sec ago",
+          photo:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218563776&di=2f13cfde907b4f7b48ac548d274b1143&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201504%2F09%2F20150409H4542_GVEAm.jpeg"
+        },
+        {
+          user_id: 14,
+          nickname: "Yonna",
+          university: "武汉大学",
+          lastLoginAt: "1 min 26 sec ago",
+          photo:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218563775&di=36090be434652bfefca531cac1466004&imgtype=0&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201410%2F16%2F20141016202155_5ycRZ.thumb.700_0.jpeg"
+        },
+        {
+          user_id: 15,
+          nickname: "Yonna",
+          university: "延世大学",
+          lastLoginAt: "1 min 29 sec ago",
+          photo:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218563773&di=1b3a16838aa6c10c4454944648e1d91e&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201608%2F30%2F20160830123527_ZQmWf.jpeg"
+        },
+        {
+          user_id: 16,
+          nickname: "Yonna",
+          university: "首尔大学",
+          lastLoginAt: "1 min 34 sec ago",
+          photo:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218725789&di=f3d2ffa1628b877d975d842a2f39a583&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201511%2F20%2F20151120171114_LkFSi.thumb.700_0.jpeg"
+        },
+        {
+          user_id: 17,
+          nickname: "Yonna",
+          university: "中央民族大学",
+          lastLoginAt: "1 min 14 sec ago",
+          photo:
+            "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3284581089,709717092&fm=26&gp=0.jpg"
+        },
+        {
+          user_id: 18,
+          nickname: "Yonna",
+          university: "武汉大学",
+          lastLoginAt: "1 min 26 sec ago",
+          photo:
+            "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1743168392,2407869980&fm=26&gp=0.jpg"
+        },
+        {
+          user_id: 19,
+          nickname: "Yonna",
+          university: "延世大学",
+          lastLoginAt: "1 min 29 sec ago",
+          photo:
+            "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1392078492,1897050294&fm=26&gp=0.jpg"
+        },
+        {
+          user_id: 20,
+          nickname: "Yonna",
+          university: "首尔大学",
+          lastLoginAt: "1 min 34 sec ago",
           photo:
             "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569658860&di=f4d738760b420cc3883d8253252d8e48&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201411%2F08%2F20141108083126_QARVZ.jpeg"
         }

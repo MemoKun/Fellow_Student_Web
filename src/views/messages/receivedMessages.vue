@@ -130,7 +130,7 @@ export default {
           //lastLoginAt: "20min ago",
           created_at: "2018-09-12 6:12",
           photo:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569658765&di=e9c70eae29d3b629e3ea964bc3a2cfe5&imgtype=jpg&er=1&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201511%2F18%2F20151118134450_S4dne.thumb.700_0.jpeg"
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218053597&di=00d61280e892d0f0fdf32eeda5ab1fcf&imgtype=0&src=http%3A%2F%2Fimg4q.duitang.com%2Fuploads%2Fitem%2F201411%2F20%2F20141120170055_cKStw.jpeg"
         },
         {
           message_id: 4,
