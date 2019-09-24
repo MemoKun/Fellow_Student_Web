@@ -1,23 +1,20 @@
 <template>
-  <el-menu
-    :default-active="activeIndex"
-    class="navmenu"
-    mode="horizontal"
-    @select="handleSelect"
-   
-  >
+  <el-menu :default-active="activeIndex" class="navmenu" mode="horizontal" @select="handleSelect">
+    <el-menu-item index="/searchFriends">
+      <router-link to="/searchFriends" class="router-link-active">搜索</router-link>
+    </el-menu-item>
     <el-menu-item index="/">
-      <router-link to="/" class="router-link-active">Home</router-link>
+      <router-link to="/" class="router-link-active">主页</router-link>
     </el-menu-item>
-    
-    <el-menu-item index="/expertiseCommunity">
+
+    <!--<el-menu-item index="/expertiseCommunity">
       <router-link to="/expertiseCommunity" class="router-link-active">Expertise Community</router-link>
-    </el-menu-item>
+    </el-menu-item>-->
     <el-menu-item index="/friendsApproved">
-      <router-link to="/friendsApproved" class="router-link-active">Friends</router-link>
+      <router-link to="/friendsApproved" class="router-link-active">朋友</router-link>
     </el-menu-item>
     <el-menu-item index="/receivedMessages">
-      <router-link to="/receivedMessages" class="router-link-active">Messages</router-link>
+      <router-link to="/receivedMessages" class="router-link-active">消息</router-link>
     </el-menu-item>
     <el-submenu index="6">
       <template slot="title">Settings</template>
