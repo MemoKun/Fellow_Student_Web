@@ -21,7 +21,6 @@
         </el-form>
       </div>
     </el-card>
-
   </div>
 </template>
 <style scoped>
@@ -42,8 +41,8 @@ export default {
     return {
       baseUrl: 'http://39.100.52.175:8080/swagger-ui.html',
       loginForm: {
-        account: '',
-        password: ''
+        account: "",
+        password: ""
       }
     };
   },
@@ -70,7 +69,7 @@ export default {
       );
     },
     register() {
-      this.$router.replace('/account/register');
+      this.$router.replace("/account/register");
     }
   },
   created() {},
