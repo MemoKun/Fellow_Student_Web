@@ -51,12 +51,12 @@
           <br />
           <el-row>
             <el-col :span="8">
-            <el-button type="success" @click="addFlag = !addFlag" v-if="addFlag" style="width:100%;font-size:36px;" icon="el-icon-star-off" round>Add as Friend</el-button>
-            <el-button type="success" @click="addFlag = !addFlag" v-if="!addFlag" style="width:100%;font-size:36px;" icon="el-icon-star-on" round>Friend</el-button>
+            <el-button type="success" @click="addFlag = !addFlag" v-if="addFlag" style="font-size:36px;" icon="el-icon-star-off" round>Add as Friend</el-button>
+            <el-button type="success" @click="addFlag = !addFlag" v-if="!addFlag" style="font-size:36px;" icon="el-icon-star-on" round>Friend</el-button>
             </el-col>
         
-            <el-col :span="8" :push="7">
-            <el-button type="success" style="width:110%;font-size:36px;" icon="el-icon-share" round>Report this profile</el-button>
+            <el-col :span="8" :push="4">
+            <el-button type="success" style="font-size:36px;" icon="el-icon-share" round>Report this profile</el-button>
             </el-col>
           </el-row>
              <br />

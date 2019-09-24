@@ -16,6 +16,18 @@ import urls from './modules/urls.js'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+  state:{
+    //存储token
+    Authorization:localStorage.getItem('Authorization')?localStorage.getItem('Authorization'):''
+  },
+  mutations:{
+    //修改token,并将token存入localStorage
+    changeLogin(state,user){
+      state.Authorization=user.Authorization;
+      localStorage.setItem('Authorization',user.Authorization);
+      console.log("/store/index.js token存入成功")
+    }
+  },
   modules: {
     app,
     user,
