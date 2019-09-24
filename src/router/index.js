@@ -25,9 +25,14 @@ import SearchFriendsResults from "@/views/searchFriends/searchFriendsResults.vue
 
 import Security from "@/views/settings/security/security.vue";
 import EditPassword from "@/views/settings/security/editPassword.vue";
-import EditPasswordByPhone from "@/views/settings/security/editPasswordByPhone.vue"
+import EditPasswordByPhone from "@/views/settings/security/editPasswordByPhone.vue";
+import EditPasswordByEmail from "@/views/settings/security/editPasswordByEmail.vue";
 import EditPhone from "@/views/settings/security/editPhone.vue";
+import EditPhoneByPhone from "@/views/settings/security/editPhoneByPhone.vue";
+import EditPhoneByEmail from "@/views/settings/security/editPhoneByEmail.vue";
 import EditEmail from "@/views/settings/security/editEmail.vue";
+import EditEmailByPhone from "@/views/settings/security/editEmailByPhone.vue";
+import EditEmailByEmail from "@/views/settings/security/editEmailByEmail.vue";
 import EditPersonalInfo from "@/views/settings/editPersonalInfo.vue";
 import EditSystemSetting from "@/views/settings/editSystemSetting.vue";
 import VipBilling from "@/views/settings/vipBilling.vue";
@@ -169,6 +174,15 @@ export default new Router({
       }
     },
     {
+      path: "/security/editPassword/email",
+      name: "editPasswordByEmail",
+      components: { default: EditPasswordByEmail, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
       path: "/security/editPhone",
       name: "editPhone",
       components: { default: EditPhone, header: MainNavbar, footer: MainFooter },
@@ -178,9 +192,45 @@ export default new Router({
       }
     },
     {
+      path: "/security/editPhone/phone",
+      name: "editPhoneByPhone",
+      components: { default: EditPhoneByPhone, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/security/editPhone/email",
+      name: "editPhoneByEmail",
+      components: { default: EditPhoneByEmail, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
       path: "/security/editEmail",
       name: "editEmail",
       components: { default: EditEmail, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/security/editEmail/phone",
+      name: "editEmailByPhone",
+      components: { default: EditEmailByPhone, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/security/editEmail/email",
+      name: "editEmailByEmail",
+      components: { default: EditEmailByEmail, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }

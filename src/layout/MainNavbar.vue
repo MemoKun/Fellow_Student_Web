@@ -4,9 +4,22 @@
     class="navmenu"
     mode="horizontal"
     @select="handleSelect"
-    background-color="#F6C04E"
+   
   >
-    <el-submenu index="6" style="float:right">
+    <el-menu-item index="/">
+      <router-link to="/" class="router-link-active">Home</router-link>
+    </el-menu-item>
+    
+    <el-menu-item index="/expertiseCommunity">
+      <router-link to="/expertiseCommunity" class="router-link-active">Expertise Community</router-link>
+    </el-menu-item>
+    <el-menu-item index="/friendsApproved">
+      <router-link to="/friendsApproved" class="router-link-active">Friends</router-link>
+    </el-menu-item>
+    <el-menu-item index="/receivedMessages">
+      <router-link to="/receivedMessages" class="router-link-active">Messages</router-link>
+    </el-menu-item>
+    <el-submenu index="6">
       <template slot="title">Settings</template>
       <el-menu-item index="/vipBilling">
         <router-link to="/vipBilling" class="router-link-active">Fellow Prime</router-link>
@@ -21,20 +34,8 @@
         <router-link to="/editSystemSetting" class="router-link-active">系统设置</router-link>
       </el-menu-item>
     </el-submenu>
-    <el-menu-item index="/receivedMessages" style="float:right">
-      <router-link to="/receivedMessages" class="router-link-active">Messages</router-link>
-    </el-menu-item>
-    <el-menu-item index="/friendsApproved" style="float:right">
-      <router-link to="/friendsApproved" class="router-link-active">Friends</router-link>
-    </el-menu-item>
-    <el-menu-item index="/expertiseCommunity" style="float:right">
-      <router-link to="/expertiseCommunity" class="router-link-active">Expertise Community</router-link>
-    </el-menu-item>
     <el-menu-item index="/account" style="float:right">
       <router-link to="/account/login" class="router-link-active">Login</router-link>
-    </el-menu-item>
-    <el-menu-item index="/" style="float:right">
-      <router-link to="/" class="router-link-active">Home</router-link>
     </el-menu-item>
   </el-menu>
 </template>

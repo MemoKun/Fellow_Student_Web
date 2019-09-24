@@ -39,7 +39,9 @@ export default {
     phoneCheckForPassword(){
       this.$router.replace('/security/editPassword/phone');
     },
-    emailCheckForPassword(){},
+    emailCheckForPassword(){
+      this.$router.replace('/security/editPassword/email');
+    },
     help(){}
   },
   created() {},

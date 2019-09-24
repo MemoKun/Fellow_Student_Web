@@ -57,6 +57,15 @@
                   </el-form-item>
                 </el-form>
               </el-card>
+              <div>
+                <h2>Testimonials 推荐信</h2>
+                <h4>思维深度交流的绝佳方式</h4>
+                <p>很长一段时间里，我都在寻找能够深度交流的方式。QQ和微信的社交网络确实是社会的前沿，但这仍然很难代表邮件和书信。只有在这长长的mail里，我才能将我的思想娓娓道来。我也很高兴遇到了志同道合的朋友，他们是我一生的财富。——金智媛 来自清华大学</p>
+                <h4>高校零距离</h4>
+                <p>我一直苦于找不到优质课程的学习资料，我希望通过与其他学校同学的交流，知道自身的真实水平。我也希望认识其他专业的顶尖人才，来给自己未来的职业生涯打下良好的基础。</p>
+                <h4>精英主义</h4>
+                <p>这是我去过的最好的笔友网站。无论是交友网站、笔友网站还是其他网站，这种模式都是培养不同体验的理想选择。可能是短的个人资料文本和一张个人资料照片。它设置了一个简单的介绍，并鼓励人们朝着建立自己的沟通方式迈出一大步。它也必须是这里带来的用户类型。我不知道是什么，但谢谢你，请不要过渡到像Interpals或其他网站，因为这个地方是独一无二的。</p>
+              </div>
             </div>
           </el-col>
           <el-col :span="12">
@@ -74,9 +83,11 @@
                   >
                     <el-card :body-style="{ padding: '0px' }">
                       <img :src="item.photo" class="image" />
-                      <div style="padding: 14px;">
-                        <span>{{item.nickname}}</span>
-                        <p>{{item.university}}</p>
+                      <div style="padding: 5px;">
+                        <span style="font-size:5px;">{{item.nickname}}</span>
+                        <span style="font-size:5px">{{item.university}}</span>
+                        <br />
+                        <span style="font-size:5px">{{item.lastLoginAt}}</span>
                       </div>
                     </el-card>
                   </el-col>
@@ -84,6 +95,19 @@
               </div>
             </div>
           </el-col>
+        </el-row>
+
+        <el-divider content-position="center"></el-divider>
+        <el-row :gutter="20">
+          <div class="container" style="margin:20px">
+            <h2>FQA 常见问题解答</h2>
+            <p>很长一段时间以来，我都想用非聊天的方式与人们交流。只有当我在一个访问受限的假期里，求助于和一个同样倾向的朋友交换长邮件时，我才意识到我想要的是笔友。45年前我有了它们，但我忘记了所有的事情。社交网络应用确实是约会应用的前沿，但却很难替代ppw。</p>
+            <h4>Max from Italy</h4>
+            <p>This is hands down the best pen pal site I've been to. There's something about the format that is ideal for fostering a different experience here than on other sites, whether they be dating sites or pen pal sites or whatever. Maybe it's the short profile text and single profile photo. It sets up for just a quick intro and encourages people to take a leap toward setting up their own communication. It must also be the type of users brought here. I don't know what it is, but thank you and please don't ever transition to become like interpals or some other site, because this place is unique</p>
+            <h4>from the USA</h4>
+            <p>Just a quick note to say thank you so much for having created this site. If it wasn't for you, then I would never have met what I am hoping will turn out to be my best friend forever. I will certainly promote your site to everyone, whether they want to know or not!! If the need ever arises, I will return with lightening speed. Thank you once again.</p>
+            <h4>Kim from the UK</h4>
+          </div>
         </el-row>
         <el-row>
           <el-collapse v-model="activeNames" @change="handleChange">
@@ -203,65 +227,161 @@ export default {
           user_id: 1,
           nickname: "金智媛",
           university: "清华大学",
-          lastLoginAt: "",
+          lastLoginAt: "14 sec ago",
           photo:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567416535125&di=d6f2d99ef3fcf7e7fc31dbdf443eeaf3&imgtype=0&src=http%3A%2F%2Fstatic.pig66.com%2Fuploadfile%2F2017%2F0706%2F20170706034955516.jpg"
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569063950234&di=f9e666fa5b2219e12cd1e0119b6a692d&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201406%2F03%2F20140603205522_ZirQE.thumb.600_0.jpeg"
         },
         {
           user_id: 2,
           nickname: "Yonna",
           university: "北京大学",
-          lastLoginAt: "",
+          lastLoginAt: "18 sec ago",
           photo:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567416512457&di=854252c4b4be69a2537c47300bec0eef&imgtype=0&src=http%3A%2F%2Fstatic.pig66.com%2Fuploadfile%2F2017%2F0706%2F20170706035051965.jpg"
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569658749&di=d621e95842f713f897d1c9f9d14160bc&imgtype=jpg&er=1&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201507%2F27%2F20150727151430_E5CS4.thumb.700_0.jpeg"
         },
         {
           user_id: 3,
           nickname: "Yonna",
           university: "中南大学",
-          lastLoginAt: "",
+          lastLoginAt: "24 sec ago",
           photo:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567416535125&di=3e38867474179c9a803fc71b3ff45a7d&imgtype=0&src=http%3A%2F%2Fimg3.kuwo.cn%2Fstar%2Fuserhead%2F76%2F57%2F1486864026485_230608776.jpg"
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218053597&di=00d61280e892d0f0fdf32eeda5ab1fcf&imgtype=0&src=http%3A%2F%2Fimg4q.duitang.com%2Fuploads%2Fitem%2F201411%2F20%2F20141120170055_cKStw.jpeg"
         },
         {
           user_id: 4,
           nickname: "Yonna",
           university: "中国人民大学",
-          lastLoginAt: "",
+          lastLoginAt: "31 sec ago",
           photo:
-            "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3337547610,1389828697&fm=26&gp=0.jpg"
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569064081142&di=50668130821b13405f195658dc4506d4&imgtype=0&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201407%2F24%2F20140724190906_MCkXs.thumb.700_0.jpeg"
         },
         {
           user_id: 5,
           nickname: "Yonna",
           university: "中央民族大学",
-          lastLoginAt: "",
+          lastLoginAt: "1 min 14 sec ago",
           photo:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567416535125&di=896599a1ca6df02dbe3108c105696a15&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201611%2F11%2F20161111142253_KJ4kV.jpeg"
+            "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3284581089,709717092&fm=26&gp=0.jpg"
         },
         {
           user_id: 6,
           nickname: "Yonna",
           university: "武汉大学",
-          lastLoginAt: "",
+          lastLoginAt: "1 min 26 sec ago",
           photo:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567416678784&di=beb67f3b7debd944b16b3697f07f54b4&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F014a7c59522cd4a8012193a3ba5a38.jpg%401280w_1l_2o_100sh.jpg"
+            "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1743168392,2407869980&fm=26&gp=0.jpg"
         },
         {
           user_id: 7,
           nickname: "Yonna",
           university: "延世大学",
-          lastLoginAt: "",
+          lastLoginAt: "1 min 29 sec ago",
           photo:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567416535123&di=1fa4c760e1749c6533693a12a15bac9b&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201610%2F07%2F20161007212756_W5KaS.jpeg"
+            "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1392078492,1897050294&fm=26&gp=0.jpg"
         },
         {
           user_id: 8,
           nickname: "Yonna",
           university: "首尔大学",
-          lastLoginAt: "",
+          lastLoginAt: "1 min 34 sec ago",
           photo:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567416718549&di=925ec025bc61d948ec8a953a78f9c790&imgtype=jpg&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D2256597494%2C2632907235%26fm%3D214%26gp%3D0.jpg"
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569658860&di=f4d738760b420cc3883d8253252d8e48&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201411%2F08%2F20141108083126_QARVZ.jpeg"
+        },
+        {
+          user_id: 9,
+          nickname: "Yonna",
+          university: "中央民族大学",
+          lastLoginAt: "1 min 14 sec ago",
+          photo:
+            "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=4176040192,3002869256&fm=26&gp=0.jpg"
+        },
+        {
+          user_id: 10,
+          nickname: "Yonna",
+          university: "武汉大学",
+          lastLoginAt: "1 min 26 sec ago",
+          photo:
+            "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1476095006,2188158271&fm=26&gp=0.jpg"
+        },
+        {
+          user_id: 11,
+          nickname: "Yonna",
+          university: "延世大学",
+          lastLoginAt: "1 min 29 sec ago",
+          photo:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218725789&di=9c00b6dc70418ca1bf5bfcd6254e961c&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201806%2F21%2F20180621210646_mmltp.thumb.700_0.jpg"
+        },
+        {
+          user_id: 12,
+          nickname: "Yonna",
+          university: "首尔大学",
+          lastLoginAt: "1 min 34 sec ago",
+          photo:
+            "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1004963647,1607232271&fm=26&gp=0.jpg"
+        },
+        {
+          user_id: 13,
+          nickname: "Yonna",
+          university: "中央民族大学",
+          lastLoginAt: "1 min 14 sec ago",
+          photo:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218563776&di=2f13cfde907b4f7b48ac548d274b1143&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201504%2F09%2F20150409H4542_GVEAm.jpeg"
+        },
+        {
+          user_id: 14,
+          nickname: "Yonna",
+          university: "武汉大学",
+          lastLoginAt: "1 min 26 sec ago",
+          photo:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218563775&di=36090be434652bfefca531cac1466004&imgtype=0&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201410%2F16%2F20141016202155_5ycRZ.thumb.700_0.jpeg"
+        },
+        {
+          user_id: 15,
+          nickname: "Yonna",
+          university: "延世大学",
+          lastLoginAt: "1 min 29 sec ago",
+          photo:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218563773&di=1b3a16838aa6c10c4454944648e1d91e&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201608%2F30%2F20160830123527_ZQmWf.jpeg"
+        },
+        {
+          user_id: 16,
+          nickname: "Yonna",
+          university: "首尔大学",
+          lastLoginAt: "1 min 34 sec ago",
+          photo:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569218725789&di=f3d2ffa1628b877d975d842a2f39a583&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201511%2F20%2F20151120171114_LkFSi.thumb.700_0.jpeg"
+        },
+        {
+          user_id: 17,
+          nickname: "Yonna",
+          university: "中央民族大学",
+          lastLoginAt: "1 min 14 sec ago",
+          photo:
+            "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3284581089,709717092&fm=26&gp=0.jpg"
+        },
+        {
+          user_id: 18,
+          nickname: "Yonna",
+          university: "武汉大学",
+          lastLoginAt: "1 min 26 sec ago",
+          photo:
+            "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1743168392,2407869980&fm=26&gp=0.jpg"
+        },
+        {
+          user_id: 19,
+          nickname: "Yonna",
+          university: "延世大学",
+          lastLoginAt: "1 min 29 sec ago",
+          photo:
+            "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1392078492,1897050294&fm=26&gp=0.jpg"
+        },
+        {
+          user_id: 20,
+          nickname: "Yonna",
+          university: "首尔大学",
+          lastLoginAt: "1 min 34 sec ago",
+          photo:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569658860&di=f4d738760b420cc3883d8253252d8e48&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201411%2F08%2F20141108083126_QARVZ.jpeg"
         }
       ],
       searchConditions: {
