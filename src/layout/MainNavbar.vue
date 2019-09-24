@@ -36,11 +36,10 @@
         <router-link to="/editSystemSetting" class="router-link-active">系统设置</router-link>
       </el-menu-item>
     </el-submenu>
-    <el-menu-item index="/account/register" style="float:right">
-      <router-link to="/account/register" class="router-link-active">Register</router-link>
-    </el-menu-item>
     <el-menu-item index="/account/login" style="float:right">
-      <router-link to="/account/login" class="router-link-active">Login</router-link>
+      <router-link to="/account/login" class="router-link-active">
+        <el-button type="primary" round>登录</el-button>
+      </router-link>
     </el-menu-item>
   </el-menu>
 </template>
@@ -77,12 +76,6 @@ export default {
           break;
         case "/searchFriends":
           this.$router.replace("/searchFriends");
-          break;
-        case "/account/login":
-          this.$router.replace("/account/login");
-          break;
-        case "/account/register":
-          this.$router.replace("/account/register");
           break;
         case "/settings":
           this.$router.replace("/settings");
