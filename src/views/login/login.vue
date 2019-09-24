@@ -16,12 +16,11 @@
               </el-form-item>
             </el-col>
           </el-row>
-            <el-button type="primary" @click="login">登录</el-button>
-            <el-button @click="register">注册</el-button>
+          <el-button type="primary" @click="login">登录</el-button>
+          <el-button @click="register">注册</el-button>
         </el-form>
       </div>
     </el-card>
-
   </div>
 </template>
 <style scoped>
@@ -40,17 +39,20 @@ export default {
   data() {
     return {
       loginForm: {
-        account: '',
-        password: ''
+        account: "",
+        password: ""
       }
     };
   },
   watch: {},
   computed: {},
   methods: {
-    login() {},
+    login() {
+      this.$fetch(this.urls + "/captchas");
+      this.$message("success");
+    },
     register() {
-      this.$router.replace('/account/register');
+      this.$router.replace("/account/register");
     }
   },
   created() {},
