@@ -2,7 +2,7 @@
   <div class="container" style="padding:100px">
     <el-card class="box-card" body-style="padding:40px">
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="Friends Approved" name="first">
+        <el-tab-pane label="我的朋友" name="first">
           <el-row :gutter="20">
             <el-col :span="18">
               <h2>我的朋友</h2>
@@ -49,14 +49,14 @@
             </el-col>
           </el-row>
         </el-tab-pane>
-        <el-tab-pane label="Friends Waiting Approved" name="second">
+        <el-tab-pane label="等待申请通过的朋友" name="second">
           <el-row :gutter="20">
             <el-col :span="18">
               <h2>等待申请通过的朋友</h2>
               <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
                 <el-col :span="6" style="padding: 10px;">
                   <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" style="width:100%"/>
+                    <img :src="item.photo" style="width:100%" />
                     <div style="padding: 14px;" class="bottom clearfix">
                       <span>{{item.nickname}}</span>
                       <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
@@ -96,14 +96,14 @@
             </el-col>
           </el-row>
         </el-tab-pane>
-        <el-tab-pane label="Follow" name="third">
+        <el-tab-pane label="我跟随的人" name="third">
           <el-row :gutter="20">
             <el-col :span="18">
               <h2>Follow</h2>
               <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
                 <el-col :span="6" style="padding: 10px;">
                   <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" style="width:100%"/>
+                    <img :src="item.photo" style="width:100%" />
                     <div style="padding: 14px;" class="bottom clearfix">
                       <span>{{item.nickname}}</span>
                       <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
@@ -143,14 +143,14 @@
             </el-col>
           </el-row>
         </el-tab-pane>
-        <el-tab-pane label="Follower" name="fourth">
+        <el-tab-pane label="跟随我的人" name="fourth">
           <el-row :gutter="20">
             <el-col :span="18">
               <h2>Follower</h2>
               <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
                 <el-col :span="6" style="padding: 10px;">
                   <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" style="width:100%"/>
+                    <img :src="item.photo" style="width:100%" />
                     <div style="padding: 14px;" class="bottom clearfix">
                       <span>{{item.nickname}}</span>
                       <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>

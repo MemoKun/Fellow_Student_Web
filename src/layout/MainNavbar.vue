@@ -1,25 +1,30 @@
 <template>
   <el-menu :default-active="activeIndex" class="navmenu" mode="horizontal" @select="handleSelect">
-    <el-menu-item index="/searchFriends">
-      <router-link to="/searchFriends" class="router-link-active">搜索</router-link>
-    </el-menu-item>
     <el-menu-item index="/">
       <router-link to="/" class="router-link-active">主页</router-link>
     </el-menu-item>
-
-    <!--<el-menu-item index="/expertiseCommunity">
-      <router-link to="/expertiseCommunity" class="router-link-active">Expertise Community</router-link>
-    </el-menu-item>-->
     <el-menu-item index="/friendsApproved">
       <router-link to="/friendsApproved" class="router-link-active">朋友</router-link>
     </el-menu-item>
     <el-menu-item index="/receivedMessages">
-      <router-link to="/receivedMessages" class="router-link-active">消息</router-link>
+      <router-link to="/receivedMessages" class="router-link-active">来信</router-link>
     </el-menu-item>
-    <el-submenu index="6">
-      <template slot="title">Settings</template>
+    <el-menu-item index="/expertiseCommunity">
+      <router-link to="/expertiseCommunity" class="router-link-active">专业社区</router-link>
+    </el-menu-item>
+    <el-menu-item index="/searchFriends">
+      <router-link to="/searchFriends" class="router-link-active">
+        <el-button type="primary">寻找朋友</el-button>
+      </router-link>
+    </el-menu-item>
+
+    <!--右侧-->
+    <el-submenu index="/settings" style="float:right">
+      <template slot="title">
+        <router-link to="/editSystemSetting" class="router-link-active">设置</router-link>
+      </template>
       <el-menu-item index="/vipBilling">
-        <router-link to="/vipBilling" class="router-link-active">Fellow Prime</router-link>
+        <router-link to="/vipBilling" class="router-link-active">Prime会员</router-link>
       </el-menu-item>
       <el-menu-item index="/editPersonalInfo">
         <router-link to="/editPersonalInfo" class="router-link-active">个人信息</router-link>
@@ -31,7 +36,10 @@
         <router-link to="/editSystemSetting" class="router-link-active">系统设置</router-link>
       </el-menu-item>
     </el-submenu>
-    <el-menu-item index="/account" style="float:right">
+    <el-menu-item index="/account/register" style="float:right">
+      <router-link to="/account/register" class="router-link-active">Register</router-link>
+    </el-menu-item>
+    <el-menu-item index="/account/login" style="float:right">
       <router-link to="/account/login" class="router-link-active">Login</router-link>
     </el-menu-item>
   </el-menu>
@@ -58,12 +66,6 @@ export default {
         case "/":
           this.$router.replace("/");
           break;
-        case "/account":
-          this.$router.replace("/account/login");
-          break;
-        case "/expertiseCommunity":
-          this.$router.replace("/expertiseCommunity");
-          break;
         case "/friendsApproved":
           this.$router.replace("/friendsApproved");
           break;
@@ -72,6 +74,18 @@ export default {
           break;
         case "/expertiseCommunity":
           this.$router.replace("/expertiseCommunity");
+          break;
+        case "/searchFriends":
+          this.$router.replace("/searchFriends");
+          break;
+        case "/account/login":
+          this.$router.replace("/account/login");
+          break;
+        case "/account/register":
+          this.$router.replace("/account/register");
+          break;
+        case "/settings":
+          this.$router.replace("/settings");
           break;
         case "/editPersonalInfo":
           this.$router.replace("/editPersonalInfo");
