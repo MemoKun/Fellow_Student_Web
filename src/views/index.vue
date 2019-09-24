@@ -3,10 +3,9 @@
     <div class="container" style="margin:40px">
       <el-row :gutter="20">
         <div class="container" style="padding:40px">
-          <h1>强劲、强大、资源丰富</h1>
-          <h2 style="color:black">面向双一流高校（985、211工程）开放的顶尖高校社区。</h2>
-          <h2 style="color:black">Expertise Community 为你提供各大高校课程、考试资源。</h2>
-          <h2 style="color:black">强大的Search功能帮你轻松找到不同学校、不同专业的同学。</h2>
+          <h1>初心不变，做深度对话的独角兽</h1>
+          <h2 style="color:black">从浅短的只言片语中解脱出来，体验一次灵魂的深度交流</h2>
+          <h2 style="color:black">俱怀逸兴壮思飞 欲上青天览明月 在这里找到志同道合的伙伴</h2>
         </div>
       </el-row>
       <!-- <h1>寻找你的伙伴</h1> -->
@@ -217,7 +216,7 @@ export default {
   data() {
     return {
       fits: ["fill", "contain", "cover", "none", "scale-down"],
-      activeNames:"",
+      activeNames: "",
       url:
         "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
       lastLoginUsers: [
