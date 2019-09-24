@@ -9,6 +9,9 @@
           <router-view />
         </div>
       </el-main>
+      <el-footer>
+        <router-view name="footer" />
+      </el-footer>
     </el-container>
   </div>
 </template>

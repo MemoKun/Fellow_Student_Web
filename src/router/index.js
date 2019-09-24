@@ -47,12 +47,12 @@ export default new Router({
     {
       path: '/',
       name: 'Index',
-      components: { default: Index, header: MainNavbar}
+      components: { default: Index, header: MainNavbar,footer:MainFooter}
     },
     {
       path: "/account/login",
       name: "login",
-      components: { default: Login, header: MainNavbar},
+      components: { default: Login, header: MainNavbar,footer:MainFooter},
       props: {
         header: { colorOnScroll: 400 }
       }
