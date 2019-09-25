@@ -1,13 +1,17 @@
 <template>
-  <div class="container" style="padding:100px">
+  <el-row class="container" style="padding:100px">
     <el-card class="box-card" body-style="padding:40px">
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="我的朋友" name="first">
           <el-row :gutter="20">
             <el-col :span="18">
               <h2>我的朋友</h2>
-              <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
-                <el-col :span="6" style="padding: 10px;">
+              <div class="container">
+                <el-row v-for="(i,index) in (Math.ceil((myFriendsApproved.length / 4)))" :key="index">
+                <el-col :span="6" style="padding: 10px;"
+                        v-for="(item,index) in myFriendsApproved"
+                        v-show="(i - 1) * 4 <= index && index < i * 4"
+                        :key="index">
                   <el-card :body-style="{ padding: '0px' }">
                     <img :src="item.photo" style="width:100%" />
                     <div style="padding: 14px;" class="bottom clearfix">
@@ -29,6 +33,7 @@
                     </div>
                   </el-card>
                 </el-col>
+              </el-row>
               </div>
             </el-col>
             <el-col :span="6">
@@ -53,29 +58,34 @@
           <el-row :gutter="20">
             <el-col :span="18">
               <h2>等待申请通过的朋友</h2>
-              <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
-                <el-col :span="6" style="padding: 10px;">
-                  <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" style="width:100%" />
-                    <div style="padding: 14px;" class="bottom clearfix">
-                      <span>{{item.nickname}}</span>
-                      <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
-                      <p>在{{item.created_at}}成为好友</p>
-                      <el-button
-                        type="text"
-                        class="button"
-                        @click="unfriend()"
-                        style="float:left"
-                      >详细信息</el-button>
-                      <el-button
-                        type="text"
-                        class="button"
-                        @click="unfriend()"
-                        style="float:right"
-                      >取消申请</el-button>
-                    </div>
-                  </el-card>
-                </el-col>
+              <div class="container">
+                <el-row v-for="(i,index) in (Math.ceil((myFriendsApproved.length / 4)))" :key="index">
+                  <el-col :span="6" style="padding: 10px;"
+                          v-for="(item,index) in myFriendsApproved"
+                          v-show="(i - 1) * 4 <= index && index < i * 4"
+                          :key="index">
+                    <el-card :body-style="{ padding: '0px' }">
+                      <img :src="item.photo" style="width:100%" />
+                      <div style="padding: 14px;" class="bottom clearfix">
+                        <span>{{item.nickname}}</span>
+                        <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
+                        <p>在{{item.created_at}}成为好友</p>
+                        <el-button
+                                type="text"
+                                class="button"
+                                @click="unfriend()"
+                                style="float:left"
+                        >详细信息</el-button>
+                        <el-button
+                                type="text"
+                                class="button"
+                                @click="unfriend()"
+                                style="float:right"
+                        >删除好友</el-button>
+                      </div>
+                    </el-card>
+                  </el-col>
+                </el-row>
               </div>
             </el-col>
             <el-col :span="6">
@@ -100,29 +110,34 @@
           <el-row :gutter="20">
             <el-col :span="18">
               <h2>Follow</h2>
-              <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
-                <el-col :span="6" style="padding: 10px;">
-                  <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" style="width:100%" />
-                    <div style="padding: 14px;" class="bottom clearfix">
-                      <span>{{item.nickname}}</span>
-                      <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
-                      <p style="font-size:5px">在{{item.created_at}}成为好友</p>
-                      <el-button
-                        type="text"
-                        class="button"
-                        @click="unfriend()"
-                        style="float:left"
-                      >详细信息</el-button>
-                      <el-button
-                        type="text"
-                        class="button"
-                        @click="unfriend()"
-                        style="float:right"
-                      >取消关注</el-button>
-                    </div>
-                  </el-card>
-                </el-col>
+              <div class="container">
+                <el-row v-for="(i,index) in (Math.ceil((myFriendsApproved.length / 4)))" :key="index">
+                  <el-col :span="6" style="padding: 10px;"
+                          v-for="(item,index) in myFriendsApproved"
+                          v-show="(i - 1) * 4 <= index && index < i * 4"
+                          :key="index">
+                    <el-card :body-style="{ padding: '0px' }">
+                      <img :src="item.photo" style="width:100%" />
+                      <div style="padding: 14px;" class="bottom clearfix">
+                        <span>{{item.nickname}}</span>
+                        <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
+                        <p>在{{item.created_at}}成为好友</p>
+                        <el-button
+                                type="text"
+                                class="button"
+                                @click="unfriend()"
+                                style="float:left"
+                        >详细信息</el-button>
+                        <el-button
+                                type="text"
+                                class="button"
+                                @click="unfriend()"
+                                style="float:right"
+                        >删除好友</el-button>
+                      </div>
+                    </el-card>
+                  </el-col>
+                </el-row>
               </div>
             </el-col>
             <el-col :span="6">
@@ -147,29 +162,34 @@
           <el-row :gutter="20">
             <el-col :span="18">
               <h2>Follower</h2>
-              <div class="container" v-for="item in myFriendsApproved" :key="item.user_id">
-                <el-col :span="6" style="padding: 10px;">
-                  <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" style="width:100%" />
-                    <div style="padding: 14px;" class="bottom clearfix">
-                      <span>{{item.nickname}}</span>
-                      <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
-                      <p font-size="5px">在{{item.created_at}}成为好友</p>
-                      <el-button
-                        type="text"
-                        class="button"
-                        @click="unfriend()"
-                        style="float:left"
-                      >详细信息</el-button>
-                      <el-button
-                        type="text"
-                        class="button"
-                        @click="unfriend()"
-                        style="float:right"
-                      >屏蔽此人</el-button>
-                    </div>
-                  </el-card>
-                </el-col>
+              <div class="container">
+                <el-row v-for="(i,index) in (Math.ceil((myFriendsApproved.length / 4)))" :key="index">
+                  <el-col :span="6" style="padding: 10px;"
+                          v-for="(item,index) in myFriendsApproved"
+                          v-show="(i - 1) * 4 <= index && index < i * 4"
+                          :key="index">
+                    <el-card :body-style="{ padding: '0px' }">
+                      <img :src="item.photo" style="width:100%" />
+                      <div style="padding: 14px;" class="bottom clearfix">
+                        <span>{{item.nickname}}</span>
+                        <p>{{item.university}}-{{item.speciality}}-{{item.grade}}</p>
+                        <p>在{{item.created_at}}成为好友</p>
+                        <el-button
+                                type="text"
+                                class="button"
+                                @click="unfriend()"
+                                style="float:left"
+                        >详细信息</el-button>
+                        <el-button
+                                type="text"
+                                class="button"
+                                @click="unfriend()"
+                                style="float:right"
+                        >删除好友</el-button>
+                      </div>
+                    </el-card>
+                  </el-col>
+                </el-row>
               </div>
             </el-col>
             <el-col :span="6">
@@ -192,8 +212,8 @@
         </el-tab-pane>
       </el-tabs>
     </el-card>
-  </div>
-</template>
+  </el-row>
+  </template>
 <style>
 </style>
 <script>
