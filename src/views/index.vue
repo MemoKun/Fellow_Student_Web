@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="padding:100px">
+  <div class="container" :style="note">
     <div class="container" style="margin:40px">
       <el-row :gutter="20">
         <div class="container" style="padding:40px">
@@ -9,90 +9,93 @@
         </div>
       </el-row>
       <!-- <h1>寻找你的伙伴</h1> -->
-      <el-divider content-position="center">开启你的Fellow之旅</el-divider>
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <div class="container" style="margin:20px">
-            <el-card class="box-card" body-style="padding:40px">
-              <h2>Quick Search</h2>
-              <el-form v-model="searchConditions" label-position="right" label-width="100px">
-                <el-form-item label="性别">
-                  <el-radio-group v-model="searchConditions.gender">
-                    <el-radio label="男"></el-radio>
-                    <el-radio label="女"></el-radio>
-                  </el-radio-group>
-                </el-form-item>
-                <el-form-item label="年龄">
-                  <el-col :span="10">
-                    <el-input v-model="searchConditions.age_from"></el-input>
-                  </el-col>
-                  <el-col class="line" :span="4">至</el-col>
-                  <el-col :span="10">
-                    <el-input v-model="searchConditions.age_to"></el-input>
-                  </el-col>
-                </el-form-item>
-                <el-form-item label="学校与专业">
-                  <el-col :span="20">
-                    <!-- <el-select></el-select> -->
-                  </el-col>
-                </el-form-item>
-                <el-form-item label="用户条件">
-                  <el-checkbox-group v-model="searchConditions.otherConditions">
-                    <el-checkbox label="照片" name="otherConditions"></el-checkbox>
-                    <el-checkbox label="个人介绍" name="otherConditions"></el-checkbox>
-                    <el-checkbox label="通过学生认证" name="otherConditions"></el-checkbox>
-                    <el-checkbox label="Fellow Prime会员" name="otherConditions"></el-checkbox>
-                  </el-checkbox-group>
-                </el-form-item>
-                <el-form-item label="搜索结果排序">
-                  <el-radio-group v-model="searchConditions.orderBy">
-                    <el-radio label="上次登录时间"></el-radio>
-                    <el-radio label="注册日期"></el-radio>
-                  </el-radio-group>
-                </el-form-item>
-                <el-form-item>
-                  <el-button type="primary" @click="startSearch">Find Fellow</el-button>
-                </el-form-item>
-              </el-form>
-            </el-card>
-            <div>
-              <h2>Testimonials 推荐信</h2>
-              <h4>思维深度交流的绝佳方式</h4>
-              <p>很长一段时间里，我都在寻找能够深度交流的方式。QQ和微信的社交网络确实是社会的前沿，但这仍然很难代表邮件和书信。只有在这长长的mail里，我才能将我的思想娓娓道来。我也很高兴遇到了志同道合的朋友，他们是我一生的财富。——金智媛 来自清华大学</p>
-              <h4>高校零距离</h4>
-              <p>我一直苦于找不到优质课程的学习资料，我希望通过与其他学校同学的交流，知道自身的真实水平。我也希望认识其他专业的顶尖人才，来给自己未来的职业生涯打下良好的基础。</p>
-              <h4>精英主义</h4>
-              <p>这是我去过的最好的笔友网站。无论是交友网站、笔友网站还是其他网站，这种模式都是培养不同体验的理想选择。可能是短的个人资料文本和一张个人资料照片。它设置了一个简单的介绍，并鼓励人们朝着建立自己的沟通方式迈出一大步。它也必须是这里带来的用户类型。我不知道是什么，但谢谢你，请不要过渡到像Interpals或其他网站，因为这个地方是独一无二的。</p>
-            </div>
-          </div>
-        </el-col>
-        <el-col :span="12">
-          <div class="container" style="margin:20px">
-            <h2>最近登录的用户</h2>
 
-            <div class="container">
-              <el-row v-for="(i,index) in (Math.ceil((lastLoginUsers.length / 4)))" :key="index">
-                <el-col
-                  :span="6"
-                  style="padding: 3px;"
-                  v-for="(item,index) in lastLoginUsers"
-                  v-show="(i - 1) * 4 <= index && index < i * 4"
-                  :key="index"
-                >
-                  <el-card :body-style="{ padding: '0px' }">
-                    <img :src="item.photo" class="image" />
-                    <div style="padding: 5px;">
-                      <span style="font-size:5px;">{{item.nickname}}</span>
-                      <span style="font-size:5px">{{item.university}}</span>
-                      <br />
-                      <span style="font-size:5px">{{item.lastLoginAt}}</span>
-                    </div>
-                  </el-card>
-                </el-col>
-              </el-row>
+      <el-row :gutter="20">
+        <el-card>
+          <el-divider content-position="center">开启你的Fellow之旅</el-divider>
+          <el-col :span="12">
+            <div class="container" style="margin:20px">
+              <el-card class="box-card" body-style="padding:40px">
+                <h2>Quick Search</h2>
+                <el-form v-model="searchConditions" label-position="right" label-width="100px">
+                  <el-form-item label="性别">
+                    <el-radio-group v-model="searchConditions.gender">
+                      <el-radio label="男"></el-radio>
+                      <el-radio label="女"></el-radio>
+                    </el-radio-group>
+                  </el-form-item>
+                  <el-form-item label="年龄">
+                    <el-col :span="10">
+                      <el-input v-model="searchConditions.age_from"></el-input>
+                    </el-col>
+                    <el-col class="line" :span="4">至</el-col>
+                    <el-col :span="10">
+                      <el-input v-model="searchConditions.age_to"></el-input>
+                    </el-col>
+                  </el-form-item>
+                  <el-form-item label="学校与专业">
+                    <el-col :span="20">
+                      <!-- <el-select></el-select> -->
+                    </el-col>
+                  </el-form-item>
+                  <el-form-item label="用户条件">
+                    <el-checkbox-group v-model="searchConditions.otherConditions">
+                      <el-checkbox label="照片" name="otherConditions"></el-checkbox>
+                      <el-checkbox label="个人介绍" name="otherConditions"></el-checkbox>
+                      <el-checkbox label="通过学生认证" name="otherConditions"></el-checkbox>
+                      <el-checkbox label="Fellow Prime会员" name="otherConditions"></el-checkbox>
+                    </el-checkbox-group>
+                  </el-form-item>
+                  <el-form-item label="搜索结果排序">
+                    <el-radio-group v-model="searchConditions.orderBy">
+                      <el-radio label="上次登录时间"></el-radio>
+                      <el-radio label="注册日期"></el-radio>
+                    </el-radio-group>
+                  </el-form-item>
+                  <el-form-item>
+                    <el-button type="primary" @click="startSearch">Find Fellow</el-button>
+                  </el-form-item>
+                </el-form>
+              </el-card>
+              <div>
+                <h2>Testimonials 推荐信</h2>
+                <h4>思维深度交流的绝佳方式</h4>
+                <p>很长一段时间里，我都在寻找能够深度交流的方式。QQ和微信的社交网络确实是社会的前沿，但这仍然很难代表邮件和书信。只有在这长长的mail里，我才能将我的思想娓娓道来。我也很高兴遇到了志同道合的朋友，他们是我一生的财富。——金智媛 来自清华大学</p>
+                <h4>高校零距离</h4>
+                <p>我一直苦于找不到优质课程的学习资料，我希望通过与其他学校同学的交流，知道自身的真实水平。我也希望认识其他专业的顶尖人才，来给自己未来的职业生涯打下良好的基础。</p>
+                <h4>精英主义</h4>
+                <p>这是我去过的最好的笔友网站。无论是交友网站、笔友网站还是其他网站，这种模式都是培养不同体验的理想选择。可能是短的个人资料文本和一张个人资料照片。它设置了一个简单的介绍，并鼓励人们朝着建立自己的沟通方式迈出一大步。它也必须是这里带来的用户类型。我不知道是什么，但谢谢你，请不要过渡到像Interpals或其他网站，因为这个地方是独一无二的。</p>
+              </div>
             </div>
-          </div>
-        </el-col>
+          </el-col>
+          <el-col :span="12">
+            <div class="container" style="margin:20px">
+              <h2>最近登录的用户</h2>
+
+              <div class="container">
+                <el-row v-for="(i,index) in (Math.ceil((lastLoginUsers.length / 4)))" :key="index">
+                  <el-col
+                    :span="6"
+                    style="padding: 3px;"
+                    v-for="(item,index) in lastLoginUsers"
+                    v-show="(i - 1) * 4 <= index && index < i * 4"
+                    :key="index"
+                  >
+                    <el-card :body-style="{ padding: '0px' }">
+                      <img :src="item.photo" class="image" />
+                      <div style="padding: 5px;">
+                        <span style="font-size:5px;">{{item.nickname}}</span>
+                        <span style="font-size:5px">{{item.university}}</span>
+                        <br />
+                        <span style="font-size:5px">{{item.lastLoginAt}}</span>
+                      </div>
+                    </el-card>
+                  </el-col>
+                </el-row>
+              </div>
+            </div>
+          </el-col>
+        </el-card>
       </el-row>
 
       <el-divider content-position="center"></el-divider>
@@ -131,14 +134,7 @@
     </div>
   </div>
 </template>
-
 <style scoped>
-.el-row {
-  margin-bottom: 20px;
-  /* &:last-child {
-    margin-bottom: 0;
-  } */
-}
 .el-col {
   border-radius: 4px;
 }
@@ -215,6 +211,13 @@ h1 {
 export default {
   data() {
     return {
+      note: {
+        backgroundImage: "url(" + require("../assets/banner.jpg") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100%",
+        marginTop: "5px",
+        padding:"100px"
+      },
       fits: ["fill", "contain", "cover", "none", "scale-down"],
       activeNames: "",
       url:
