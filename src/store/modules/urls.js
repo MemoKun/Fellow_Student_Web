@@ -1,6 +1,6 @@
 const urls = {
   state: {
-    testUrl: 'http://localhost:8080/#/api', //http://39.100.52.175:8080/swagger-ui.html
+    testUrl: 'http://39.100.52.175:8080', //http://39.100.52.175:8080/swagger-ui.html
     login:'/login',
     register:'/register',
     expertiseCommunity:'/expertiseCommunity',

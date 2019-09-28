@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/index'
 import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
 import '../style/theme/index.css'
@@ -14,6 +15,15 @@ import {
   patch,
   put
 } from '@/utils/http'
+import{
+  validatePhoneNum,
+  validateEmail,
+  validateURL,
+  validateLowerCase,
+  validateUpperCase,
+  validatAlphabets
+}from '@/utils/validate'
+
 // import Router from 'vue-router'
 
 // const originalPush = Router.prototype.push
@@ -29,6 +39,12 @@ Vue.prototype.$post = post;
 Vue.prototype.$fetch = fetch;
 Vue.prototype.$patch = patch;
 Vue.prototype.$put = put;
+Vue.prototype.$validatePhoneNum = validatePhoneNum;
+Vue.prototype.$validateEmail = validateEmail;
+Vue.prototype.$validateURL = validateURL;
+Vue.prototype.$validateLowerCase = validateLowerCase;
+Vue.prototype.$validateUpperCase = validateUpperCase;
+Vue.prototype.$validatAlphabets = validatAlphabets;
 
 
 
@@ -37,6 +53,7 @@ Vue.prototype.$put = put;
 new Vue({
   el: '#app',
   router,
+  store,
   components: {
     App
   },

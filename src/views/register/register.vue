@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 选择手机或者邮箱验证 -->
-    <div v-if="!typeSelected" style="margin-top:200px;">
+    <div v-if="!typeSelected" style="margin-top:200px;height:500px;">
       <el-button @click="registerByPhone" class="selecteButton">
         <i class="el-icon-mobile-phone"></i>
         <br>
@@ -18,7 +18,7 @@
       </el-button>
     </div>
     <!-- 选择手机或邮箱验证后 -->
-    <div v-else>
+    <div v-else style="margin-bottom:100px">
       <div>
         <el-steps :active="step" finish-status="success" simple style="margin-top: 20px">
           <el-step :title="accountType+'验证'"></el-step>
@@ -152,7 +152,7 @@
       </div>
       <div>
         <el-button @click="goBack" v-if="step==0">返回</el-button>
-        <el-button @click="lastStep" v-if="step>0">上一步</el-button>
+        <el-button @click="lastStep" v-if="step>1">上一步</el-button>
         <el-button @click="nextStep" v-if="step<2">下一步</el-button>
         <el-button v-if="step==2">完成</el-button>
       </div>
@@ -171,6 +171,8 @@ export default {
       accountType: '', //手机号或邮箱
       typeSelected: false, //是否选择账号类型
       step: -1,
+      //暂时用于表示是否通过验证码验证
+      isCodeValidated: false,
       //城市级联数据
       cityOptions: options,
       //照片
@@ -220,7 +222,14 @@ export default {
     };
   },
   watch: {},
-  computed: {},
+  computed: {
+    urls: {
+      get: function() {
+        return this.$store.state.urls;
+      },
+      set: function() {}
+    }
+  },
   methods: {
     registerByPhone() {
       this.accountType = '手机号';
@@ -232,24 +241,122 @@ export default {
       this.step = 0;
       this.typeSelected = true;
     },
-    goBack() {
+    goBack() {//返回上一步
       this.accountType = '';
       this.step = -1;
       this.typeSelected = false;
     },
-    nextStep() {
-      if (this.step < 3 && this.step >= 0) {
-        this.step++;
+    nextStep() {//步骤跳转兼表单提交
+      if (this.step == 0) {//账号注册
+        if (
+          this.accountForm.account === '' ||
+          this.accountForm.password === ''
+        ) {
+          this.$message.error('账号或密码不能为空');
+        } else {
+          if (this.accountType == '手机号') {
+            if (this.isCodeValidated) {
+              console.log('手机号注册');
+              this.$post(this.urls.testUrl + '/register/ByPhoneNum', {
+                phoneNum: this.accountForm.account,
+                password: this.accountForm.password
+              }).then(
+                res => {
+                  this.step++;
+                  this.$message({
+                    message: '注册成功',
+                    type: 'success'
+                  });
+                },
+                err => {
+                  if (err.response) {
+                    let arr = err.response.data.errors;
+                    let arr1 = [];
+                    for (let i in arr) {
+                      arr1.push(arr[i]);
+                    }
+                    this.$message.error(arr1.join(','));
+                  }
+                }
+              );
+            } else {
+              this.$message({
+                message: '请输入验证码',
+                type: 'warning'
+              });
+            }
+          } else if (this.accountType == '邮箱') {
+            if (this.isCodeValidated) {
+              console.log('邮箱注册');
+              this.$post(this.urls.testUrl + '/register/ByPhoneNum', {
+                phoneNum: this.accountForm.account,
+                password: this.accountForm.password
+              }).then(
+                res => {
+                  this.step++;
+                  this.$message({
+                    message: '注册成功',
+                    type: 'success'
+                  });
+                },
+                err => {
+                  if (err.response) {
+                    let arr = err.response.data.errors;
+                    let arr1 = [];
+                    for (let i in arr) {
+                      arr1.push(arr[i]);
+                    }
+                    this.$message.error(arr1.join(','));
+                  }
+                }
+              );
+            } else {
+              this.$message({
+                message: '请输入验证码',
+                type: 'warning'
+              });
+            }
+          }
+        }
+      } else if (this.step == 1) {//个人信息填写
+      } else if (this.step == 2) {//学生信息填写
       }
+      // if (this.step < 3 && this.step >= 0) {
+      //   this.step++;
+      // }
     },
-    lastStep() {
-      if (this.step > 0 && this.step <= 2) {
+    lastStep() {//返回
+      if (this.step > 1 && this.step <= 2) {
         this.step--;
       }
     },
-    getCode() {
+    getCode() {//获取验证码，目前仅验证账号格式是否正确
       if (this.accountType == '手机号') {
+        if (this.$validatePhoneNum(this.accountForm.account)) {
+          this.isCodeValidated = true;
+          this.$message({
+            message: '验证码已发送',
+            type: 'success'
+          });
+        } else {
+          this.$message({
+            message: '请输入正确的手机号',
+            type: 'warning'
+          });
+        }
       } else if (this.accountType == '邮箱') {
+        if (this.$validateEmail(this.accountForm.account)) {
+          this.isCodeValidated = true;
+          this.$message({
+            message: '验证码已发送',
+            type: 'success'
+          });
+        } else {
+          this.$message({
+            message: '请输入正确的邮箱',
+            type: 'warning'
+          });
+        }
       }
     },
     handleChange(value) {
@@ -279,7 +386,7 @@ export default {
   height: 300px;
 }
 .selecteButton i {
-  margin-top:50px;
+  margin-top: 50px;
   margin-bottom: 60px;
   font-size: 80px;
 }
