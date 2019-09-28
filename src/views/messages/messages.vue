@@ -18,7 +18,7 @@
               >
                 <el-card class="box-card" style="padding:10px">
                   <el-col :span="6">
-                    <img style="float:left;width:100%" :src="item.photo"  />
+                    <img style="float:left;width:100%" :src="item.photo" />
                   </el-col>
                   <el-col :span="16" :push="2">
                     <el-row>
@@ -30,12 +30,12 @@
                     <el-row>
                       <p>Hello JunhaoXue! Nice to meet you. So nice that you are engineering...</p>
                     </el-row>
-                    <el-row >
+                    <el-row>
                       <el-button
                         type="text"
                         class="button"
                         @click="readMessage()"
-                         style="float:right;"
+                        style="float:right;"
                       >阅读全部</el-button>
                     </el-row>
                   </el-col>

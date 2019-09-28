@@ -1,50 +1,40 @@
 <template>
   <div class="container" style="padding:100px">
-    <el-card class="box-card" body-style="padding:40px">
-      <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="收到的消息" name="first">
-          <el-row :gutter="20">
-            <el-col :span="18" style="padding:20px">
-              <h1 style="float:left">你发出的消息</h1>
-            </el-col>
-          </el-row>
-          <el-row>
-            <div
-              class="container"
-              v-for="item in messages"
-              :key="item.message_id"
-              style="padding:10px"
-            >
-              <el-card class="box-card" style="padding:10px">
-                <el-col :span="4">
-                  <img style="float:left;padding:20px" :src="item.photo" />
-                </el-col>
-                <el-col :span="20">
-                  <el-row>
-                    <h4
-                      style="float:left"
-                    >{{item.nickname}}-{{item.university}}-{{item.speciality}}-{{item.grade}}</h4>
-                    <h5 style="float:right">2019年3月23日</h5>
-                  </el-row>
-                  <el-row>
-                    <p>Hello JunhaoXue! Nice to meet you. So nice that you are engineering...</p>
-                  </el-row>
-                  <el-row>
-                    <el-button
-                      type="text"
-                      class="button"
-                      @click="readMessage()"
-                      style="float:right;"
-                    >阅读全部</el-button>
-                  </el-row>
-                </el-col>
-              </el-card>
-            </div>
-          </el-row>
-        </el-tab-pane>
-        <el-tab-pane label="发出的消息" name="second">发出的消息</el-tab-pane>
-      </el-tabs>
-    </el-card>
+    <h1>来信</h1>
+    <div class="container">
+      <el-row>
+        <h5>金智媛：(是否已读：{{isRead?"Yes":"No"}})</h5>
+        <h5>2018-09-12 6:12</h5>
+        <p>
+          Hey there!
+          I would be honored to maintain a correspondence with you! My name is Joe and I am also a 17 year old high school student.
+          To Kill a Mockingbird is a really insightful work; Harper Lee constructs an engaging narrative while exploring the provocative aspects of American society, specifically the racial and gender constructs of the time time. It's an excellent coming of age story and I, too, enjoy it. Have you read Go Set a Watchmen yet? I haven't had the opportunity to do so, but I hear it's just as controversial.
+          It's so great to meet a fellow writer! I would love to read some of your work! Always pursue your dreams...I haven't read any of your work but you seem to have the passion to make it as a writer.
+          I absolutely adore Five Hundred Days of Summer. Despite the fact that it claims to be otherwise, it is my favorite romantic comedy. (Perfect blend of cynicism and romanticism)
+          I would love to develop a friendship! One final question though- what is your name? XD I don't believe that you explicated stated it! Regardless, hope to hear from you soon!
+          Your (future) friend,
+          Joe
+        </p>
+      </el-row>
+    </div>
+    <div class="container">
+      <el-row>
+        <el-input
+          type="textarea"
+          :autosize="{ minRows: 10, maxRows: 20}"
+          placeholder="请输入内容"
+          v-model="messageReply"
+          maxlength="1000"
+          show-word-limit
+        ></el-input>
+      </el-row>
+      <el-row>
+        <div class="container" style="padding:20px">
+          <el-button type="success" icon="el-icon-document" round>暂存</el-button>
+          <el-button type="primary" icon="el-icon-s-promotion" round>寄出</el-button>
+        </div>
+      </el-row>
+    </div>
   </div>
 </template>
 <script>
@@ -149,7 +139,9 @@ export default {
           photo:
             "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569658860&di=f4d738760b420cc3883d8253252d8e48&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201411%2F08%2F20141108083126_QARVZ.jpeg"
         }
-      ]
+      ],
+      isRead: true,
+      messageReply: ""
     };
   },
   methods: {
