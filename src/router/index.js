@@ -11,7 +11,7 @@ import Register from "@/views/register/register.vue";
 
 import Profile from "@/views/user/profile.vue";
 
-import ReceivedMessages from "@/views/messages/receivedMessages.vue";
+import Messages from "@/views/messages/messages.vue";
 import SentMessages from "@/views/messages/sentMessages.vue";
 
 import FriendsRequest from "@/views/friends/friendsRequest.vue";
@@ -102,9 +102,9 @@ export default new Router({
       }
     },
     {
-      path: "/receivedMessages",
-      name: "receivedMessages",
-      components: { default: ReceivedMessages, header: MainNavbar, footer: MainFooter },
+      path: "/messages",
+      name: "messages",
+      components: { default: Messages, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }

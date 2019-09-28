@@ -6,8 +6,8 @@
     <el-menu-item index="/friendsApproved">
       <router-link to="/friendsApproved" class="router-link-active">朋友</router-link>
     </el-menu-item>
-    <el-menu-item index="/receivedMessages">
-      <router-link to="/receivedMessages" class="router-link-active">来信</router-link>
+    <el-menu-item index="/messages">
+      <router-link to="/messages" class="router-link-active">来信</router-link>
     </el-menu-item>
     <el-menu-item index="/expertiseCommunity">
       <router-link to="/expertiseCommunity" class="router-link-active">专业社区</router-link>
@@ -68,8 +68,8 @@ export default {
         case "/friendsApproved":
           this.$router.replace("/friendsApproved");
           break;
-        case "/receivedMessages":
-          this.$router.replace("/receivedMessages");
+        case "/messages":
+          this.$router.replace("/messages");
           break;
         case "/expertiseCommunity":
           this.$router.replace("/expertiseCommunity");
