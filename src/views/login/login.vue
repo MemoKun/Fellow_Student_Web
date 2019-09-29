@@ -35,16 +35,16 @@
 }
 </style>
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   data() {
     return {
-      baseUrl: 'http://39.100.52.175:8080',
+      baseUrl: "http://39.100.52.175:8080",
       loginForm: {
-        account: '',
-        password: ''
+        account: "",
+        password: ""
       },
-      userToken: ''
+      userToken: ""
     };
   },
   watch: {},
@@ -58,52 +58,55 @@ export default {
   },
   methods: {
     login() {
-      console.log('login');
-      if (this.loginForm.account === '' || this.loginForm.password === '') {
-        this.$message.error('账号或密码不能为空');
+      console.log("login");
+      if (this.loginForm.account === "" || this.loginForm.password === "") {
+        this.$message.error("账号或密码不能为空");
       } else {
-        if (this.$validatePhoneNum(this.loginForm.account)) {//判断账号格式
-          console.log('手机号登录');
-          this.$post(this.urls.testUrl + '/test/test4', {
+        if (this.$validatePhoneNum(this.loginForm.account)) {
+          //判断账号格式
+          console.log("手机号登录");
+          this.$post(this.urls.login, {
             phoneNum: this.loginForm.account,
             password: this.loginForm.password
           }).then(
             res => {
+              console.log("等待读取状态码");
               if (res.data.data.base.status == 200) {
-                console.log('success');
+                console.log("success");
                 this.userToken = res.data.data.token;
-                this.$store.commit('changeLogin', userToken);
+                this.$store.commit("changeLogin", userToken);
                 this.$message({
-                  message: '登录成功',
-                  type: 'success'
+                  message: "登录成功",
+                  type: "success"
                 });
               }
             },
             err => {
+              console.log("手机号登录成功");
               if (err.response) {
                 let arr = err.response.data.errors;
                 let arr1 = [];
                 for (let i in arr) {
                   arr1.push(arr[i]);
                 }
-                this.$message.error(arr1.join(','));
+                this.$message.error(arr1.join(","));
               }
             }
           );
         } else if (this.$validateEmail(this.loginForm.account)) {
-          console.log('邮箱登录');
-          this.$post(this.urls.testUrl + '/test/test4', {
+          console.log("邮箱登录");
+          this.$post(this.urls.testUrl + "/test/test4", {
             email: this.loginForm.account,
             password: this.loginForm.password
           }).then(
             res => {
               if (res.data.data.base.status == 200) {
-                console.log('success');
+                console.log("success");
                 this.userToken = res.data.data.token;
-                this.$store.commit('changeLogin', userToken);
+                this.$store.commit("changeLogin", userToken);
                 this.$message({
-                  message: '登录成功',
-                  type: 'success'
+                  message: "登录成功",
+                  type: "success"
                 });
               }
             },
@@ -114,7 +117,7 @@ export default {
                 for (let i in arr) {
                   arr1.push(arr[i]);
                 }
-                this.$message.error(arr1.join(','));
+                this.$message.error(arr1.join(","));
               }
             }
           );
@@ -122,7 +125,7 @@ export default {
       }
     },
     register() {
-      this.$router.replace('/account/register');
+      this.$router.replace("/account/register");
     }
   },
   created() {},
