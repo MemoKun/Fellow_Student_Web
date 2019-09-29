@@ -34,7 +34,7 @@ import{
 Vue.use(ElementUI);
 Vue.config.productionTip = false
 Vue.prototype.$ajax = axios
-Vue.prototype.qs = qs
+Vue.prototype.$qs = qs
 Vue.prototype.$post = post;
 Vue.prototype.$fetch = fetch;
 Vue.prototype.$patch = patch;

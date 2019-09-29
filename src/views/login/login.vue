@@ -62,22 +62,22 @@ export default {
       if (this.loginForm.account === '' || this.loginForm.password === '') {
         this.$message.error('账号或密码不能为空');
       } else {
-        if (this.$validatePhoneNum(this.loginForm.account)) {//判断账号格式
+        if (this.$validatePhoneNum(this.loginForm.account)) {
+          //判断账号格式
           console.log('手机号登录');
-          this.$post(this.urls.testUrl + '/test/test4', {
+          this.$post(this.urls.testUrl + '/login', {
             phoneNum: this.loginForm.account,
             password: this.loginForm.password
           }).then(
             res => {
-              if (res.data.data.base.status == 200) {
-                console.log('success');
-                this.userToken = res.data.data.token;
-                this.$store.commit('changeLogin', userToken);
-                this.$message({
-                  message: '登录成功',
-                  type: 'success'
-                });
-              }
+              console.log('success');
+              this.userToken = res.data.token;
+              console.log(res.data);
+              this.$store.commit('changeLogin', userToken);
+              this.$message({
+                message: '登录成功',
+                type: 'success'
+              });
             },
             err => {
               if (err.response) {
@@ -92,14 +92,15 @@ export default {
           );
         } else if (this.$validateEmail(this.loginForm.account)) {
           console.log('邮箱登录');
-          this.$post(this.urls.testUrl + '/test/test4', {
+          this.$post(this.urls.testUrl + '/login', {
             email: this.loginForm.account,
             password: this.loginForm.password
           }).then(
             res => {
               if (res.data.data.base.status == 200) {
                 console.log('success');
-                this.userToken = res.data.data.token;
+                this.userToken = res.data.token;
+                console.log(res.data);
                 this.$store.commit('changeLogin', userToken);
                 this.$message({
                   message: '登录成功',
