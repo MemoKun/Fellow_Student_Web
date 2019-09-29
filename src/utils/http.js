@@ -10,7 +10,7 @@ import {
 } from './auth.js';
 
 axios.defaults.timeout = 10000;
-axios.defaults.baseURL = 'https://www.baidu.com';
+axios.defaults.baseURL = 'http://39.100.52.175:8080';
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
 // http request 拦截器
