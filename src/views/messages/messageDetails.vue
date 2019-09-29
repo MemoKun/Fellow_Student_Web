@@ -3,38 +3,6 @@
     <h1>来信</h1>
     <div class="container">
       <el-row>
-        <h5>金智媛：(是否已读：{{isRead?"Yes":"No"}})</h5>
-        <h5>2018-09-12 6:12</h5>
-        <p>
-          Hey there!
-          I would be honored to maintain a correspondence with you! My name is Joe and I am also a 17 year old high school student.
-          To Kill a Mockingbird is a really insightful work; Harper Lee constructs an engaging narrative while exploring the provocative aspects of American society, specifically the racial and gender constructs of the time time. It's an excellent coming of age story and I, too, enjoy it. Have you read Go Set a Watchmen yet? I haven't had the opportunity to do so, but I hear it's just as controversial.
-          It's so great to meet a fellow writer! I would love to read some of your work! Always pursue your dreams...I haven't read any of your work but you seem to have the passion to make it as a writer.
-          I absolutely adore Five Hundred Days of Summer. Despite the fact that it claims to be otherwise, it is my favorite romantic comedy. (Perfect blend of cynicism and romanticism)
-          I would love to develop a friendship! One final question though- what is your name? XD I don't believe that you explicated stated it! Regardless, hope to hear from you soon!
-          Your (future) friend,
-          Joe
-        </p>
-      </el-row>
-    </div>
-    <div class="container">
-      <el-row>
-        <el-input
-          type="textarea"
-          :autosize="{ minRows: 10, maxRows: 20}"
-          placeholder="请输入内容"
-          v-model="messageReply"
-          maxlength="1000"
-          show-word-limit
-        ></el-input>
-      </el-row>
-      <el-row>
-        <div class="container" style="padding:20px">
-          <el-button type="success" icon="el-icon-document" round>暂存</el-button>
-          <el-button type="primary" icon="el-icon-s-promotion" round>寄出</el-button>
-        </div>
-      </el-row>
-      <el-row>
         <mavon-editor
           class="md"
           :value="articleDetail.context"
@@ -45,8 +13,15 @@
           :scrollStyle="prop.scrollStyle"
         ></mavon-editor>
       </el-row>
+      <el-divider>回复TA吧～</el-divider>
       <el-row>
         <mavon-editor v-model="context" :toolbars="toolbars" @keydown="handleClick" />
+      </el-row>
+      <el-row>
+        <div class="container" style="padding:20px">
+          <el-button type="success" icon="el-icon-document" round>暂存</el-button>
+          <el-button type="primary" icon="el-icon-s-promotion" round>寄出</el-button>
+        </div>
       </el-row>
     </div>
   </div>
@@ -179,8 +154,23 @@ export default {
         }
       ],
       isRead: true,
-      messageReply: ""
+      messageReply: "",
+      articleDetail: {
+        context: "## 任正非思想之路"
+      }
     };
+  },
+  computed: {
+    prop() {
+      let data = {
+        subfield: false, // 单双栏模式
+        defaultOpen: "preview", //edit： 默认展示编辑区域 ， preview： 默认展示预览区域
+        editable: false,
+        toolbarsFlag: false,
+        scrollStyle: true
+      };
+      return data;
+    }
   },
   methods: {
     handleClick(tab, event) {
