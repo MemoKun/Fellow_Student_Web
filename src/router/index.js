@@ -11,12 +11,12 @@ import Register from "@/views/register/register.vue";
 
 import Profile from "@/views/user/profile.vue";
 
-import ReceivedMessages from "@/views/messages/receivedMessages.vue";
-import SentMessages from "@/views/messages/sentMessages.vue";
+import Messages from "@/views/messages/messages.vue";
+import MessageDetails from "@/views/messages/messageDetails.vue";
 
 import FriendsRequest from "@/views/friends/friendsRequest.vue";
 import FriendsApproved from "@/views/friends/friendsApproved.vue";
-import FriendsWaitingApproved from "@/views/friends/friendsWaitingApproved.vue";
+import FriendDetails from "@/views/friends/friendDetails.vue";
 
 import ExpertiseCommunity from "@/views/expertiseCommunity/expertiseCommunity.vue";
 
@@ -93,27 +93,27 @@ export default new Router({
       }
     },
     {
-      path: "/friendsWaitingApproved",
-      name: "friendsWaitingApproved",
-      components: { default: FriendsWaitingApproved, header: MainNavbar, footer: MainFooter },
+      path: "/friendDetails",
+      name: "friendDetails",
+      components: { default: FriendDetails, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
       }
     },
     {
-      path: "/receivedMessages",
-      name: "receivedMessages",
-      components: { default: ReceivedMessages, header: MainNavbar, footer: MainFooter },
+      path: "/messages",
+      name: "messages",
+      components: { default: Messages, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
       }
     },
     {
-      path: "/sentMessages",
-      name: "sentMessages",
-      components: { default: SentMessages, header: MainNavbar, footer: MainFooter },
+      path: "/messageDetails",
+      name: "messageDetails",
+      components: { default: MessageDetails, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
