@@ -2,8 +2,11 @@
   <div class="container" style="padding:100px">
     <el-card class="box-card" body-style="padding:60px">
       <el-row>
-        <h1 style="font-style:bold;float:left;margin:auto;">{{user.username}}'s PROFILE</h1>
-        <p style="font-style:italic;text-decoration:underline;float:right">返回搜索列表</p>
+        <h1 class="profileTitle">{{user.username}}的简历</h1>
+        <el-link
+          type="primary"
+          style="font-style:italic;text-decoration:underline;float:right"
+        >返回搜索列表</el-link>
       </el-row>
       <el-row>
         <p style="float:left;">(userID: {{user.userId}})</p>
@@ -12,16 +15,12 @@
         <el-col span="8">
           <el-card>
             <img :src="user.photo" style="width:100%;" />
-            <p class="cardTitle">Member since {{user.joinDate}}</p>
-            <p class="cardTitle">Profile viewed {{user.viewTimes}} times</p>
-            <p class="cardTitle">Last logged in {{user.lastLogTime}} ago</p>
+            <p class="cardTitle">会员，加入于{{user.joinDate}}</p>
+            <p class="cardTitle">简历被浏览了 {{user.viewTimes}} 次</p>
+            <p class="cardTitle">上一次登录是在 {{user.lastLogTime}} 以前</p>
             <el-row>
-              <el-button icon="el-icon-search" circle></el-button>
-              <el-button type="primary" icon="el-icon-edit" circle></el-button>
-              <el-button type="success" icon="el-icon-check" circle></el-button>
-              <el-button type="info" icon="el-icon-message" circle></el-button>
-              <el-button type="warning" icon="el-icon-star-off" circle></el-button>
-              <el-button type="danger" icon="el-icon-delete" circle></el-button>
+              <el-button type="primary" v-if="addFlag" icon="el-icon-star-off" round>添加收藏</el-button>
+              <el-button type="success" v-if="addFlag" icon="el-icon-star-off" round>申请好友</el-button>
             </el-row>
             <el-row>
               <div style="margin:20px">
@@ -58,7 +57,7 @@
               >
                 <el-card :body-style="{ padding: '0px' }" span="8">
                   <img :src="item.photo" class="image" width="100%" />
-                  <div style="padding: 14px;">
+                  <div class="friendsCard-title">
                     <span>{{item.nickname}}</span>
                   </div>
                 </el-card>
@@ -69,14 +68,15 @@
         <el-col span="10">
           <div class="container" style="margin-left:40px">
             <h2 class="title">{{user.username}}</h2>
-            <h4 class="littleTitle">家乡：{{user.homeCountry}}</h4>
-            <h4 class="littleTitle">现居：{{user.birthCountry}}</h4>
-            <h4 class="littleTitle">年龄：{{user.age}} 岁</h4>
-            <h4 class="littleTitle">性别：{{user.sex}}</h4>
-            <h4 class="littleTitle">寻找 {{user.lookingForSex}} 朋友</h4>
-            <h4 class="littleTitle">Between {{user.ageBetweenFrom}} and {{user.ageBetweenTo}}</h4>
-            <h4 class="littleTitle">You have sent {{user.messageCount}} messages to this member</h4>
-            <h1 class="littleTitle" style="font-style:italic;">“ {{user.introduction}} ”</h1>
+            <p class="littleTitle">年龄：{{user.age}} 岁</p>
+            <p class="littleTitle">性别：{{user.sex}}</p>
+            <p class="littleTitle">家乡：{{user.homeCountry}}</p>
+            <p class="littleTitle">现居：{{user.birthCountry}}</p>
+            <p class="littleTitle">学校：{{user.school}}</p>
+            <p class="littleTitle">专业：{{user.major}}</p>
+            <p class="littleTitle">寻找 {{user.lookingForSex}} 朋友</p>
+            <p class="littleTitle">Between {{user.ageBetweenFrom}} and {{user.ageBetweenTo}}</p>
+            <p class="introduction">“ {{user.introduction}} ”</p>
           </div>
           <h1>评论</h1>
           <div class="container" v-for="item in comments" :key="item.comment_id">
@@ -87,45 +87,51 @@
                 </div>
               </el-col>
               <el-col span="18">
-                <el-row>
-                  <p>{{item.nickname}}</p>
-                  <p>{{item.comment}}</p>
+                <el-row style="margin:10px">
+                  <p class="commentCard-title">{{item.nickname}}</p>
+                  <p class="commentCard-p">{{item.comment}}</p>
                 </el-row>
               </el-col>
             </el-card>
+          </div>
+          <div class="container" style="margin:20px">
+            <h4>有什么想说的话，就留言吧</h4>
+            <el-input
+              type="textarea"
+              :autosize="{ minRows: 4, maxRows: 8}"
+              placeholder="请输入内容"
+              v-model="textarea2"
+              maxlength="60"
+              show-word-limit
+              style="margin-bottom:30px"
+            ></el-input>
+            <el-button type="primary" round style="float:right">留言</el-button>
           </div>
         </el-col>
         <el-col span="6">
           <div style="margin-left:20px">
             <el-row style="margin-bottom:20px">
-              <el-button type="primary" v-if="addFlag" icon="el-icon-star-off" round>添加收藏</el-button>
-            </el-row>
-            <el-row style="margin-bottom:20px">
-              <el-button type="primary" icon="el-icon-share" round>申请好友</el-button>
+              <h3>发一封消息吧！</h3>
             </el-row>
             <el-row>
-              <el-input type="textarea" :rows="20" placeholder="请输入内容" v-model="textarea" style="margin-bottom:20px"></el-input>
+              <el-input
+                type="textarea"
+                :rows="20"
+                placeholder="请输入内容"
+                v-model="textarea"
+                style="margin-bottom:20px"
+              ></el-input>
             </el-row>
             <el-row style="margin-bottom:20px">
               <el-button type="primary" icon="el-icon-chat-dot-round" round>寄信</el-button>
             </el-row>
-            <el-row></el-row>
+            <el-row>
+              <el-alert
+                title="提示与帮助"
+                type="warning"
+              >You might be automatically logged out if you type for more than 20 minutes. We're working on fixing this. In the meanwhile please copy your finished text before you send it. That way, if you get logged out, you can log back in, come back to this page and paste it back. We apologize for this.</el-alert>
+            </el-row>
           </div>
-        </el-col>
-      </el-row>
-
-      <!-- <el-divider content-position="right">
-        <i class="el-icon-user-solid"></i>
-      </el-divider>-->
-      <el-row :gutter="100">
-        <el-col span="12">
-          <el-row>
-            <el-col :span="8"></el-col>
-
-            <el-col :span="8" :push="4"></el-col>
-          </el-row>
-          <br />
-          <br />
         </el-col>
       </el-row>
     </el-card>
@@ -298,50 +304,6 @@ export default {
             "hi subeen. ur name remind me of korean drama at eighteen, the name of the main role is yoo soo bin :D hope we can be friend :)",
           photo:
             "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3284581089,709717092&fm=26&gp=0.jpg"
-        },
-        {
-          user_id: 6,
-          comment_id: 6,
-          nickname: "Yonna",
-          university: "武汉大学",
-          lastLoginAt: "1 min 26 sec ago",
-          comment:
-            "hi subeen. ur name remind me of korean drama at eighteen, the name of the main role is yoo soo bin :D hope we can be friend :)",
-          photo:
-            "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1743168392,2407869980&fm=26&gp=0.jpg"
-        },
-        {
-          user_id: 7,
-          comment_id: 7,
-          nickname: "Yonna",
-          university: "延世大学",
-          lastLoginAt: "1 min 29 sec ago",
-          comment:
-            "hi subeen. ur name remind me of korean drama at eighteen, the name of the main role is yoo soo bin :D hope we can be friend :)",
-          photo:
-            "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1392078492,1897050294&fm=26&gp=0.jpg"
-        },
-        {
-          user_id: 8,
-          comment_id: 8,
-          nickname: "Yonna",
-          university: "首尔大学",
-          lastLoginAt: "1 min 34 sec ago",
-          comment:
-            "hi subeen. ur name remind me of korean drama at eighteen, the name of the main role is yoo soo bin :D hope we can be friend :)",
-          photo:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569658860&di=f4d738760b420cc3883d8253252d8e48&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201411%2F08%2F20141108083126_QARVZ.jpeg"
-        },
-        {
-          user_id: 9,
-          comment_id: 9,
-          nickname: "Yonna",
-          university: "中央民族大学",
-          lastLoginAt: "1 min 14 sec ago",
-          comment:
-            "hi subeen. ur name remind me of korean drama at eighteen, the name of the main role is yoo soo bin :D hope we can be friend :)",
-          photo:
-            "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=4176040192,3002869256&fm=26&gp=0.jpg"
         }
       ],
       friends: [
@@ -446,14 +408,16 @@ export default {
       ],
       textarea: "",
       user: {
-        username: "Yonna",
+        username: "金智媛",
         userId: 11638888,
         photo:
-          "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567416535125&di=896599a1ca6df02dbe3108c105696a15&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201611%2F11%2F20161111142253_KJ4kV.jpeg",
+          "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569063950234&di=f9e666fa5b2219e12cd1e0119b6a692d&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201406%2F03%2F20140603205522_ZirQE.thumb.600_0.jpeg",
         homeCountry: "China",
         birthCountry: "China",
         age: "17",
         sex: "女",
+        school: "中南大学",
+        major: "计算机科学与技术",
         lookingForSex: "Female/Male",
         ageBetweenFrom: 16,
         ageBetweenTo: 25,
@@ -479,7 +443,7 @@ export default {
 <style scoped>
 .title {
   font-style: bold;
-  font-size: 48px;
+  font-size: 36px;
   text-align: left;
   margin: 10px 0px;
 }
@@ -490,5 +454,29 @@ export default {
 .cardTitle {
   text-align: left;
   margin: 10px 20px;
+}
+
+.profileTitle {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-style: bold;
+  font-size: 36px;
+  text-align: left;
+  margin: 10px 0px;
+}
+
+.introduction {
+  text-align: left;
+}
+.commentCard {
+}
+.commentCard-title {
+  text-align: left;
+}
+.commentCard-p {
+  text-align: left;
+}
+.friendsCard-title {
+  margin: 5px;
 }
 </style>
