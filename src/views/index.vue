@@ -8,7 +8,6 @@
           <h2 style="color:black">俱怀逸兴壮思飞 欲上青天览明月 在这里找到志同道合的伙伴</h2>
         </div>
       </el-row>
-      <!-- <h1>寻找你的伙伴</h1> -->
 
       <el-row :gutter="20">
         <el-card>
@@ -16,46 +15,51 @@
           <el-col :span="12">
             <div class="container" style="margin:20px">
               <el-card class="box-card" body-style="padding:40px">
-                <h2>Quick Search</h2>
-                <el-form v-model="searchConditions" label-position="right" label-width="100px">
-                  <el-form-item label="性别">
-                    <el-radio-group v-model="searchConditions.gender">
-                      <el-radio label="男"></el-radio>
-                      <el-radio label="女"></el-radio>
-                    </el-radio-group>
-                  </el-form-item>
-                  <el-form-item label="年龄">
-                    <el-col :span="10">
-                      <el-input v-model="searchConditions.age_from"></el-input>
-                    </el-col>
-                    <el-col class="line" :span="4">至</el-col>
-                    <el-col :span="10">
-                      <el-input v-model="searchConditions.age_to"></el-input>
-                    </el-col>
-                  </el-form-item>
-                  <el-form-item label="学校与专业">
-                    <el-col :span="20">
-                      <!-- <el-select></el-select> -->
-                    </el-col>
-                  </el-form-item>
-                  <el-form-item label="用户条件">
-                    <el-checkbox-group v-model="searchConditions.otherConditions">
-                      <el-checkbox label="照片" name="otherConditions"></el-checkbox>
-                      <el-checkbox label="个人介绍" name="otherConditions"></el-checkbox>
-                      <el-checkbox label="通过学生认证" name="otherConditions"></el-checkbox>
-                      <el-checkbox label="Fellow Prime会员" name="otherConditions"></el-checkbox>
-                    </el-checkbox-group>
-                  </el-form-item>
-                  <el-form-item label="搜索结果排序">
-                    <el-radio-group v-model="searchConditions.orderBy">
-                      <el-radio label="上次登录时间"></el-radio>
-                      <el-radio label="注册日期"></el-radio>
-                    </el-radio-group>
-                  </el-form-item>
-                  <el-form-item>
-                    <el-button type="primary" @click="startSearch">Find Fellow</el-button>
-                  </el-form-item>
-                </el-form>
+                <h2>寻找朋友</h2>
+                <el-row>
+                  <el-form v-model="searchConditions" label-position="right" label-width="100px">
+                    <el-form-item label="性别" style="float:left">
+                      <el-radio-group v-model="searchConditions.gender">
+                        <el-radio label="男"></el-radio>
+                        <el-radio label="女"></el-radio>
+                      </el-radio-group>
+                    </el-form-item>
+                    <el-form-item label="年龄" style="float:left">
+                      <el-col :span="3">
+                        <el-input v-model="searchConditions.age_from"></el-input>
+                      </el-col>
+                      <el-col class="line" :span="2">至</el-col>
+                      <el-col :span="3">
+                        <el-input v-model="searchConditions.age_to"></el-input>
+                      </el-col>
+                      <el-col class="line" :span="2">岁</el-col>
+                    </el-form-item>
+                    <el-form-item label="学校与专业" style="float:left">
+                      <el-cascader :options="options">
+                        <template slot-scope="{ node, data }">
+                          <span>{{ data.label }}</span>
+                          <span v-if="!node.isLeaf">({{ data.children.length }})</span>
+                        </template>
+                      </el-cascader>
+                    </el-form-item>
+                    <el-form-item label="用户条件" style="float:left">
+                      <el-checkbox-group v-model="searchConditions.otherConditions">
+                        <el-checkbox label="照片" name="otherConditions"></el-checkbox>
+                        <el-checkbox label="个人介绍" name="otherConditions"></el-checkbox>
+                        <el-checkbox label="Prime用户" name="otherConditions"></el-checkbox>
+                      </el-checkbox-group>
+                    </el-form-item>
+                    <el-form-item label="搜索结果排序" style="float:left">
+                      <el-radio-group v-model="searchConditions.orderBy">
+                        <el-radio label="上次登录时间"></el-radio>
+                        <el-radio label="注册时间"></el-radio>
+                      </el-radio-group>
+                    </el-form-item>
+                  </el-form>
+                </el-row>
+                <el-row>
+                  <el-button type="primary" @click="startSearch">Find Fellow</el-button>
+                </el-row>
               </el-card>
               <div>
                 <h2>Testimonials 推荐信</h2>
@@ -71,8 +75,7 @@
           <el-col :span="12">
             <div class="container" style="margin:20px">
               <h2>最近登录的用户</h2>
-
-              <div class="container">
+              <div>
                 <el-row v-for="(i,index) in (Math.ceil((lastLoginUsers.length / 4)))" :key="index">
                   <el-col
                     :span="6"
@@ -205,6 +208,10 @@ h1 {
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
 }
+
+.container {
+  margin: 20px;
+}
 </style>
 
 <script>
@@ -216,7 +223,7 @@ export default {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
         marginTop: "5px",
-        padding:"100px"
+        padding: "100px"
       },
       fits: ["fill", "contain", "cover", "none", "scale-down"],
       activeNames: "",
