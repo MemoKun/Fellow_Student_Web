@@ -82,11 +82,13 @@ export default {
             phoneNum: this.loginForm.account,
             password: this.loginForm.password
           }).then(
-            res => {
+            (response) => {
+              let res =response;
               console.log('success');
-              this.userToken = res.data.token;
-              console.log(res.data);
-              this.$store.commit('changeLogin', userToken);
+              this.userToken = res.token;
+              console.log("res:"+res);
+              console.log("restoken:"+res.token);
+              this.$store.commit('changeLogin', this.userToken);
               this.$message({
                 message: '登录成功',
                 type: 'success'
@@ -111,16 +113,14 @@ export default {
             password: this.loginForm.password
           }).then(
             res => {
-              if (res.data.data.base.status == 200) {
                 console.log('success');
-                this.userToken = res.data.token;
-                console.log(res.data);
-                this.$store.commit('changeLogin', userToken);
+                this.userToken = res.token;
+                console.log(res.token);
+                this.$store.commit('changeLogin', this.userToken);
                 this.$message({
                   message: '登录成功',
                   type: 'success'
                 });
-              }
             },
             err => {
               if (err.response) {

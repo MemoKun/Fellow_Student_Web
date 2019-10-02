@@ -71,7 +71,6 @@
               <el-input v-model="accountForm.code" placeholder="请输入收到的验证码" style="width:600px;">
                 <el-button slot="append" type="primary" @click="getCode" :disabled="btnDisabled">{{btntext}}</el-button>
               </el-input>
-              
             </span>
           </el-form-item>
         </el-form>
@@ -202,7 +201,7 @@ export default {
       //获取验证码后禁用按钮
       btntext: '获取验证码',
       btnDisabled: false,
-      disabeledTime: 0,
+      registerDisabeledTime: 0,
       backgroundStyle: {
         backgroundImage:
           'url(' + require('../../assets/largestk8nvmsatrcy0eb4.jpg') + ')',
@@ -390,7 +389,7 @@ export default {
             type: 'success'
           });
           //更改按钮样式，禁用60s
-          this.disabeledTime = 60;
+          this.registerDisabeledTime = 60;
           this.btnDisabled = true;
           this.timer();
         } else {
@@ -407,7 +406,7 @@ export default {
             type: 'success'
           });
           //更改按钮样式，禁用60s
-          this.disabeledTime = 60;
+          this.registerDisabeledTime = 60;
           this.btnDisabled = true;
           this.timer();
         } else {
@@ -419,15 +418,15 @@ export default {
       }
     },
     timer() {
-      if (this.disabeledTime > 0) {
-        this.$cookies.set('disabeledTime', this.disabeledTime);
-        this.disabeledTime--;
-        this.btntext = '请等待' + this.disabeledTime + 's';
+      if (this.registerDisabeledTime > 0) {
+        this.$cookies.set('registerDisabeledTime', this.registerDisabeledTime);
+        this.registerDisabeledTime--;
+        this.btntext = '请等待' + this.registerDisabeledTime + 's';
         this.btnDisabled=true;
         setTimeout(this.timer, 1000);
       } else {
-        this.$cookies.remove('disabeledTime');
-        this.disabeledTime = 0;
+        this.$cookies.remove('registerDisabeledTime');
+        this.registerDisabeledTime = 0;
         this.btnDisabled=false;
         this.btntext = '获取验证码';
       }
@@ -451,10 +450,10 @@ export default {
   },
   created() {},
   mounted() {
-   this.disabeledTime = this.$cookies.isKey('disabeledTime')
-      ? this.$cookies.get('disabeledTime')
+   this.registerDisabeledTime = this.$cookies.isKey('registerDisabeledTime')
+      ? this.$cookies.get('registerDisabeledTime')
       : 0;
-    this.btnDisabled = this.$cookies.isKey('disabeledTime')
+    this.btnDisabled = this.$cookies.isKey('registerDisabeledTime')
       ? true
       : false;
   }

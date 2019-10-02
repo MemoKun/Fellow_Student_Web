@@ -25,7 +25,7 @@ const store = new Vuex.Store({
     changeLogin(state,user){
       state.Authorization=user.Authorization;
       localStorage.setItem('Authorization',user.Authorization);
-      console.log("/store/index.js token存入成功")
+      console.log("/store/index.js token存入成功");
     }
   },
   modules: {

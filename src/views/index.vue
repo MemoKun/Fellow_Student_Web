@@ -1,7 +1,7 @@
 <template>
   <div :style="backgroundStyle">
     <el-row>
-      <el-col span="20" offset="2">
+      <el-col :span="20" :offset="2">
         <div>
           <el-row>
             <div class="container" style="margin-top:100px">
