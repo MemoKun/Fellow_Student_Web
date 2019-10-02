@@ -11,7 +11,7 @@ import axios from "axios";
 import qs from 'qs';
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
-
+import VueCookies from 'vue-cookies'
 import {
   fetch,
   post,
@@ -35,10 +35,11 @@ import {
 // }
 
 Vue.use(ElementUI);
-Vue.use(mavonEditor)
-Vue.config.productionTip = false
-Vue.prototype.$ajax = axios
-Vue.prototype.$qs = qs
+Vue.use(mavonEditor);
+Vue.use(VueCookies);
+Vue.config.productionTip = false;
+Vue.prototype.$ajax = axios;
+Vue.prototype.$qs = qs;
 Vue.prototype.$post = post;
 Vue.prototype.$fetch = fetch;
 Vue.prototype.$patch = patch;

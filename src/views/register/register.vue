@@ -1,21 +1,51 @@
 <template>
   <div>
     <!-- 选择手机或者邮箱验证 -->
-    <div v-if="!typeSelected" style="margin-top:200px;height:500px;">
-      <el-button @click="registerByPhone" class="selecteButton">
-        <i class="el-icon-mobile-phone"></i>
-        <br>
-        <div style="font-size:20px;">
-          手机号注册
-        </div>
-      </el-button>
-      <el-button @click="registerByEmail" class="selecteButton">
-        <i class="el-icon-message"></i>
-        <br>
-        <div style="font-size:20px;">
-          邮箱注册
-        </div>
-      </el-button>
+    <div v-if="!typeSelected">
+      <el-row>
+        <el-col :span="8">
+          <el-image style="width: 100%; height: 100%" :src="background" fit="fit"></el-image>
+        </el-col>
+        <el-col :span="11">
+          <div style="margin-top:150px;height:500px;margin-left:180px">
+            <el-row>
+              <div style="float:left">
+                <span class="title">欢迎注册Fellow</span>
+              </div>
+              <br />
+            </el-row>
+            <el-row>
+              <div>
+                <span class="slogan">我的故事，娓娓道来。</span>
+                <span>
+                  <el-link type="primary" class="contect">联系我们</el-link>
+                </span>
+              </div>
+            </el-row>
+            <el-row>
+              <div class="button-group">
+                <el-button @click="registerByPhone" class="selecteButton" type="primary">
+                  <i class="el-icon-mobile-phone"></i>
+                  <br />
+                  <div style="font-size:10px;">手机号注册</div>
+                </el-button>
+                <el-button @click="registerByEmail" class="selecteButton">
+                  <i class="el-icon-message"></i>
+                  <br />
+                  <div style="font-size:10px;">邮箱注册</div>
+                </el-button>
+              </div>
+            </el-row>
+            <el-row>
+              <div class="agreement">
+                <el-checkbox v-model="checked">
+                  <el-link>我已阅读并同意相关服务条款和隐私政策</el-link>
+                </el-checkbox>
+              </div>
+            </el-row>
+          </div>
+        </el-col>
+      </el-row>
     </div>
     <!-- 选择手机或邮箱验证后 -->
     <div v-else style="margin-bottom:100px">
@@ -34,13 +64,14 @@
           </el-form-item>
           <el-form-item label="密码">
             <el-input v-model="accountForm.password" placeholder="请输入密码" type="password" style="width:600px"
-              show-password>
-            </el-input>
+              show-password></el-input>
           </el-form-item>
           <el-form-item label="验证码">
             <span>
-              <el-input v-model="accountForm.code" placeholder="请输入收到的验证码" style="width:480px;"></el-input>
-              <el-button type="primary" @click="getCode">获取验证码</el-button>
+              <el-input v-model="accountForm.code" placeholder="请输入收到的验证码" style="width:600px;">
+                <el-button slot="append" type="primary" @click="getCode" :disabled="btnDisabled">{{btntext}}</el-button>
+              </el-input>
+              
             </span>
           </el-form-item>
         </el-form>
@@ -51,8 +82,7 @@
           <el-form-item label="昵称">
             <div style="width:300px">
               <el-input v-model="userInfoForm.nickname" placeholder="请输入昵称" type="text" maxlength="10" clearable
-                show-word-limit>
-              </el-input>
+                show-word-limit></el-input>
             </div>
           </el-form-item>
           <el-form-item label="性别">
@@ -80,7 +110,7 @@
               <i class="el-icon-plus"></i>
             </el-upload>
             <el-dialog :visible.sync="dialogVisible">
-              <img width="100%" :src="dialogImageUrl" alt="">
+              <img width="100%" :src="dialogImageUrl" alt />
             </el-dialog>
           </el-form-item>
         </el-form>
@@ -158,16 +188,28 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
 import options from './../../utils/country-data.js';
+
 export default {
   components: {},
   props: {},
   data() {
     return {
+      checked: false,
+      //获取验证码后禁用按钮
+      btntext: '获取验证码',
+      btnDisabled: false,
+      disabeledTime: 0,
+      backgroundStyle: {
+        backgroundImage:
+          'url(' + require('../../assets/largestk8nvmsatrcy0eb4.jpg') + ')',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: '100%'
+      },
+      background: require('../../assets/501298720.jpg'),
       accountType: '', //手机号或邮箱
       typeSelected: false, //是否选择账号类型
       step: -1,
@@ -235,19 +277,24 @@ export default {
       this.accountType = '手机号';
       this.step = 0;
       this.typeSelected = true;
+      this.timer();
     },
     registerByEmail() {
       this.accountType = '邮箱';
       this.step = 0;
       this.typeSelected = true;
+      this.timer();
     },
-    goBack() {//返回上一步
+    goBack() {
+      //返回上一步
       this.accountType = '';
       this.step = -1;
       this.typeSelected = false;
     },
-    nextStep() {//步骤跳转兼表单提交
-      if (this.step == 0) {//账号注册
+    nextStep() {
+      //步骤跳转兼表单提交
+      if (this.step == 0) {
+        //账号注册
         if (
           this.accountForm.account === '' ||
           this.accountForm.password === ''
@@ -318,19 +365,23 @@ export default {
             }
           }
         }
-      } else if (this.step == 1) {//个人信息填写
-      } else if (this.step == 2) {//学生信息填写
+      } else if (this.step == 1) {
+        //个人信息填写
+      } else if (this.step == 2) {
+        //学生信息填写
       }
       // if (this.step < 3 && this.step >= 0) {
       //   this.step++;
       // }
     },
-    lastStep() {//返回
+    lastStep() {
+      //返回
       if (this.step > 1 && this.step <= 2) {
         this.step--;
       }
     },
-    getCode() {//获取验证码，目前仅验证账号格式是否正确
+    getCode() {
+      //获取验证码，目前仅验证账号格式是否正确
       if (this.accountType == '手机号') {
         if (this.$validatePhoneNum(this.accountForm.account)) {
           this.isCodeValidated = true;
@@ -338,6 +389,10 @@ export default {
             message: '验证码已发送',
             type: 'success'
           });
+          //更改按钮样式，禁用60s
+          this.disabeledTime = 60;
+          this.btnDisabled = true;
+          this.timer();
         } else {
           this.$message({
             message: '请输入正确的手机号',
@@ -351,12 +406,30 @@ export default {
             message: '验证码已发送',
             type: 'success'
           });
+          //更改按钮样式，禁用60s
+          this.disabeledTime = 60;
+          this.btnDisabled = true;
+          this.timer();
         } else {
           this.$message({
             message: '请输入正确的邮箱',
             type: 'warning'
           });
         }
+      }
+    },
+    timer() {
+      if (this.disabeledTime > 0) {
+        this.$cookies.set('disabeledTime', this.disabeledTime);
+        this.disabeledTime--;
+        this.btntext = '请等待' + this.disabeledTime + 's';
+        this.btnDisabled=true;
+        setTimeout(this.timer, 1000);
+      } else {
+        this.$cookies.remove('disabeledTime');
+        this.disabeledTime = 0;
+        this.btnDisabled=false;
+        this.btntext = '获取验证码';
       }
     },
     handleChange(value) {
@@ -377,18 +450,56 @@ export default {
     }
   },
   created() {},
-  mounted() {}
+  mounted() {
+   this.disabeledTime = this.$cookies.isKey('disabeledTime')
+      ? this.$cookies.get('disabeledTime')
+      : 0;
+    this.btnDisabled = this.$cookies.isKey('disabeledTime')
+      ? true
+      : false;
+  }
 };
 </script>
 <style>
+.title {
+  font-family: -apple-system;
+  font-size: 43px;
+  color: #000;
+  float: left;
+  text-align: left;
+  margin-bottom: 0px;
+  margin-right: 20px;
+}
+.contect {
+  font-size: 20px;
+  text-align: right;
+  margin-top: 8px;
+  padding: 2px;
+  margin-left: 10px;
+  float: right;
+}
+.slogan {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  text-align: left;
+  margin-top: 8px;
+  float: left;
+}
+.button-group {
+  float: left;
+  margin: 80px;
+}
+.agreement {
+  float: left;
+}
 .selecteButton {
-  width: 300px;
-  height: 300px;
+  width: 100px;
+  height: 100px;
 }
 .selecteButton i {
-  margin-top: 50px;
-  margin-bottom: 60px;
-  font-size: 80px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 30px;
 }
 .accountForm {
   width: 700px;
