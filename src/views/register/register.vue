@@ -1,21 +1,51 @@
 <template>
   <div>
     <!-- 选择手机或者邮箱验证 -->
-    <div v-if="!typeSelected" style="margin-top:200px;height:500px;">
-      <el-button @click="registerByPhone" class="selecteButton">
-        <i class="el-icon-mobile-phone"></i>
-        <br>
-        <div style="font-size:20px;">
-          手机号注册
-        </div>
-      </el-button>
-      <el-button @click="registerByEmail" class="selecteButton">
-        <i class="el-icon-message"></i>
-        <br>
-        <div style="font-size:20px;">
-          邮箱注册
-        </div>
-      </el-button>
+    <div v-if="!typeSelected">
+      <el-row>
+        <el-col span="8">
+          <el-image style="width: 100%; height: 100%" :src="background" fit="fit"></el-image>
+        </el-col>
+        <el-col span="11">
+          <div style="margin-top:150px;height:500px;margin-left:180px">
+            <el-row>
+              <div style="float:left">
+                <span class="title">欢迎注册Fellow</span>
+              </div>
+              <br />
+            </el-row>
+            <el-row>
+              <div>
+                <span class="slogan">我的故事，娓娓道来。</span>
+                <span>
+                  <el-link type="primary" class="contect">联系我们</el-link>
+                </span>
+              </div>
+            </el-row>
+            <el-row>
+              <div class="button-group">
+                <el-button @click="registerByPhone" class="selecteButton" type="primary">
+                  <i class="el-icon-mobile-phone"></i>
+                  <br />
+                  <div style="font-size:10px;">手机号注册</div>
+                </el-button>
+                <el-button @click="registerByEmail" class="selecteButton">
+                  <i class="el-icon-message"></i>
+                  <br />
+                  <div style="font-size:10px;">邮箱注册</div>
+                </el-button>
+              </div>
+            </el-row>
+            <el-row>
+              <div class="agreement">
+                <el-checkbox v-model="checked">
+                  <el-link>我已阅读并同意相关服务条款和隐私政策</el-link>
+                </el-checkbox>
+              </div>
+            </el-row>
+          </div>
+        </el-col>
+      </el-row>
     </div>
     <!-- 选择手机或邮箱验证后 -->
     <div v-else style="margin-bottom:100px">
@@ -30,12 +60,20 @@
       <div v-if="step==0" class="accountForm">
         <el-form ref="accountForm" v-model="accountForm" label-position="right" label-width="60px">
           <el-form-item :label="accountType">
-            <el-input v-model="accountForm.account" :placeholder="'请输入'+accountType" style="width:600px"></el-input>
+            <el-input
+              v-model="accountForm.account"
+              :placeholder="'请输入'+accountType"
+              style="width:600px"
+            ></el-input>
           </el-form-item>
           <el-form-item label="密码">
-            <el-input v-model="accountForm.password" placeholder="请输入密码" type="password" style="width:600px"
-              show-password>
-            </el-input>
+            <el-input
+              v-model="accountForm.password"
+              placeholder="请输入密码"
+              type="password"
+              style="width:600px"
+              show-password
+            ></el-input>
           </el-form-item>
           <el-form-item label="验证码">
             <span>
@@ -47,12 +85,22 @@
       </div>
       <!-- 个人信息填写 -->
       <div v-if="step==1" class="userInfoForm">
-        <el-form ref="userInfoForm" v-model="userInfoForm" label-position="right" label-width="90px">
+        <el-form
+          ref="userInfoForm"
+          v-model="userInfoForm"
+          label-position="right"
+          label-width="90px"
+        >
           <el-form-item label="昵称">
             <div style="width:300px">
-              <el-input v-model="userInfoForm.nickname" placeholder="请输入昵称" type="text" maxlength="10" clearable
-                show-word-limit>
-              </el-input>
+              <el-input
+                v-model="userInfoForm.nickname"
+                placeholder="请输入昵称"
+                type="text"
+                maxlength="10"
+                clearable
+                show-word-limit
+              ></el-input>
             </div>
           </el-form-item>
           <el-form-item label="性别">
@@ -67,20 +115,36 @@
             </div>
           </el-form-item>
           <el-form-item label="家乡所在地">
-            <el-cascader-panel :options="cityOptions" v-model="userInfoForm.homeOptions" clearable filterable
-              @change="handleChange" placeholder="请选择家乡所在地"></el-cascader-panel>
+            <el-cascader-panel
+              :options="cityOptions"
+              v-model="userInfoForm.homeOptions"
+              clearable
+              filterable
+              @change="handleChange"
+              placeholder="请选择家乡所在地"
+            ></el-cascader-panel>
           </el-form-item>
           <el-form-item label="现居地">
-            <el-cascader-panel :options="cityOptions" v-model="userInfoForm.currentOptions" clearable filterable
-              @change="handleChange" placeholder="请选择现居地"></el-cascader-panel>
+            <el-cascader-panel
+              :options="cityOptions"
+              v-model="userInfoForm.currentOptions"
+              clearable
+              filterable
+              @change="handleChange"
+              placeholder="请选择现居地"
+            ></el-cascader-panel>
           </el-form-item>
           <el-form-item label="照片">
-            <el-upload action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card"
-              :on-preview="handlePictureCardPreview" :on-remove="handleRemove">
+            <el-upload
+              action="https://jsonplaceholder.typicode.com/posts/"
+              list-type="picture-card"
+              :on-preview="handlePictureCardPreview"
+              :on-remove="handleRemove"
+            >
               <i class="el-icon-plus"></i>
             </el-upload>
             <el-dialog :visible.sync="dialogVisible">
-              <img width="100%" :src="dialogImageUrl" alt="">
+              <img width="100%" :src="dialogImageUrl" alt />
             </el-dialog>
           </el-form-item>
         </el-form>
@@ -90,8 +154,14 @@
         <el-form ref="stuInfoForm" v-model="stuInfoForm" label-position="right" label-width="90px">
           <el-form-item label="学生证照片">
             <div style="width:550px">
-              <el-upload list-type="picture" action="https://jsonplaceholder.typicode.com/posts/"
-                :on-remove="handleRemove" :on-preview="handlePreview" :file-list="fileList" :limit="1">
+              <el-upload
+                list-type="picture"
+                action="https://jsonplaceholder.typicode.com/posts/"
+                :on-remove="handleRemove"
+                :on-preview="handlePreview"
+                :file-list="fileList"
+                :limit="1"
+              >
                 <div style="margin-left:-350px">
                   <el-button size="small" type="primary" style="margin-left:-120px">点击上传</el-button>
                   <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过5Mb</div>
@@ -100,52 +170,87 @@
             </div>
           </el-form-item>
           <el-form-item label="在读学位">
-            <el-select v-model="stuInfoForm.education" placeholder="请选择目前在读的学位" style="margin-left:-393px"
-              @change="educationSelect">
-              <el-option v-for="item in stuInfoForm.educationOptions" :key="item.label" :label="item.label"
-                :value="item.value"></el-option>
+            <el-select
+              v-model="stuInfoForm.education"
+              placeholder="请选择目前在读的学位"
+              style="margin-left:-393px"
+              @change="educationSelect"
+            >
+              <el-option
+                v-for="item in stuInfoForm.educationOptions"
+                :key="item.label"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
             </el-select>
           </el-form-item>
           <div v-if="this.stuInfoForm.education>=1">
             <el-form-item label="本科院校">
-              <el-input v-model="stuInfoForm.undergraduate_university" placeholder="请输入本科院校"
-                style="width:300px;margin-left:-310px"></el-input>
+              <el-input
+                v-model="stuInfoForm.undergraduate_university"
+                placeholder="请输入本科院校"
+                style="width:300px;margin-left:-310px"
+              ></el-input>
             </el-form-item>
             <el-form-item label="本科学院">
-              <el-input v-model="stuInfoForm.undergraduate_institute" placeholder="请输入本科学院"
-                style="width:300px;margin-left:-310px"></el-input>
+              <el-input
+                v-model="stuInfoForm.undergraduate_institute"
+                placeholder="请输入本科学院"
+                style="width:300px;margin-left:-310px"
+              ></el-input>
             </el-form-item>
             <el-form-item label="本科专业">
-              <el-input v-model="stuInfoForm.undergraduate_speciality" placeholder="请输入本科专业"
-                style="width:300px;margin-left:-310px"></el-input>
+              <el-input
+                v-model="stuInfoForm.undergraduate_speciality"
+                placeholder="请输入本科专业"
+                style="width:300px;margin-left:-310px"
+              ></el-input>
             </el-form-item>
           </div>
           <div v-if="this.stuInfoForm.education>=2">
             <el-form-item label="硕士院校">
-              <el-input v-model="stuInfoForm.graduate_university" placeholder="请输入硕士院校"
-                style="width:300px;margin-left:-310px"></el-input>
+              <el-input
+                v-model="stuInfoForm.graduate_university"
+                placeholder="请输入硕士院校"
+                style="width:300px;margin-left:-310px"
+              ></el-input>
             </el-form-item>
             <el-form-item label="硕士学院">
-              <el-input v-model="stuInfoForm.graduate_institute" placeholder="请输入硕士学院"
-                style="width:300px;margin-left:-310px"></el-input>
+              <el-input
+                v-model="stuInfoForm.graduate_institute"
+                placeholder="请输入硕士学院"
+                style="width:300px;margin-left:-310px"
+              ></el-input>
             </el-form-item>
             <el-form-item label="硕士专业">
-              <el-input v-model="stuInfoForm.graduate_speciality" placeholder="请输入硕士专业"
-                style="width:300px;margin-left:-310px"></el-input>
+              <el-input
+                v-model="stuInfoForm.graduate_speciality"
+                placeholder="请输入硕士专业"
+                style="width:300px;margin-left:-310px"
+              ></el-input>
             </el-form-item>
           </div>
           <div v-if="this.stuInfoForm.education==3">
             <el-form-item label="博士院校">
-              <el-input v-model="stuInfoForm.doctor_university" placeholder="请输入博士院校"
-                style="width:300px;margin-left:-310px"></el-input>
+              <el-input
+                v-model="stuInfoForm.doctor_university"
+                placeholder="请输入博士院校"
+                style="width:300px;margin-left:-310px"
+              ></el-input>
             </el-form-item>
             <el-form-item label="博士学院">
-              <el-input v-model="stuInfoForm.doctor_institute" placeholder="请输入博士学院"
-                style="width:300px;margin-left:-310px"></el-input>
+              <el-input
+                v-model="stuInfoForm.doctor_institute"
+                placeholder="请输入博士学院"
+                style="width:300px;margin-left:-310px"
+              ></el-input>
             </el-form-item>
             <el-form-item label="博士专业">
-              <el-input v-model="stuInfoForm.doctor_speciality" placeholder="请输入博士专业"
-                style="width:300px;margin-left:-310px"></el-input>
+              <el-input
+                v-model="stuInfoForm.doctor_speciality"
+                placeholder="请输入博士专业"
+                style="width:300px;margin-left:-310px"
+              ></el-input>
             </el-form-item>
           </div>
         </el-form>
@@ -158,17 +263,24 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
-import options from './../../utils/country-data.js';
+import options from "./../../utils/country-data.js";
+
 export default {
   components: {},
   props: {},
   data() {
     return {
-      accountType: '', //手机号或邮箱
+      backgroundStyle: {
+        backgroundImage:
+          "url(" + require("../../assets/largestk8nvmsatrcy0eb4.jpg") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100%"
+      },
+      background: require("../../assets/501298720.jpg"),
+      accountType: "", //手机号或邮箱
       typeSelected: false, //是否选择账号类型
       step: -1,
       //暂时用于表示是否通过验证码验证
@@ -176,48 +288,48 @@ export default {
       //城市级联数据
       cityOptions: options,
       //照片
-      dialogImageUrl: '',
+      dialogImageUrl: "",
       dialogVisible: false,
       //学生证照片
       fileList: [],
       accountForm: {
-        account: '',
-        password: '',
-        code: ''
+        account: "",
+        password: "",
+        code: ""
       },
       userInfoForm: {
-        nickname: '',
-        gender: '',
-        age: '',
+        nickname: "",
+        gender: "",
+        age: "",
         homeOptions: [],
-        home_country: '',
-        home_province: '',
-        home_city: '',
-        home_district: '',
+        home_country: "",
+        home_province: "",
+        home_city: "",
+        home_district: "",
         currentOptions: [],
-        current_country: '',
-        current_province: '',
-        current_city: '',
-        current_district: '',
-        photo: ''
+        current_country: "",
+        current_province: "",
+        current_city: "",
+        current_district: "",
+        photo: ""
       },
       stuInfoForm: {
-        stu_card_image: '',
-        education: '',
+        stu_card_image: "",
+        education: "",
         educationOptions: [
-          { label: '本科', value: 1 },
-          { label: '硕士', value: 2 },
-          { label: '博士', value: 3 }
+          { label: "本科", value: 1 },
+          { label: "硕士", value: 2 },
+          { label: "博士", value: 3 }
         ],
-        undergraduate_university: '',
-        undergraduate_institute: '',
-        undergraduate_speciality: '',
-        graduate_university: '',
-        graduate_institute: '',
-        graduate_speciality: '',
-        doctor_university: '',
-        doctor_institute: '',
-        doctor_speciality: ''
+        undergraduate_university: "",
+        undergraduate_institute: "",
+        undergraduate_speciality: "",
+        graduate_university: "",
+        graduate_institute: "",
+        graduate_speciality: "",
+        doctor_university: "",
+        doctor_institute: "",
+        doctor_speciality: ""
       }
     };
   },
@@ -232,40 +344,43 @@ export default {
   },
   methods: {
     registerByPhone() {
-      this.accountType = '手机号';
+      this.accountType = "手机号";
       this.step = 0;
       this.typeSelected = true;
     },
     registerByEmail() {
-      this.accountType = '邮箱';
+      this.accountType = "邮箱";
       this.step = 0;
       this.typeSelected = true;
     },
-    goBack() {//返回上一步
-      this.accountType = '';
+    goBack() {
+      //返回上一步
+      this.accountType = "";
       this.step = -1;
       this.typeSelected = false;
     },
-    nextStep() {//步骤跳转兼表单提交
-      if (this.step == 0) {//账号注册
+    nextStep() {
+      //步骤跳转兼表单提交
+      if (this.step == 0) {
+        //账号注册
         if (
-          this.accountForm.account === '' ||
-          this.accountForm.password === ''
+          this.accountForm.account === "" ||
+          this.accountForm.password === ""
         ) {
-          this.$message.error('账号或密码不能为空');
+          this.$message.error("账号或密码不能为空");
         } else {
-          if (this.accountType == '手机号') {
+          if (this.accountType == "手机号") {
             if (this.isCodeValidated) {
-              console.log('手机号注册');
-              this.$post(this.urls.testUrl + '/register/ByPhoneNum', {
+              console.log("手机号注册");
+              this.$post(this.urls.testUrl + "/register/ByPhoneNum", {
                 phoneNum: this.accountForm.account,
                 password: this.accountForm.password
               }).then(
                 res => {
                   this.step++;
                   this.$message({
-                    message: '注册成功',
-                    type: 'success'
+                    message: "注册成功",
+                    type: "success"
                   });
                 },
                 err => {
@@ -275,28 +390,28 @@ export default {
                     for (let i in arr) {
                       arr1.push(arr[i]);
                     }
-                    this.$message.error(arr1.join(','));
+                    this.$message.error(arr1.join(","));
                   }
                 }
               );
             } else {
               this.$message({
-                message: '请输入验证码',
-                type: 'warning'
+                message: "请输入验证码",
+                type: "warning"
               });
             }
-          } else if (this.accountType == '邮箱') {
+          } else if (this.accountType == "邮箱") {
             if (this.isCodeValidated) {
-              console.log('邮箱注册');
-              this.$post(this.urls.testUrl + '/register/ByPhoneNum', {
+              console.log("邮箱注册");
+              this.$post(this.urls.testUrl + "/register/ByPhoneNum", {
                 phoneNum: this.accountForm.account,
                 password: this.accountForm.password
               }).then(
                 res => {
                   this.step++;
                   this.$message({
-                    message: '注册成功',
-                    type: 'success'
+                    message: "注册成功",
+                    type: "success"
                   });
                 },
                 err => {
@@ -306,55 +421,59 @@ export default {
                     for (let i in arr) {
                       arr1.push(arr[i]);
                     }
-                    this.$message.error(arr1.join(','));
+                    this.$message.error(arr1.join(","));
                   }
                 }
               );
             } else {
               this.$message({
-                message: '请输入验证码',
-                type: 'warning'
+                message: "请输入验证码",
+                type: "warning"
               });
             }
           }
         }
-      } else if (this.step == 1) {//个人信息填写
-      } else if (this.step == 2) {//学生信息填写
+      } else if (this.step == 1) {
+        //个人信息填写
+      } else if (this.step == 2) {
+        //学生信息填写
       }
       // if (this.step < 3 && this.step >= 0) {
       //   this.step++;
       // }
     },
-    lastStep() {//返回
+    lastStep() {
+      //返回
       if (this.step > 1 && this.step <= 2) {
         this.step--;
       }
     },
-    getCode() {//获取验证码，目前仅验证账号格式是否正确
-      if (this.accountType == '手机号') {
+    getCode() {
+      //获取验证码，目前仅验证账号格式是否正确
+      if (this.accountType == "手机号") {
         if (this.$validatePhoneNum(this.accountForm.account)) {
           this.isCodeValidated = true;
           this.$message({
-            message: '验证码已发送',
-            type: 'success'
+            message: "验证码已发送",
+            type: "success"
           });
         } else {
           this.$message({
-            message: '请输入正确的手机号',
-            type: 'warning'
+            message: "请输入正确的手机号",
+            type: "warning"
           });
         }
-      } else if (this.accountType == '邮箱') {
+      } else if (this.accountType == "邮箱") {
         if (this.$validateEmail(this.accountForm.account)) {
           this.isCodeValidated = true;
           this.$message({
-            message: '验证码已发送',
-            type: 'success'
+            message: "验证码已发送",
+            type: "success"
           });
         } else {
           this.$message({
-            message: '请输入正确的邮箱',
-            type: 'warning'
+            message: "请输入正确的邮箱",
+            type: "warning"
           });
         }
       }
@@ -381,14 +500,45 @@ export default {
 };
 </script>
 <style>
+.title {
+  font-family: -apple-system;
+  font-size: 43px;
+  color: #000;
+  float: left;
+  text-align: left;
+  margin-bottom: 0px;
+  margin-right: 20px;
+}
+.contect {
+  font-size: 20px;
+  text-align: right;
+  margin-top: 8px;
+  padding: 2px;
+  margin-left: 10px;
+  float: right;
+}
+.slogan {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  text-align: left;
+  margin-top: 8px;
+  float: left;
+}
+.button-group {
+  float: left;
+  margin: 80px;
+}
+.agreement {
+  float: left;
+}
 .selecteButton {
-  width: 300px;
-  height: 300px;
+  width: 100px;
+  height: 100px;
 }
 .selecteButton i {
-  margin-top: 50px;
-  margin-bottom: 60px;
-  font-size: 80px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 30px;
 }
 .accountForm {
   width: 700px;
