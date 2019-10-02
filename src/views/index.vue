@@ -1,5 +1,5 @@
 <template>
-  <div :style="note">
+  <div :style="backgroundStyle">
     <el-row>
       <el-col span="20" offset="2">
         <div>
@@ -19,7 +19,7 @@
                       <el-row>
                         <h2>Fellow是什么？</h2>
                         <p>Fellow Student是大学生开发的高校社区，在这里可以交朋友也可以谈恋爱。</p>
-                        <p>注册需要身份认证，在这里交友特安全。也许你一个人生活也不错，说不定两个人一起更快活。</p>
+                        <p>注册需要学生身份认证，在这里交友特安全。也许你一个人生活也不错，说不定和朋友一起更快活。</p>
                       </el-row>
                       <el-row>
                         <h2>俱怀逸兴壮思飞，欲上青天览明月</h2>
@@ -64,11 +64,12 @@
                         >
                           <el-card :body-style="{ padding: '0px' }">
                             <img :src="item.photo" class="image" />
-                            <div style="padding: 5px;">
-                              <span style="font-size:5px;">{{item.nickname}}</span>
-                              <span style="font-size:5px">{{item.university}}</span>
+                            <div style="padding: 2px;">
+                              <span style="font-size:62.5%;">{{item.nickname}}</span>
+
+                              <span style="font-size:62.5%">{{item.university}}</span>
                               <br />
-                              <span style="font-size:5px">{{item.lastLoginAt}}</span>
+                              <span style="font-size:62.5%">{{item.lastLoginAt}}</span>
                             </div>
                           </el-card>
                         </el-col>
@@ -79,58 +80,6 @@
               </el-row>
             </el-card>
           </el-row>
-          <el-row>
-            <el-col span="12">
-              <!--<div>
-                <h2>寻找朋友</h2>
-                <el-row>
-                  <el-form v-model="searchConditions" label-position="right" label-width="100px">
-                    <el-form-item label="性别" style="float:left">
-                      <el-radio-group v-model="searchConditions.gender">
-                        <el-radio label="男"></el-radio>
-                        <el-radio label="女"></el-radio>
-                      </el-radio-group>
-                    </el-form-item>
-                    <el-form-item label="年龄" style="float:left">
-                      <el-col :span="3">
-                        <el-input v-model="searchConditions.age_from"></el-input>
-                      </el-col>
-                      <el-col class="line" :span="2">至</el-col>
-                      <el-col :span="3">
-                        <el-input v-model="searchConditions.age_to"></el-input>
-                      </el-col>
-                      <el-col class="line" :span="2">岁</el-col>
-                    </el-form-item>
-                    <el-form-item label="学校与专业" style="float:left">
-                      <el-cascader :options="options">
-                        <template slot-scope="{ node, data }">
-                          <span>{{ data.label }}</span>
-                          <span v-if="!node.isLeaf">({{ data.children.length }})</span>
-                        </template>
-                      </el-cascader>
-                    </el-form-item>
-                    <el-form-item label="用户条件" style="float:left">
-                      <el-checkbox-group v-model="searchConditions.otherConditions">
-                        <el-checkbox label="照片" name="otherConditions"></el-checkbox>
-                        <el-checkbox label="个人介绍" name="otherConditions"></el-checkbox>
-                        <el-checkbox label="Prime用户" name="otherConditions"></el-checkbox>
-                      </el-checkbox-group>
-                    </el-form-item>
-                    <el-form-item label="搜索结果排序" style="float:left">
-                      <el-radio-group v-model="searchConditions.orderBy">
-                        <el-radio label="上次登录时间"></el-radio>
-                        <el-radio label="注册时间"></el-radio>
-                      </el-radio-group>
-                    </el-form-item>
-                  </el-form>
-                </el-row>
-                <el-row>
-                  <el-button type="primary" @click="startSearch">Find Fellow</el-button>
-                </el-row>
-              </div>-->
-            </el-col>
-            <el-col span="12"></el-col>
-          </el-row>
         </div>
       </el-col>
     </el-row>
@@ -140,19 +89,7 @@
 .el-col {
   border-radius: 4px;
 }
-.bg-purple-dark {
-  background: #99a9bf;
-}
-.bg-purple {
-  background: #d3dce6;
-}
-.bg-purple-light {
-  background: #e5e9f2;
-}
-.grid-content {
-  border-radius: 4px;
-  min-height: 36px;
-}
+
 .row-bg {
   padding: 10px 0;
   background-color: #f9fafc;
@@ -167,55 +104,20 @@
   line-height: 12px;
 }
 
-.button {
-  padding: 0;
-  float: right;
-}
-
 .image {
   width: 100%;
   display: block;
 }
 
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
-
-.clearfix:after {
-  clear: both;
-}
 h1 {
   font-size: 48px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: black;
 }
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 18px;
-  opacity: 0.75;
-  line-height: 300px;
-  margin: 0;
-}
-
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
-}
 
 .container {
   margin: 20px;
-}
-.testimonials {
-  text-align: left;
-  font-size: 15px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 </style>
 
@@ -223,8 +125,9 @@ h1 {
 export default {
   data() {
     return {
-      note: {
-        backgroundImage: "url(" + require("../assets/largestk8nvmsatrcy0eb4.jpg") + ")",
+      backgroundStyle: {
+        backgroundImage:
+          "url(" + require("../assets/largestk8nvmsatrcy0eb4.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%"
       },

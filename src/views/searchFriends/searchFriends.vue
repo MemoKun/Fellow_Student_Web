@@ -97,6 +97,53 @@
           </el-col>
         </el-card>
       </el-row>
+      <!--<div>
+                <h2>寻找朋友</h2>
+                <el-row>
+                  <el-form v-model="searchConditions" label-position="right" label-width="100px">
+                    <el-form-item label="性别" style="float:left">
+                      <el-radio-group v-model="searchConditions.gender">
+                        <el-radio label="男"></el-radio>
+                        <el-radio label="女"></el-radio>
+                      </el-radio-group>
+                    </el-form-item>
+                    <el-form-item label="年龄" style="float:left">
+                      <el-col :span="3">
+                        <el-input v-model="searchConditions.age_from"></el-input>
+                      </el-col>
+                      <el-col class="line" :span="2">至</el-col>
+                      <el-col :span="3">
+                        <el-input v-model="searchConditions.age_to"></el-input>
+                      </el-col>
+                      <el-col class="line" :span="2">岁</el-col>
+                    </el-form-item>
+                    <el-form-item label="学校与专业" style="float:left">
+                      <el-cascader :options="options">
+                        <template slot-scope="{ node, data }">
+                          <span>{{ data.label }}</span>
+                          <span v-if="!node.isLeaf">({{ data.children.length }})</span>
+                        </template>
+                      </el-cascader>
+                    </el-form-item>
+                    <el-form-item label="用户条件" style="float:left">
+                      <el-checkbox-group v-model="searchConditions.otherConditions">
+                        <el-checkbox label="照片" name="otherConditions"></el-checkbox>
+                        <el-checkbox label="个人介绍" name="otherConditions"></el-checkbox>
+                        <el-checkbox label="Prime用户" name="otherConditions"></el-checkbox>
+                      </el-checkbox-group>
+                    </el-form-item>
+                    <el-form-item label="搜索结果排序" style="float:left">
+                      <el-radio-group v-model="searchConditions.orderBy">
+                        <el-radio label="上次登录时间"></el-radio>
+                        <el-radio label="注册时间"></el-radio>
+                      </el-radio-group>
+                    </el-form-item>
+                  </el-form>
+                </el-row>
+                <el-row>
+                  <el-button type="primary" @click="startSearch">Find Fellow</el-button>
+                </el-row>
+      </div>-->
 
       <el-divider content-position="center"></el-divider>
       <el-row :gutter="20">
