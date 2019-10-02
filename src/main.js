@@ -9,20 +9,23 @@ import ElementUI from 'element-ui';
 import '../style/theme/index.css'
 import axios from "axios";
 import qs from 'qs';
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+
 import {
   fetch,
   post,
   patch,
   put
 } from '@/utils/http'
-import{
+import {
   validatePhoneNum,
   validateEmail,
   validateURL,
   validateLowerCase,
   validateUpperCase,
   validatAlphabets
-}from '@/utils/validate'
+} from '@/utils/validate'
 
 // import Router from 'vue-router'
 
@@ -32,6 +35,7 @@ import{
 // }
 
 Vue.use(ElementUI);
+Vue.use(mavonEditor)
 Vue.config.productionTip = false
 Vue.prototype.$ajax = axios
 Vue.prototype.$qs = qs

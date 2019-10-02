@@ -13,6 +13,8 @@
     "axios": "^0.19.0",
     "element-ui": "^2.12.0",
     "js-cookie": "^2.2.1",
+    "markd": "^1.2.0",
+    "mavon-editor": "^2.7.6",
     "qs.js": "^0.1.12",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",

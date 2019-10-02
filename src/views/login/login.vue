@@ -80,6 +80,7 @@ export default {
               });
             },
             err => {
+              console.log('手机号登录失败');
               if (err.response) {
                 let arr = err.response.data.errors;
                 let arr1 = [];
