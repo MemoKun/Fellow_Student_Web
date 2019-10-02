@@ -11,7 +11,7 @@
             </div>
           </el-row>
           <el-row>
-            <el-card style="margin-top:50px;margin-bottom:50px">
+            <el-card style="margin-top:100px;margin-bottom:50px">
               <el-row>
                 <el-col :span="12">
                   <div class="container" style="margin:20px">
@@ -113,7 +113,7 @@ h1 {
   font-size: 48px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  color: black;
+  color:black;
 }
 
 .container {
@@ -127,7 +127,7 @@ export default {
     return {
       backgroundStyle: {
         backgroundImage:
-          "url(" + require("../assets/largestk8nvmsatrcy0eb4.jpg") + ")",
+          "url(" + require("../assets/largestnz5orjl4163btk9.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%"
       },
