@@ -225,6 +225,14 @@
                         </el-col>
                       </el-row>
                     </div>
+                    <div>
+                      <el-row>
+                        <h2>每日诗句</h2>
+                      </el-row>
+                      <el-row>
+                        <span class="recommendSentenceTitle">俱怀逸兴壮思飞，欲上青天览明月。</span>
+                      </el-row>
+                    </div>
                   </div>
                 </el-col>
               </el-row>
@@ -303,6 +311,14 @@ h1 {
 }
 .container {
   margin: 20px;
+}
+.recommendSentenceTitle {
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+  text-align: left;
+  margin-bottom: 15px;
 }
 </style>
 
