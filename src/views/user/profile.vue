@@ -2,7 +2,7 @@
   <div class="container" style="padding:100px">
     <el-card class="box-card" body-style="padding:60px">
       <el-row>
-        <h1 class="profileTitle">{{user.username}}的简历</h1>
+        <span class="profileTitle">{{user.username}}的简历</span>
         <el-link
           type="primary"
           style="font-style:italic;text-decoration:underline;float:right"
@@ -76,7 +76,13 @@
             <p class="littleTitle">专业：{{user.major}}</p>
             <p class="littleTitle">寻找 {{user.lookingForSex}} 朋友</p>
             <p class="littleTitle">Between {{user.ageBetweenFrom}} and {{user.ageBetweenTo}}</p>
-            <p class="introduction">“ {{user.introduction}} ”</p>
+            <el-tabs v-model="activeName" @tab-click="handleClick">
+              <el-tab-pane label="Show Time" name="first">
+                <p class="introduction">“ {{user.introduction}} ”</p>
+              </el-tab-pane>
+              <el-tab-pane label="科研竞赛" name="second">科研竞赛</el-tab-pane>
+              <el-tab-pane label="工作经历" name="third">工作经历</el-tab-pane>
+            </el-tabs>
           </div>
           <h1>评论</h1>
           <div class="container" v-for="item in comments" :key="item.comment_id">
@@ -462,7 +468,7 @@ export default {
   font-style: bold;
   font-size: 36px;
   text-align: left;
-  margin: 10px 0px;
+  float: left;
 }
 
 .introduction {
