@@ -23,6 +23,16 @@
                           <div>
                             <el-row>
                               <el-link class="todoContent">
+                                <i class="el-icon-message"></i>检查一下自己的信箱
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-chat-dot-round"></i>看看别人给你的留言
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
                                 <i class="el-icon-view"></i>看看谁看过你的简历
                               </el-link>
                             </el-row>
@@ -34,11 +44,6 @@
                             <el-row>
                               <el-link class="todoContent">
                                 <i class="el-icon-search"></i>找寻其他的Fellow好友
-                              </el-link>
-                            </el-row>
-                            <el-row>
-                              <el-link class="todoContent">
-                                <i class="el-icon-chat-dot-round"></i>看看别人给你的留言
                               </el-link>
                             </el-row>
                           </div>
