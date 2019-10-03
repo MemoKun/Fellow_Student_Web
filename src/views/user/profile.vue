@@ -3,79 +3,81 @@
     <el-card class="box-card" body-style="padding:60px">
       <el-row>
         <span class="profileTitle">{{user.username}}的简历</span>
-        <el-link
-          type="primary"
-          style="font-style:italic;text-decoration:underline;float:right"
-        >返回搜索列表</el-link>
+        <el-link type="primary" style="font-style:italic;float:right;font-size:16px;">返回搜索列表</el-link>
       </el-row>
-      <el-row>
+      <el-row class="infoCardRow">
         <p style="float:left;">(userID: {{user.userId}})</p>
       </el-row>
       <el-row>
         <el-col span="8">
           <el-card>
             <img :src="user.photo" style="width:100%;" />
-            <p class="cardTitle">会员，加入于{{user.joinDate}}</p>
-            <p class="cardTitle">简历被浏览了 {{user.viewTimes}} 次</p>
-            <p class="cardTitle">上一次登录是在 {{user.lastLogTime}} 以前</p>
             <el-row>
+              <span class="infoCardTitle1">{{user.username}}</span>
+            </el-row>
+            <el-row class="infoCardRow">
+              <el-col :span="12">
+                <span class="infoCardTitle2">年龄：{{user.age}} 岁</span>
+              </el-col>
+              <el-col :span="12">
+                <span class="infoCardTitle2">性别：{{user.sex}}</span>
+              </el-col>
+            </el-row>
+            <el-row class="infoCardRow">
+              <el-col :span="12">
+                <span class="infoCardTitle2">家乡：</span>
+                <el-button
+                  size="mini"
+                  style="float:left;text-align:center"
+                  type="primary"
+                  plain
+                >{{user.homeCity}}</el-button>
+              </el-col>
+              <el-col :span="12">
+                <span class="infoCardTitle2">现居：</span>
+                <el-button
+                  size="mini"
+                  style="float:left;text-align:center"
+                  type="primary"
+                  plain
+                >{{user.livingCity}}</el-button>
+              </el-col>
+            </el-row>
+            <el-row class="infoCardRow">
+              <el-col :span="12">
+                <span class="infoCardTitle2">学校：</span>
+                <el-button
+                  size="mini"
+                  style="float:left;text-align:center"
+                  type="primary"
+                  plain
+                >{{user.school}}</el-button>
+              </el-col>
+              <el-col :span="12">
+                <span class="infoCardTitle2">专业：</span>
+                <el-button
+                  size="mini"
+                  style="float:left;text-align:center"
+                  type="primary"
+                  plain
+                >{{user.major}}</el-button>
+              </el-col>
+            </el-row>
+            <el-row class="infoCardRow">
+              <span class="infoCardTitle2">简历被浏览了 {{user.viewTimes}} 次</span>
+            </el-row>
+            <el-row class="infoCardRow">
+              <span class="infoCardTitle2">上一次登录是在 {{user.lastLogTime}} 以前</span>
+            </el-row>
+            <el-row class="infoCardRow">
+              <el-button icon="el-icon-star-off" round>116</el-button>
               <el-button type="primary" v-if="addFlag" icon="el-icon-star-off" round>添加收藏</el-button>
               <el-button type="success" v-if="addFlag" icon="el-icon-star-off" round>申请好友</el-button>
-            </el-row>
-            <el-row>
-              <div style="margin:20px">
-                <el-collapse accordion>
-                  <el-collapse-item>
-                    <template slot="title">星座</template>
-                    <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
-                    <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
-                  </el-collapse-item>
-                  <el-collapse-item title="爱好">
-                    <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
-                    <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
-                  </el-collapse-item>
-                  <el-collapse-item title="学生干部">
-                    <div>简化流程：设计简洁直观的操作流程；</div>
-                    <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
-                    <div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
-                  </el-collapse-item>
-                  <el-collapse-item title="获奖经历">
-                    <div>用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
-                    <div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
-                  </el-collapse-item>
-                </el-collapse>
-              </div>
-            </el-row>
-            <h4>她的朋友</h4>
-            <el-row v-for="(i,index) in (Math.ceil((friends.length / 4)))" :key="index">
-              <el-col
-                :span="6"
-                style="padding: 3px;"
-                v-for="(item,index) in friends"
-                v-show="(i - 1) * 4 <= index && index < i * 4"
-                :key="index"
-              >
-                <el-card :body-style="{ padding: '0px' }" span="8">
-                  <img :src="item.photo" class="image" width="100%" />
-                  <div class="friendsCard-title">
-                    <span>{{item.nickname}}</span>
-                  </div>
-                </el-card>
-              </el-col>
             </el-row>
           </el-card>
         </el-col>
         <el-col span="10">
           <div class="container" style="margin-left:40px">
-            <h2 class="title">{{user.username}}</h2>
-            <p class="littleTitle">年龄：{{user.age}} 岁</p>
-            <p class="littleTitle">性别：{{user.sex}}</p>
-            <p class="littleTitle">家乡：{{user.homeCountry}}</p>
-            <p class="littleTitle">现居：{{user.birthCountry}}</p>
-            <p class="littleTitle">学校：{{user.school}}</p>
-            <p class="littleTitle">专业：{{user.major}}</p>
-            <p class="littleTitle">寻找 {{user.lookingForSex}} 朋友</p>
-            <p class="littleTitle">Between {{user.ageBetweenFrom}} and {{user.ageBetweenTo}}</p>
             <el-tabs v-model="activeName" @tab-click="handleClick">
               <el-tab-pane label="Show Time" name="first">
                 <p class="introduction">“ {{user.introduction}} ”</p>
@@ -83,35 +85,6 @@
               <el-tab-pane label="科研竞赛" name="second">科研竞赛</el-tab-pane>
               <el-tab-pane label="工作经历" name="third">工作经历</el-tab-pane>
             </el-tabs>
-          </div>
-          <h1>评论</h1>
-          <div class="container" v-for="item in comments" :key="item.comment_id">
-            <el-card style="margin:30px" :body-style="{ padding: '0px' }" span="8">
-              <el-col span="6">
-                <div style="margin:0px">
-                  <img :src="item.photo" style="width:100%;margin:0px;" />
-                </div>
-              </el-col>
-              <el-col span="18">
-                <el-row style="margin:10px">
-                  <p class="commentCard-title">{{item.nickname}}</p>
-                  <p class="commentCard-p">{{item.comment}}</p>
-                </el-row>
-              </el-col>
-            </el-card>
-          </div>
-          <div class="container" style="margin:20px">
-            <h4>有什么想说的话，就留言吧</h4>
-            <el-input
-              type="textarea"
-              :autosize="{ minRows: 4, maxRows: 8}"
-              placeholder="请输入内容"
-              v-model="textarea2"
-              maxlength="60"
-              show-word-limit
-              style="margin-bottom:30px"
-            ></el-input>
-            <el-button type="primary" round style="float:right">留言</el-button>
           </div>
         </el-col>
         <el-col span="6">
@@ -122,7 +95,7 @@
             <el-row>
               <el-input
                 type="textarea"
-                :rows="20"
+                :rows="12"
                 placeholder="请输入内容"
                 v-model="textarea"
                 style="margin-bottom:20px"
@@ -140,15 +113,72 @@
           </div>
         </el-col>
       </el-row>
+      <el-row>
+        <el-col :span="8">
+          <h1>她的朋友</h1>
+          <div class="container">
+            <el-row v-for="(i,index) in (Math.ceil((friends.length / 4)))" :key="index">
+              <el-col
+                :span="6"
+                style="padding: 3px;"
+                v-for="(item,index) in friends"
+                v-show="(i - 1) * 4 <= index && index < i * 4"
+                :key="index"
+              >
+                <el-card :body-style="{ padding: '0px' }" span="8">
+                  <img :src="item.photo" class="image" width="100%" />
+                  <div class="friendsCard-title">
+                    <span>{{item.nickname}}</span>
+                  </div>
+                </el-card>
+              </el-col>
+            </el-row>
+          </div>
+        </el-col>
+        <el-col :span="10">
+          <h1>评论</h1>
+          <div class="container" v-for="item in comments" :key="item.comment_id">
+            <el-card style="margin:30px" :body-style="{ padding: '0px' }" span="8">
+              <el-col span="6">
+                <div style="margin:0px">
+                  <img :src="item.photo" style="width:100%;margin:0px;" />
+                </div>
+              </el-col>
+              <el-col span="18">
+                <el-row style="margin:10px">
+                  <p class="commentCard-title">{{item.nickname}}</p>
+                  <p class="commentCard-p">{{item.comment}}</p>
+                </el-row>
+              </el-col>
+            </el-card>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div class="container" style="margin:20px">
+            <h4>有什么想说的话，就留言吧</h4>
+            <el-input
+              type="textarea"
+              :autosize="{ minRows: 8, maxRows: 12}"
+              placeholder="请输入内容"
+              v-model="textarea2"
+              maxlength="60"
+              show-word-limit
+              style="margin-bottom:20px"
+            ></el-input>
+            <el-button
+              type="primary"
+              icon="el-icon-chat-dot-round"
+              round
+              style="margin-bottom:20px"
+            >留言</el-button>
+            <el-alert
+              title="提示与帮助"
+              type="warning"
+            >You might be automatically logged out if you type for more than 20 minutes. We're working on fixing this. In the meanwhile please copy your finished text before you send it. That way, if you get logged out, you can log back in, come back to this page and paste it back. We apologize for this.</el-alert>
+          </div>
+        </el-col>
+      </el-row>
     </el-card>
-    <!--
-    <el-dialog :title=""Send a Message to " + user.username" :visible.sync="dialogVisible" center>
-      <el-input type="textarea" :rows="4" placeholder="请输入内容" v-model="textarea"></el-input>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-      </span>
-    </el-dialog>-->
   </div>
 </template>
 <script>
@@ -418,8 +448,8 @@ export default {
         userId: 11638888,
         photo:
           "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569063950234&di=f9e666fa5b2219e12cd1e0119b6a692d&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201406%2F03%2F20140603205522_ZirQE.thumb.600_0.jpeg",
-        homeCountry: "China",
-        birthCountry: "China",
+        homeCity: "山东省日照市",
+        livingCity: "湖南省长沙市",
         age: "17",
         sex: "女",
         school: "中南大学",
@@ -447,21 +477,6 @@ export default {
 };
 </script>
 <style scoped>
-.title {
-  font-style: bold;
-  font-size: 36px;
-  text-align: left;
-  margin: 10px 0px;
-}
-.littleTitle {
-  text-align: left;
-  margin: 10px 0;
-}
-.cardTitle {
-  text-align: left;
-  margin: 10px 20px;
-}
-
 .profileTitle {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -469,8 +484,25 @@ export default {
   font-size: 36px;
   text-align: left;
   float: left;
+  margin-bottom: 10px;
 }
-
+.infoCardTitle1 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 22px;
+  text-align: center;
+  float: center;
+}
+.infoCardTitle2 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  text-align: left;
+  float: left;
+}
+.infoCardRow {
+  margin: 8px;
+}
 .introduction {
   text-align: left;
 }
@@ -483,6 +515,7 @@ export default {
   text-align: left;
 }
 .friendsCard-title {
-  margin: 5px;
+  margin: 2px;
+  font-size: 12px;
 }
 </style>
