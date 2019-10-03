@@ -3,6 +3,8 @@ import Router from 'vue-router'
 
 import Index from "@/views/index.vue";
 
+import MyHome from "@/views/home/myHome.vue";
+
 import MainNavbar from "@/layout/MainNavbar.vue";
 import MainFooter from "@/layout/MainFooter.vue";
 
@@ -43,224 +45,424 @@ Vue.use(Router)
 
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'Index',
-      components: { default: Index, header: MainNavbar,footer:MainFooter}
+      components: {
+        default: Index,
+        header: MainNavbar,
+        footer: MainFooter
+      }
+    },
+    {
+      path: '/myHome',
+      name: 'myHome',
+      components: {
+        default: MyHome,
+        header: MainNavbar,
+        footer: MainFooter
+      }
     },
     {
       path: "/account/login",
       name: "login",
-      components: { default: Login, header: MainNavbar,footer:MainFooter},
+      components: {
+        default: Login,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 }
+        header: {
+          colorOnScroll: 400
+        }
       }
     },
     {
       path: "/account/register",
       name: "register",
-      components: { default: Register, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: Register,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 }
+        header: {
+          colorOnScroll: 400
+        }
       }
     },
     {
       path: "/expertiseCommunity",
       name: "expertiseCommunity",
-      components: { default: ExpertiseCommunity, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: ExpertiseCommunity,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/friendRequest",
       name: "friendRequest",
-      components: { default: FriendsRequest, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: FriendsRequest,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/friendsApproved",
       name: "friendsApproved",
-      components: { default: FriendsApproved, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: FriendsApproved,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/friendDetails",
       name: "friendDetails",
-      components: { default: FriendDetails, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: FriendDetails,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/messages",
       name: "messages",
-      components: { default: Messages, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: Messages,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/messageDetails",
       name: "messageDetails",
-      components: { default: MessageDetails, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: MessageDetails,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/searchFriends",
       name: "searchFriends",
-      components: { default: SearchFriends, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: SearchFriends,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/searchFriendsResults",
       name: "searchFriendsResults",
-      components: { default: SearchFriendsResults, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: SearchFriendsResults,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/profile",
       name: "profile",
-      components: { default: Profile, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: Profile,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/security",
       name: "security",
-      components: { default: Security, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: Security,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/security/editPassword",
       name: "editPassword",
-      components: { default: EditPassword, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: EditPassword,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/security/editPassword/phone",
       name: "editPasswordByPhone",
-      components: { default: EditPasswordByPhone, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: EditPasswordByPhone,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/security/editPassword/email",
       name: "editPasswordByEmail",
-      components: { default: EditPasswordByEmail, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: EditPasswordByEmail,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/security/editPhone",
       name: "editPhone",
-      components: { default: EditPhone, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: EditPhone,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/security/editPhone/phone",
       name: "editPhoneByPhone",
-      components: { default: EditPhoneByPhone, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: EditPhoneByPhone,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/security/editPhone/email",
       name: "editPhoneByEmail",
-      components: { default: EditPhoneByEmail, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: EditPhoneByEmail,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/security/editEmail",
       name: "editEmail",
-      components: { default: EditEmail, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: EditEmail,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/security/editEmail/phone",
       name: "editEmailByPhone",
-      components: { default: EditEmailByPhone, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: EditEmailByPhone,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/security/editEmail/email",
       name: "editEmailByEmail",
-      components: { default: EditEmailByEmail, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: EditEmailByEmail,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/editPersonalInfo",
       name: "editPersonalInfo",
-      components: { default: EditPersonalInfo, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: EditPersonalInfo,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/editSystemSetting",
       name: "editSystemSetting",
-      components: { default: EditSystemSetting, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: EditSystemSetting,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       }
     },
     {
       path: "/vipBilling",
       name: "vipBilling",
-      components: { default: VipBilling, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: VipBilling,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: {
+          colorOnScroll: 400
+        },
+        footer: {
+          backgroundColor: "black"
+        }
       },
     }
   ]

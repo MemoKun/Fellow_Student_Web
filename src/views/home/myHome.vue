@@ -4,50 +4,132 @@
       <el-col :span="20" :offset="2">
         <div>
           <el-row>
-            <div class="container" style="margin-top:100px">
-              <h1>初心不变，做深度对话的独角兽</h1>
-              <h2 style="color:black">从浅短的只言片语中解脱出来，体验一次灵魂的深度交流</h2>
-              <h2 style="color:black">俱怀逸兴壮思飞 欲上青天览明月 在这里找到志同道合的伙伴</h2>
-            </div>
-          </el-row>
-          <el-row>
-            <el-card style="margin-top:100px;margin-bottom:50px">
+            <el-card style="margin-top:50px;margin-bottom:50px">
               <el-row>
-                <el-col :span="12">
+                <el-col :span="10">
                   <div class="container" style="margin:20px">
                     <div>
                       <el-row>
-                        <h2>Fellow是什么？</h2>
-                        <p>Fellow Student是大学生开发的高校社区，在这里可以交朋友也可以谈恋爱。</p>
-                        <p>注册需要学生身份认证，在这里交友特安全。也许你一个人生活也不错，说不定和朋友一起更快活。</p>
-                      </el-row>
-                      <el-row>
-                        <h2>俱怀逸兴壮思飞，欲上青天览明月</h2>
-                        <p>这里有一干英雄豪杰，与他们一起煮酒论英雄，发现优秀的自己</p>
-                        <p>做自己领域的武林高手，我们一起携手，为推动人类文明的进步而不懈奋斗！</p>
-                      </el-row>
-                      <el-row>
-                        <h2>众里寻她千百度</h2>
-                        <p>轻点几下，选择高校、专业和年级，找寻正在等你的人</p>
-                        <p>不必穿越人山人海，搜索结果智能排序，推荐你喜欢的人给你</p>
-                      </el-row>
-                      <el-row>
-                        <h2>云中谁寄锦书来</h2>
-                        <p>“只有在这长长的信里里，我才能将我的思想娓娓道来。”</p>
-                        <p>我也很高兴遇到了志同道合的朋友，他们是我一生的财富。</p>
-                      </el-row>
-                      <el-row>
-                        <h2>闲门向山路，深柳读书堂</h2>
-                        <p>我们整理了浩如烟海的文件资料，即使不在对方门派，也能习得武林绝学</p>
-                        <p>我们更是创建了各个门派专业的学习交流群供大家切磋武艺，以文会友，深造自己</p>
-                      </el-row>
-                      <el-row>
-                        <el-button type="primary" @click="register">点击这里，加入我们</el-button>
+                        <el-row>
+                          <span class="welcomeTitle">Hi，{{currentUser.nickname}}</span>
+                        </el-row>
+                        <el-row>
+                          <span class="welcomeTitle2">欢迎回到Fellow社区~</span>
+                        </el-row>
+                        <el-row>
+                          <span class="todoTitle">你可以做以下事情：</span>
+                        </el-row>
+                        <el-row>
+                          <div>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-view"></i>看看谁看过你的简历
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-folder-opened"></i>浏览一下你收藏的简历
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-search"></i>找寻其他的Fellow好友
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-chat-dot-round"></i>看看别人给你的留言
+                              </el-link>
+                            </el-row>
+                          </div>
+                        </el-row>
+                        <el-row>
+                          <span class="todoTitle">我们推荐你：</span>
+                        </el-row>
+                        <el-row>
+                          <div>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-star-off"></i>写一份漂亮的自我介绍
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-star-off"></i>完善自己的竞赛、科研、工作经历
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-star-off"></i>上传一张你的真人照片
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-user"></i>写清楚你的名字或者昵称
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-s-home"></i>告诉大家你的家乡或现居的城市
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-setting"></i>定期修改密码
+                              </el-link>
+                            </el-row>
+                          </div>
+                        </el-row>
+                        <el-row>
+                          <span class="todoTitle">成为Prime会员：</span>
+                        </el-row>
+                        <el-row>
+                          <div>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-star-off"></i>每天多达30张邮票
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-star-off"></i>更大的收藏夹空间
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-star-off"></i>尊贵的FellowPrime标志
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-star-off"></i>都有谁看过你的资料
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-star-off"></i>信件永久保存
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-star-off"></i>过滤某些用户和学校
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-link class="todoContent">
+                                <i class="el-icon-star-off"></i>只需60RMB，永久Prime身份
+                              </el-link>
+                            </el-row>
+                            <el-row>
+                              <el-button type="primary" style="margin-top:20px">成为Prime会员</el-button>
+                            </el-row>
+                          </div>
+                        </el-row>
                       </el-row>
                     </div>
                   </div>
                 </el-col>
-                <el-col :span="12">
+                <el-col :span="14">
                   <div class="container" style="margin:20px">
                     <h2>最近登录的用户</h2>
                     <div>
@@ -115,7 +197,42 @@ h1 {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: black;
 }
-
+.welcomeTitle {
+  font-size: 36px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+  text-align: left;
+  float: left;
+  margin-bottom: 20px;
+}
+.welcomeTitle2 {
+  font-size: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+  text-align: left;
+  float: left;
+  margin-bottom: 20px;
+}
+.todoTitle {
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+  text-align: left;
+  float: left;
+  margin-bottom: 15px;
+}
+.todoContent {
+  font-size: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-align: left;
+  float: left;
+  margin-bottom: 5px;
+  margin-left: 40px;
+}
 .container {
   margin: 20px;
 }
@@ -125,9 +242,17 @@ h1 {
 export default {
   data() {
     return {
+      currentUser: {
+        user_id: 1,
+        nickname: "金智媛",
+        university: "清华大学",
+        lastLoginAt: "14 sec ago",
+        photo:
+          "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569063950234&di=f9e666fa5b2219e12cd1e0119b6a692d&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201406%2F03%2F20140603205522_ZirQE.thumb.600_0.jpeg"
+      },
       backgroundStyle: {
         backgroundImage:
-          "url(" + require("../assets/largestnz5orjl4163btk9.jpg") + ")",
+          "url(" + require("../../assets/largestiusl8x7a5f0krpg.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%"
       },
@@ -268,7 +393,6 @@ export default {
       searchConditions: {
         otherConditions: []
       },
-      value: [],
       options: [
         {
           value: "zhinan",
