@@ -9,7 +9,7 @@
         <p style="float:left;">(userID: {{user.userId}})</p>
       </el-row>
       <el-row>
-        <el-col span="8">
+        <el-col :span="8">
           <el-card>
             <img :src="user.photo" style="width:100%;" />
             <el-row>
@@ -76,7 +76,7 @@
             </el-row>
           </el-card>
         </el-col>
-        <el-col span="10">
+        <el-col :span="10">
           <div class="container" style="margin-left:40px">
             <el-tabs v-model="activeName" @tab-click="handleClick">
               <el-tab-pane label="Show Time" name="first">
@@ -87,7 +87,7 @@
             </el-tabs>
           </div>
         </el-col>
-        <el-col span="6">
+        <el-col :span="6">
           <div style="margin-left:20px">
             <el-row style="margin-bottom:20px">
               <h3>发一封消息吧！</h3>
@@ -139,12 +139,12 @@
           <h1>评论</h1>
           <div class="container" v-for="item in comments" :key="item.comment_id">
             <el-card style="margin:30px" :body-style="{ padding: '0px' }" span="8">
-              <el-col span="6">
+              <el-col :span="6">
                 <div style="margin:0px">
                   <img :src="item.photo" style="width:100%;margin:0px;" />
                 </div>
               </el-col>
-              <el-col span="18">
+              <el-col :span="18">
                 <el-row style="margin:10px">
                   <p class="commentCard-title">{{item.nickname}}</p>
                   <p class="commentCard-p">{{item.comment}}</p>
