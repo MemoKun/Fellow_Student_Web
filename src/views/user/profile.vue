@@ -79,11 +79,33 @@
         <el-col :span="10">
           <div class="container" style="margin-left:40px">
             <el-tabs v-model="activeName" @tab-click="handleClick">
-              <el-tab-pane label="Show Time" name="first">
+              <el-tab-pane label="关于自己" name="first">
                 <p class="introduction">“ {{user.introduction}} ”</p>
               </el-tab-pane>
-              <el-tab-pane label="科研竞赛" name="second">科研竞赛</el-tab-pane>
-              <el-tab-pane label="工作经历" name="third">工作经历</el-tab-pane>
+              <el-tab-pane label="科研竞赛" name="second">
+                <el-table :data="researchAndCompetition" stripe style="width: 100%">
+                  <el-table-column prop="date" label="时间"></el-table-column>
+                  <el-table-column prop="name" label="比赛名称"></el-table-column>
+                  <el-table-column prop="prize" label="奖项或名次"></el-table-column>
+                </el-table>
+              </el-tab-pane>
+
+              <el-tab-pane label="学生干部" name="third">
+                <el-table :data="studentCadre" stripe style="width: 100%">
+                  <el-table-column prop="dateStart" label="开始"></el-table-column>
+                  <el-table-column prop="dateEnd" label="结束"></el-table-column>
+                  <el-table-column prop="organization" label="单位"></el-table-column>
+                  <el-table-column prop="position" label="职务"></el-table-column>
+                </el-table>
+              </el-tab-pane>
+              <el-tab-pane label="工作经历" name="forth">
+                <el-table :data="workExperience" stripe style="width: 100%">
+                  <el-table-column prop="dateStart" label="开始"></el-table-column>
+                  <el-table-column prop="dateEnd" label="结束"></el-table-column>
+                  <el-table-column prop="organization" label="单位"></el-table-column>
+                  <el-table-column prop="position" label="职务"></el-table-column>
+                </el-table>
+              </el-tab-pane>
             </el-tabs>
           </div>
         </el-col>
@@ -463,7 +485,81 @@ export default {
         joinDate: "Aug 14,2019",
         viewTimes: 888,
         lastLogTime: "6 minutes"
-      }
+      },
+      workExperience: [
+        {
+          dateStart: "2016-05-02",
+          dateEnd: "2016-05-02",
+          position: "产品经理",
+          organization: "深圳市腾讯计算机系统有限公司"
+        },
+        {
+          dateStart: "2016-05-02",
+          dateEnd: "2016-05-02",
+          position: "投资银行部经理",
+          organization: "高盛投资亚洲分部"
+        },
+        {
+          dateStart: "2016-05-02",
+          dateEnd: "2016-05-02",
+          position: "咨询顾问",
+          organization: "麦肯锡咨询公司"
+        },
+        {
+          dateStart: "2016-05-02",
+          dateEnd: "2016-05-02",
+          position: "副总裁",
+          organization: "IBM"
+        }
+      ],
+      studentCadre: [
+        {
+          dateStart: "2016-05-02",
+          dateEnd: "2016-05-02",
+          position: "年级长",
+          organization: "中南大学计算机学院"
+        },
+        {
+          dateStart: "2016-05-02",
+          dateEnd: "2016-05-02",
+          position: "班长",
+          organization: "中南大学计算机学院软件1702班"
+        },
+        {
+          dateStart: "2016-05-02",
+          dateEnd: "2016-05-02",
+          position: "副主席",
+          organization: "中南大学计算机学院科协"
+        },
+        {
+          dateStart: "2016-05-02",
+          dateEnd: "2016-05-02",
+          position: "主席",
+          organization: "中南大学计算机学院科协"
+        }
+      ],
+      researchAndCompetition: [
+        {
+          date: "2016-05-02",
+          name: "互联网+全国大学生创新创业大赛",
+          prize: "金奖"
+        },
+        {
+          date: "2016-05-02",
+          name: "Kaggle",
+          prize: "金奖"
+        },
+        {
+          date: "2016-05-02",
+          name: "阿里云天池赛",
+          prize: "第一名"
+        },
+        {
+          date: "2016-05-02",
+          name: "CCF大数据竞赛",
+          prize: "第一名"
+        }
+      ]
     };
   },
   methods: {
