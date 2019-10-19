@@ -197,7 +197,7 @@ export default {
   props: {},
   data() {
     return {
-      checked: false,
+      checked: true,
       //获取验证码后禁用按钮
       btntext: '获取验证码',
       btnDisabled: false,

@@ -1,6 +1,6 @@
 <template>
   <el-menu :default-active="activeIndex" class="navmenu" mode="horizontal" @select="handleSelect">
-    <el-menu-item index="/">
+    <el-menu-item index="/" >
       <router-link to="/" class="router-link-active">主页</router-link>
     </el-menu-item>
     <el-menu-item index="/friendsApproved">
@@ -21,7 +21,7 @@
     <!--右侧已登录-->
     <el-submenu index="/settings" style="float:right" v-if="this.isLogin">
       <template slot="title">
-        <router-link to="/editSystemSetting" class="router-link-active">设置</router-link>
+        设置
       </template>
       <el-menu-item index="/vipBilling">
         <router-link to="/vipBilling" class="router-link-active">Prime会员</router-link>

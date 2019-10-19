@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" v-if="isRouterAlive">
     <el-container>
       <el-header>
-        <router-view name="header" v-if="isRouterAlive"/>
+        <router-view name="header" />
       </el-header>
       <el-main>
         <div>
