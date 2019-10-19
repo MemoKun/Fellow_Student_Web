@@ -44,7 +44,7 @@ Vue.use(Router)
 
 
 
-export default new Router({
+const router= new Router({
   routes: [{
       path: '/',
       name: 'Index',
@@ -467,6 +467,24 @@ export default new Router({
     }
   ]
 })
+
+//过滤器，判断是否登录
+// router.beforeEach((to,from,next)=>{
+//   if(to.path==='/account/login'){
+//     next();
+//   }else{
+//     let token=localStorage.getItem('Authorization');
+//     if(token===null||token===''){
+//       next('/login');
+//     }else{
+//       next();
+//     }
+//   }
+// })
+
+
+export default router;
+
 // const originalPush = Router.prototype.push
 // Router.prototype.push = function push(location) {
 //   return originalPush.call(this, location).catch(err => err)

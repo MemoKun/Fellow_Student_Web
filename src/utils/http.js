@@ -16,9 +16,14 @@ axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;char
 // http request 拦截器
 axios.interceptors.request.use(
   config => {
-    if (store.getters.token) {
-      config.headers.Authorization = `Bearer ${store.getters.token}`;
+    //登录和注册不需要加token
+    if(config.url==="/account/login"||config.url==="/account/register"){}
+    else{
+      if (localStorage.getItem('Authorization')) {
+        config.headers.Authorization = `Bearer ${localStorage.getItem('Authorization')}`;
+      }
     }
+    
     // console.log('config',config);
     return config
   },

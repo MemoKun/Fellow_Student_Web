@@ -18,8 +18,8 @@
       </router-link>
     </el-menu-item>
 
-    <!--右侧-->
-    <el-submenu index="/settings" style="float:right">
+    <!--右侧已登录-->
+    <el-submenu index="/settings" style="float:right" v-if="this.isLogin">
       <template slot="title">
         <router-link to="/editSystemSetting" class="router-link-active">设置</router-link>
       </template>
@@ -36,11 +36,17 @@
         <router-link to="/editSystemSetting" class="router-link-active">系统设置</router-link>
       </el-menu-item>
     </el-submenu>
-    <el-menu-item index="/account/login" style="float:right">
+    <el-menu-item index="quit" style="float:right" v-if="this.isLogin">
+      <el-button type="primary" round @click="quit">退出</el-button>
+    </el-menu-item>
+    <!-- 右侧未登录 -->
+    <el-menu-item index="/account/login" style="float:right" v-if="!this.isLogin">
       <router-link to="/account/login" class="router-link-active">
         <el-button type="primary" round>登录</el-button>
       </router-link>
     </el-menu-item>
+
+    
   </el-menu>
 </template>
 <style >
@@ -53,49 +59,67 @@
 export default {
   data() {
     return {
-      activeIndex: "/",
-      activeIndex2: "/"
+      activeIndex: '/',
+      activeIndex2: '/'
     };
+  },
+  computed: {
+    isLogin: {
+      get() {
+        if (localStorage.getItem('Authorization')) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
   },
   methods: {
     handleSelect(key, keyPath) {
       //防止点到按钮但没点到链接导致不跳转
       console.log(key, keyPath);
       switch (key) {
-        case "/":
-          this.$router.replace("/");
+        case '/':
+          this.$router.replace('/');
           break;
-        case "/friendsApproved":
-          this.$router.replace("/friendsApproved");
+        case '/friendsApproved':
+          this.$router.replace('/friendsApproved');
           break;
-        case "/messages":
-          this.$router.replace("/messages");
+        case '/messages':
+          this.$router.replace('/messages');
           break;
-        case "/expertiseCommunity":
-          this.$router.replace("/expertiseCommunity");
+        case '/expertiseCommunity':
+          this.$router.replace('/expertiseCommunity');
           break;
-        case "/searchFriends":
-          this.$router.replace("/searchFriends");
+        case '/searchFriends':
+          this.$router.replace('/searchFriends');
           break;
-        case "/settings":
-          this.$router.replace("/settings");
+        case '/settings':
+          this.$router.replace('/settings');
           break;
-        case "/editPersonalInfo":
-          this.$router.replace("/editPersonalInfo");
+        case '/editPersonalInfo':
+          this.$router.replace('/editPersonalInfo');
           break;
-        case "/security":
-          this.$router.replace("/security");
+        case '/security':
+          this.$router.replace('/security');
           break;
-        case "/editSystemSetting":
-          this.$router.replace("/editSystemSetting");
+        case '/editSystemSetting':
+          this.$router.replace('/editSystemSetting');
           break;
       }
     },
     //刷新后获取导航栏index
     getIndex() {
       let currentPath = window.location.href; //获取整个网址
-      let currentUrl = currentPath.split("#")[1]; //切割获得路由
-      this.activeIndex = "/" + currentUrl.split("/")[1]; //获得类似于“/xxx"的index
+      let currentUrl = currentPath.split('#')[1]; //切割获得路由
+      this.activeIndex = '/' + currentUrl.split('/')[1]; //获得类似于“/xxx"的index
+    },
+    //退出
+    quit() {
+      location.reload();
+      this.$store.commit('removeToken');
+      this.$router.push('/');
+      console.log('退出后跳转至主页');
     }
   },
   created() {

@@ -26,6 +26,11 @@ const store = new Vuex.Store({
       state.Authorization=user.Authorization;
       localStorage.setItem('Authorization',user.Authorization);
       console.log("/store/index.js token存入成功");
+    },
+    //清除token
+    removeToken(){
+      localStorage.removeItem('Authorization');
+      console.log('/store/index.js token清除成功')
     }
   },
   modules: {

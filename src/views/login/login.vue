@@ -87,12 +87,15 @@ export default {
               console.log('success');
               this.userToken = res.token;
               console.log("res:"+res);
-              console.log("restoken:"+res.token);
+              console.log("userToken:"+this.userToken);
               this.$store.commit('changeLogin', this.userToken);
               this.$message({
                 message: '登录成功',
                 type: 'success'
               });
+              location.reload();
+              this.$router.push('/');
+              console.log("跳转至主页");
             },
             err => {
               console.log('手机号登录失败');
@@ -112,15 +115,20 @@ export default {
             email: this.loginForm.account,
             password: this.loginForm.password
           }).then(
-            res => {
-                console.log('success');
-                this.userToken = res.token;
-                console.log(res.token);
-                this.$store.commit('changeLogin', this.userToken);
-                this.$message({
-                  message: '登录成功',
-                  type: 'success'
-                });
+            (response) => {
+              let res =response;
+              console.log('success');
+              this.userToken = res.token;
+              console.log("res:"+res);
+              console.log("restoken:"+res.token);
+              this.$store.commit('changeLogin', this.userToken);
+              this.$message({
+                message: '登录成功',
+                type: 'success'
+              });
+              location.reload();
+              this.$router.push('/');
+              console.log("跳转至主页");
             },
             err => {
               if (err.response) {
@@ -137,7 +145,7 @@ export default {
       }
     },
     register() {
-      this.$router.replace('/account/register');
+      this.$router.push('/account/register');
     }
   },
   created() {},
