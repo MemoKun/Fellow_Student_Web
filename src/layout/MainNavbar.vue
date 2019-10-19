@@ -57,6 +57,7 @@
 </style>
 <script>
 export default {
+  inject:['reload'],
   data() {
     return {
       activeIndex: '/',
@@ -116,7 +117,7 @@ export default {
     },
     //退出
     quit() {
-      location.reload();
+      this.reload();
       this.$store.commit('removeToken');
       this.$router.push('/');
       console.log('退出后跳转至主页');

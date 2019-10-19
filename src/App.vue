@@ -2,7 +2,7 @@
   <div id="app">
     <el-container>
       <el-header>
-        <router-view name="header" />
+        <router-view name="header" v-if="isRouterAlive"/>
       </el-header>
       <el-main>
         <div>
@@ -18,7 +18,25 @@
 
 <script>
 export default {
-  name: "App"
+  name: "App",
+  provide(){//需要的地方用inject:['reload']即可用this.reload()调用
+    return{
+      reload:this.reload
+    }
+  },
+  data(){
+    return{
+      isRouterAlive:true
+    }
+  },
+  methods:{
+    reload(){
+      this.isRouterAlive=false
+      this.$nextTick(function(){
+        this.isRouterAlive=true;
+      })
+    }
+  }
 };
 </script>
 

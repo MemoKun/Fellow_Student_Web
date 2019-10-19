@@ -22,9 +22,9 @@ const store = new Vuex.Store({
   },
   mutations:{
     //修改token,并将token存入localStorage
-    changeLogin(state,user){
-      state.Authorization=user.Authorization;
-      localStorage.setItem('Authorization',user.Authorization);
+    changeLogin(state,token){
+      state.Authorization=token;
+      localStorage.setItem('Authorization',token);
       console.log("/store/index.js token存入成功");
     },
     //清除token

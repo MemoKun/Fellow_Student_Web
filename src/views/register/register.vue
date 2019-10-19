@@ -273,16 +273,30 @@ export default {
   },
   methods: {
     registerByPhone() {
-      this.accountType = '手机号';
-      this.step = 0;
-      this.typeSelected = true;
-      this.timer();
+      if (this.checked) {
+        this.accountType = '手机号';
+        this.step = 0;
+        this.typeSelected = true;
+        this.timer();
+      } else {
+        this.$message({
+          message: '请阅读相关服务条款和隐私政策',
+          type: 'warning'
+        });
+      }
     },
     registerByEmail() {
-      this.accountType = '邮箱';
-      this.step = 0;
-      this.typeSelected = true;
-      this.timer();
+      if (this.checked) {
+        this.accountType = '邮箱';
+        this.step = 0;
+        this.typeSelected = true;
+        this.timer();
+      } else {
+        this.$message({
+          message: '请阅读相关服务条款和隐私政策',
+          type: 'warning'
+        });
+      }
     },
     goBack() {
       //返回上一步
@@ -422,12 +436,12 @@ export default {
         this.$cookies.set('registerDisabeledTime', this.registerDisabeledTime);
         this.registerDisabeledTime--;
         this.btntext = '请等待' + this.registerDisabeledTime + 's';
-        this.btnDisabled=true;
+        this.btnDisabled = true;
         setTimeout(this.timer, 1000);
       } else {
         this.$cookies.remove('registerDisabeledTime');
         this.registerDisabeledTime = 0;
-        this.btnDisabled=false;
+        this.btnDisabled = false;
         this.btntext = '获取验证码';
       }
     },
@@ -450,7 +464,7 @@ export default {
   },
   created() {},
   mounted() {
-   this.registerDisabeledTime = this.$cookies.isKey('registerDisabeledTime')
+    this.registerDisabeledTime = this.$cookies.isKey('registerDisabeledTime')
       ? this.$cookies.get('registerDisabeledTime')
       : 0;
     this.btnDisabled = this.$cookies.isKey('registerDisabeledTime')

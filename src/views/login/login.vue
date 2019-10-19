@@ -44,6 +44,7 @@
 <script>
 import axios from 'axios';
 export default {
+  inject:['reload'],
   data() {
     return {
       backgroundStyle: {
@@ -93,7 +94,7 @@ export default {
                 message: '登录成功',
                 type: 'success'
               });
-              location.reload();
+              this.reload();
               this.$router.push('/');
               console.log("跳转至主页");
             },
@@ -126,7 +127,7 @@ export default {
                 message: '登录成功',
                 type: 'success'
               });
-              location.reload();
+              this.reload();
               this.$router.push('/');
               console.log("跳转至主页");
             },
