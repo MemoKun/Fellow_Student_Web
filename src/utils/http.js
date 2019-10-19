@@ -11,7 +11,7 @@ import {
 
 axios.defaults.timeout = 10000;
 axios.defaults.baseURL = 'http://39.100.52.175:8080';
-axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8';
 
 // http request 拦截器
 axios.interceptors.request.use(
@@ -120,9 +120,9 @@ export function fetch(url, params = {}) {
  * @returns {Promise}
  */
 
-export function post(url, data = {}) {
+export function post(url, data) {
   return new Promise((resolve, reject) => {
-    axios.post(url, this.$qs.stringify(data))
+    axios.post(url, data)
       .then(response => {
         resolve(response.data);
       }, err => {

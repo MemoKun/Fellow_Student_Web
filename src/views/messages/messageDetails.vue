@@ -13,7 +13,8 @@
           :scrollStyle="prop.scrollStyle"
         ></mavon-editor>
       </el-row>
-      <el-divider>回复TA吧～</el-divider>
+      <div>
+      <!-- <el-divider>回复TA吧～</el-divider> -->
       <el-row>
         <mavon-editor v-model="context" :toolbars="toolbars" @keydown="handleClick" />
       </el-row>
@@ -23,6 +24,7 @@
           <el-button type="primary" icon="el-icon-s-promotion" round>寄出</el-button>
         </div>
       </el-row>
+      </div>
     </div>
   </div>
 </template>

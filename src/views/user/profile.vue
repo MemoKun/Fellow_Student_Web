@@ -70,7 +70,6 @@
               <span class="infoCardTitle2">上一次登录是在 {{user.lastLogTime}} 以前</span>
             </el-row>
             <el-row class="infoCardRow">
-              <el-button icon="el-icon-star-off" round>116</el-button>
               <el-button type="primary" v-if="addFlag" icon="el-icon-star-off" round>添加收藏</el-button>
               <el-button type="success" v-if="addFlag" icon="el-icon-star-off" round>申请好友</el-button>
             </el-row>
@@ -80,7 +79,7 @@
           <div class="container" style="margin-left:40px">
             <el-tabs v-model="activeName" @tab-click="handleClick">
               <el-tab-pane label="关于自己" name="first">
-                <p class="introduction">“ {{user.introduction}} ”</p>
+                <p class="introduction">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“{{user.introduction}} ”</p>
               </el-tab-pane>
               <el-tab-pane label="科研竞赛" name="second">
                 <el-table :data="researchAndCompetition" stripe style="width: 100%">
@@ -158,9 +157,9 @@
           </div>
         </el-col>
         <el-col :span="10">
-          <h1>评论</h1>
+          <h1>留言</h1>
           <div class="container" v-for="item in comments" :key="item.comment_id">
-            <el-card style="margin:30px" :body-style="{ padding: '0px' }" span="8">
+            <el-card style="margin:20px" :body-style="{ padding: '0px' }" span="8">
               <el-col :span="6">
                 <div style="margin:0px">
                   <img :src="item.photo" style="width:100%;margin:0px;" />
@@ -168,8 +167,11 @@
               </el-col>
               <el-col :span="18">
                 <el-row style="margin:10px">
-                  <p class="commentCard-title">{{item.nickname}}</p>
-                  <p class="commentCard-p">{{item.comment}}</p>
+                  <el-link type="primary" style="float:left">
+                    <span class="commentCard-title">{{item.nickname}}</span>
+                  </el-link>
+                  <br />
+                  <span class="commentCard-p">&nbsp;&nbsp;&nbsp;&nbsp;{{item.comment}}</span>
                 </el-row>
               </el-col>
             </el-card>
@@ -315,7 +317,8 @@ export default {
           nickname: "金智媛",
           university: "清华大学",
           lastLoginAt: "14 sec ago",
-          comment: "hi subeen. D hope we can be friend :)",
+          comment:
+            "Hi,subeen. ur name remind me of korean drama at eighteen, the name of the main role is yoo soo bin :D hope we can be friend :)",
           photo:
             "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569063950234&di=f9e666fa5b2219e12cd1e0119b6a692d&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201406%2F03%2F20140603205522_ZirQE.thumb.600_0.jpeg"
         },
@@ -326,7 +329,7 @@ export default {
           university: "北京大学",
           lastLoginAt: "18 sec ago",
           comment:
-            "hi subeen. ur name remind me of korean drama at eighteen, the name of the main role is yoo soo bin :D hope we can be friend :)",
+            "Hi,subeen. ur name remind me of korean drama at eighteen, the name of the main role is yoo soo bin :D hope we can be friend :)",
           photo:
             "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569658749&di=d621e95842f713f897d1c9f9d14160bc&imgtype=jpg&er=1&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201507%2F27%2F20150727151430_E5CS4.thumb.700_0.jpeg"
         },
@@ -481,7 +484,7 @@ export default {
         ageBetweenTo: 25,
         messageCount: 0,
         introduction:
-          "你好，简单介绍一下:我是一名法语专业的学生。更重要的是，散打(拳击的一种形式)是我的新爱好!我想找一个笔友，我可以和他交朋友。在中国,我们总是相信命运(缘分),我也是,因为我们遇到的命运!最后，如果你想知道更多和我聊天，你可以发邮件给我2314147149@qq.com。",
+          "你好，简单介绍一下:我是一名法语专业的学生。更重要的是，散打(拳击的一种形式)是我的新爱好!我想找一个笔友，我可以和他交朋友。在中国,我们总是相信命运(缘分),我也是,因为我们遇到的命运!最后，如果你想知道更多和我聊天，你可以发邮件给我2314147149@qq.com。Holle,I am Winnie,nice to meet you.I am Cantonese and I am studying in a unniversity of Shanghai now.Please forgive my poor English.I will try my best to express myself accurately.I would like to learn about cultures around the world.I also want to know about the lives of people in other countries.I am curious.Is your life the same as ours?If you are willing to share your life or any idea with me,please write me a message.I will get back to you as soon as possible.",
         joinDate: "Aug 14,2019",
         viewTimes: 888,
         lastLogTime: "6 minutes"
@@ -601,14 +604,19 @@ export default {
 }
 .introduction {
   text-align: left;
+  margin: 16px;
+  font-size: 18px;
 }
 .commentCard {
 }
 .commentCard-title {
+  font-size: 18px;
+  float: left;
   text-align: left;
 }
 .commentCard-p {
   text-align: left;
+  float: left;
 }
 .friendsCard-title {
   margin: 2px;
