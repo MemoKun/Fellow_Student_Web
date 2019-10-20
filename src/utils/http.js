@@ -49,14 +49,14 @@ axios.interceptors.response.use(
       // store.dispatch('refreshToken',token)
       this.$store.dispatch('refreshToken', token)
     }
-    return response
+    return response.data
   },
   error => {
-    /* if (error.response) {
+     if (error.response) {
        //只要报错就清空token
-       switch (error.response.data.status_code) {
+       switch (error.response.status) {
          case 401:
-           console.log(error.response);
+           console.log(error.response.data.extra.message);
            // removeToken();
            //可以监控到所有的401错误
            // console.log(error.response);
@@ -69,11 +69,17 @@ axios.interceptors.response.use(
              path: '/login',
              query: {redirect: router.currentRoute.fullPath}
            });
+
+        case 500:
+            console.log(error.response.data.base.extra.message);
+            Message.error({
+              message: error.response.data.base.extra.message
+            });
        }
        // store.dispatch('DelToken');
      }else{
        return Promise.reject(error)
-     }*/
+     }
     // console.log(error.response);
     if (error.response) {
       if (error.response.data.message == "The token has been blacklisted") {

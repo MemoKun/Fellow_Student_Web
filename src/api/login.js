@@ -1,24 +1,15 @@
 import axios from 'axios'
 import qs from 'qs'
 
-export function login(data) {
-  return axios({
-    url: '/authorizations',
-    method: 'post',
-    data: qs.stringify(data)
-  })
+export default {
+ login:(data) => {
+    return axios.request({
+        url: 'login',
+        data,
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
 }
-
-export function getInfo() {
-  return axios({
-    url: '/me',
-    method: 'post'
-  })
-}
-
-export function logout() {
-  return axios({
-    url: '/authorizations/current',
-    method: 'put'
-  })
 }

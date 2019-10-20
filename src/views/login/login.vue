@@ -36,15 +36,15 @@
 .loginCard {
   display: flex;
   justify-content: center;
-  /* margin: 150px; */
-  margin-top:180px;
-  margin-bottom:220px;
+  margin-top: 180px;
+  margin-bottom: 220px;
 }
 </style>
 <script>
-import axios from 'axios';
+import loginAPI from "../../api/login";
+import axios from "axios";
 export default {
-  inject:['reload'],
+  inject: ["reload"],
   data() {
     return {
       backgroundStyle: {
@@ -53,12 +53,11 @@ export default {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%"
       },
-      baseUrl: "http://39.100.52.175:8080",
       loginForm: {
-        account: '',
-        password: ''
+        account: "",
+        password: ""
       },
-      userToken: ''
+      userToken: ""
     };
   },
   watch: {},
@@ -71,85 +70,48 @@ export default {
     }
   },
   methods: {
-    login() {
-      console.log('login');
-      if (this.loginForm.account === '' || this.loginForm.password === '') {
-        this.$message.error('账号或密码不能为空');
+    async login() {
+      console.log("login");
+      if (this.loginForm.account === "" || this.loginForm.password === "") {
+        this.$message.error("账号或密码不能为空");
       } else {
         if (this.$validatePhoneNum(this.loginForm.account)) {
           //判断账号格式
-          console.log('手机号登录');
-          this.$post(this.urls.testUrl + '/login', {
-            phoneNum: this.loginForm.account,
-            password: this.loginForm.password
-          }).then(
-            (response) => {
-              let res =response;
-              console.log('success');
-              this.userToken = res.token;
-              console.log("res:"+res);
-              console.log("userToken:"+this.userToken);
-              this.$store.commit('changeLogin', this.userToken);
-              this.$message({
-                message: '登录成功',
-                type: 'success'
-              });
-              this.reload();
-              this.$router.push('/');
-              console.log("跳转至主页");
-            },
-            err => {
-              console.log('手机号登录失败');
-              if (err.response) {
-                let arr = err.response.data.errors;
-                let arr1 = [];
-                for (let i in arr) {
-                  arr1.push(arr[i]);
-                }
-                this.$message.error(arr1.join(','));
-              }
-            }
-          );
+          console.log("手机号登录");
+          let param = new URLSearchParams();
+          param.append("phoneNum", this.loginForm.account);
+          param.append("password", this.loginForm.password);
+
+          var data = await loginAPI.login(param);
+          if (data != null) {
+            this.userToken = data.token;
+            this.$store.commit("changeLogin", this.userToken);
+            this.$message.success("登录成功");
+            this.reload();
+            this.$router.push("/");
+            console.log("跳转至主页");
+          }
         } else if (this.$validateEmail(this.loginForm.account)) {
-          console.log('邮箱登录');
-          this.$post(this.urls.testUrl + '/login', {
-            email: this.loginForm.account,
-            password: this.loginForm.password
-          }).then(
-            (response) => {
-              let res =response;
-              console.log('success');
-              this.userToken = res.token;
-              console.log("res:"+res);
-              console.log("restoken:"+res.token);
-              this.$store.commit('changeLogin', this.userToken);
-              this.$message({
-                message: '登录成功',
-                type: 'success'
-              });
-              this.reload();
-              this.$router.push('/');
-              console.log("跳转至主页");
-            },
-            err => {
-              if (err.response) {
-                let arr = err.response.data.errors;
-                let arr1 = [];
-                for (let i in arr) {
-                  arr1.push(arr[i]);
-                }
-                this.$message.error(arr1.join(','));
-              }
-            }
-          );
+          console.log("邮箱登录");
+          let param = new URLSearchParams();
+          param.append("email", this.loginForm.account);
+          param.append("password", this.loginForm.password);
+
+          var data = await loginAPI.login(param);
+          if (data != null) {
+            this.userToken = data.token;
+            this.$store.commit("changeLogin", this.userToken);
+            this.$message.success("登录成功");
+            this.reload();
+            this.$router.push("/");
+            console.log("跳转至主页");
+          }
         }
       }
     },
     register() {
-      this.$router.push('/account/register');
+      this.$router.push("/account/register");
     }
-  },
-  created() {},
-  mounted() {}
+  }
 };
 </script>

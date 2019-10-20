@@ -273,7 +273,7 @@
 
 <script>
 import options from "./../../utils/country-data.js";
-
+import registerAPI from "../../api/register"
 export default {
   components: {},
   props: {},
@@ -386,7 +386,7 @@ export default {
       this.step = -1;
       this.typeSelected = false;
     },
-    nextStep() {
+    async nextStep() {
       //步骤跳转兼表单提交
       if (this.step == 0) {
         //账号注册
@@ -403,25 +403,26 @@ export default {
                 phoneNum: this.accountForm.account,
                 password: this.accountForm.password
               };
-              this.$post(this.urls.testUrl + "/register/ByPhoneNum", json).then(
-                res => {
-                  this.step++;
-                  this.$message({
-                    message: "注册成功",
-                    type: "success"
-                  });
-                },
-                err => {
-                  if (err.response) {
-                    let arr = err.response.data.errors;
-                    let arr1 = [];
-                    for (let i in arr) {
-                      arr1.push(arr[i]);
-                    }
-                    this.$message.error(arr1.join(","));
-                  }
-                }
-              );
+              await registerAPI.register(json)
+              // this.$post(this.urls.testUrl + "/register/ByPhoneNum", json).then(
+              //   res => {
+              //     this.step++;
+              //     this.$message({
+              //       message: "注册成功",
+              //       type: "success"
+              //     });
+              //   },
+              //   err => {
+              //     if (err.response) {
+              //       let arr = err.response.data.errors;
+              //       let arr1 = [];
+              //       for (let i in arr) {
+              //         arr1.push(arr[i]);
+              //       }
+              //       this.$message.error(arr1.join(","));
+              //     }
+              //   }
+              // );
             } else {
               this.$message({
                 message: "请输入验证码",
@@ -486,7 +487,7 @@ export default {
             type: "success"
           });
           //更改按钮样式，禁用60s
-          this.registerDisabeledTime = 60;
+          this.registerDisabeledTime = 0;
           this.btnDisabled = true;
           this.timer();
         } else {
