@@ -241,7 +241,8 @@ export default {
   margin: 80px;
 }
 .agreement {
-  float: left;
+  margin-top: -40px;
+  float: center;
 }
 .selecteButton {
   width: 100px;
