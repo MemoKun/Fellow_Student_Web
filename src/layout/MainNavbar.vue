@@ -12,7 +12,7 @@
     <el-menu-item index="/expertiseCommunity">
       <router-link to="/expertiseCommunity" class="router-link-active">专业社区</router-link>
     </el-menu-item>
-    <el-menu-item index="/searchFriends">
+    <el-menu-item index="/searchFriends" style="border-bottom:none" >
       <router-link to="/searchFriends" class="router-link-active">
         <el-button type="primary">寻找朋友</el-button>
       </router-link>
@@ -40,7 +40,7 @@
       <el-button type="primary" round @click="quit">退出</el-button>
     </el-menu-item>
     <!-- 右侧未登录 -->
-    <el-menu-item index="/account/login" style="float:right" v-if="!this.isLogin">
+    <el-menu-item index="/account/login" style="float:right;border-bottom:none" v-if="!this.isLogin">
       <router-link to="/account/login" class="router-link-active">
         <el-button type="primary" round>登录</el-button>
       </router-link>

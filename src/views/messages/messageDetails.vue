@@ -1,6 +1,9 @@
 <template>
   <div class="container" style="padding:100px">
+    <el-row>
     <h1>来信</h1>
+            <el-link type="primary" style="font-style:italic;float:right;font-size:16px;">返回消息列表</el-link>
+            </el-row>
     <div class="container">
       <el-row>
         <mavon-editor
@@ -13,9 +16,17 @@
           :scrollStyle="prop.scrollStyle"
         ></mavon-editor>
       </el-row>
-      <div>
-      <!-- <el-divider>回复TA吧～</el-divider> -->
-      <el-row>
+      <div style="margin-top:50px;float:right;">
+        <el-button-group>
+          <el-button type="primary" icon="el-icon-arrow-left">上一条</el-button>
+          <el-button type="primary">
+            下一条
+            <i class="el-icon-arrow-right el-icon--right"></i>
+          </el-button>
+        </el-button-group>
+        <el-button>回复</el-button>
+        <!-- <el-divider>回复TA吧～</el-divider> -->
+        <!-- <el-row>
         <mavon-editor v-model="context" :toolbars="toolbars" @keydown="handleClick" />
       </el-row>
       <el-row>
@@ -23,7 +34,7 @@
           <el-button type="success" icon="el-icon-document" round>暂存</el-button>
           <el-button type="primary" icon="el-icon-s-promotion" round>寄出</el-button>
         </div>
-      </el-row>
+        </el-row>-->
       </div>
     </div>
   </div>
