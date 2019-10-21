@@ -86,7 +86,7 @@ export default {
           if (data != null) {
             this.userToken = data.token;
             this.$store.commit("changeLogin", this.userToken);
-            this.$message.success("登录成功");
+            this.$message.success("欢迎回来，薛俊皓6");
             this.reload();
             this.$router.push("/");
             console.log("跳转至主页");
@@ -101,7 +101,7 @@ export default {
           if (data != null) {
             this.userToken = data.token;
             this.$store.commit("changeLogin", this.userToken);
-            this.$message.success("登录成功");
+            this.$message.success("欢迎回来，薛俊皓6");
             this.reload();
             this.$router.push("/");
             console.log("跳转至主页");

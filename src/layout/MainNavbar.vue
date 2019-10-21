@@ -19,7 +19,9 @@
     </el-menu-item>
 
     <!--右侧已登录-->
-    <el-submenu index="/settings" style="float:right" v-if="this.isLogin">
+   <div  v-if="this.isLogin">
+    <el-submenu index="/settings" style="float:right">
+     
       <template slot="title">
         设置
       </template>
@@ -36,9 +38,10 @@
         <router-link to="/editSystemSetting" class="router-link-active">系统设置</router-link>
       </el-menu-item>
     </el-submenu>
-    <el-menu-item index="quit" style="float:right" v-if="this.isLogin">
+    <el-menu-item index="quit" style="float:right">
       <el-button type="primary" round @click="quit">退出</el-button>
     </el-menu-item>
+    </div>
     <!-- 右侧未登录 -->
     <el-menu-item index="/account/login" style="float:right;border-bottom:none" v-if="!this.isLogin">
       <router-link to="/account/login" class="router-link-active">
